@@ -1,8 +1,7 @@
-@use '../../styles/mixins.scss';
-
 .dropdownCaller {
-  @include mixins.flex(row, space-between, center);
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 40px;
   max-height: 40px;
   padding: 0 10px;

@@ -64,7 +64,6 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
       </div>
       {icon && <SvgIcon src={icon} size={20} data-testid="button-icon" />}
       {text && (
-        // eslint-disable-next-line react/jsx-no-undef
         <Text size={textSizeMap[size]} fontWeight={FontWeightEnum.FW500}>
           {text}
         </Text>

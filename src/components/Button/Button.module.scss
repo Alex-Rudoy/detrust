@@ -1,5 +1,3 @@
-@use '../../styles/mixins.scss';
-
 .button {
   position: relative;
   justify-content: center;
@@ -36,7 +34,7 @@
         .loader {
           background-color: var(--primary-600);
 
-          >div {
+          > div {
             svg {
               stroke: var(--primary-200);
             }
@@ -73,7 +71,7 @@
         .loader {
           background-color: white;
 
-          >div {
+          > div {
             svg {
               stroke: var(--gray-200);
             }
@@ -106,7 +104,7 @@
         .loader {
           background-color: white;
 
-          >div {
+          > div {
             svg {
               stroke: var(--error-200);
             }
@@ -160,8 +158,9 @@
 }
 
 .loader {
-  @include mixins.flex(row, center, center);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   right: 0;

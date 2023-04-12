@@ -2,10 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TablePagination } from './TablePagination';
-import { Skeleton } from '../Skeleton';
-import { IconsEnum, SvgIcon } from '../SvgIcon';
-import { Text, FontWeightEnum, TextSizeEnum } from '../Text';
-
+import { Skeleton } from '@/components/Skeleton';
+import { IconsEnum, SvgIcon } from '@/components/SvgIcon';
+import { Text, FontWeightEnum, TextSizeEnum } from '@/components/Text';
 import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';

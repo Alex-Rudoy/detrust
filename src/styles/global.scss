@@ -1,8 +1,14 @@
 html {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  color: var(--gray-900);
-  background: var(--gray-50);
-  overflow-y: hidden;
+  color: var(--gray-50);
+  stroke: var(--gray-50);
+  overflow: hidden;
+  background: var(--primary-dark-700);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark-700) 0%,
+    var(--primary-dark-900) 100%
+  );
 }
 
 :root {

@@ -1,12 +1,12 @@
-@use '../../styles/mixins.scss';
-
 .backdrop {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  @include mixins.flex(row, center, center);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 10;
 
   &.backdrop_enabled {
@@ -37,7 +37,9 @@
   left: 0;
   width: 36px;
   height: 36px;
-  @include mixins.flex(row, center, center);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: var(--shadow-xs);
   background-color: var(--white);
   stroke: var(--gray-700);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkProps } from 'next/link';
 
 export enum TextSizeEnum {
   S10 = 'S10',
@@ -34,3 +35,5 @@ export type TextProps = {
   style?: React.CSSProperties;
   onClick?: () => void;
 };
+
+export type CustomLinkProps = LinkProps & TextProps & { disabled?: boolean };

@@ -1,10 +1,7 @@
+import { TokensPage } from '@/views/TokensPage';
 
 export default function Tokens() {
-  return (
-    <main>
-      <h1>Token list</h1>
-    </main>
-  );
+  return <TokensPage />;
 }
 
 export async function getServerSideProps() {

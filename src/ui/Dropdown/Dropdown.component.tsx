@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { DropdownBase } from '../DropdownBase';
-import { DropdownCaller } from '../DropdownCaller';
-import { DropdownItem } from '../DropdownItem';
-import { DropdownSearch } from '../DropdownSearch';
-import { FontWeightEnum, Text, TextSizeEnum } from '../Text';
+import { DropdownBase } from '../../components/DropdownBase';
+import { DropdownCaller } from '../../components/DropdownCaller';
+import { DropdownItem } from '../../components/DropdownItem';
+import { DropdownSearch } from '../../components/DropdownSearch';
+import { FontWeightEnum, Text, TextSizeEnum } from '../../components/Text';
 
 import { DropdownProps } from './Dropdown.types';
 

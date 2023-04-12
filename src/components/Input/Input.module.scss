@@ -1,5 +1,3 @@
-@use '../../styles/mixins.scss';
-
 .input {
   position: relative;
   width: 100%;
@@ -11,7 +9,7 @@
   }
 
   .inner {
-    @include mixins.flex(row);
+    display: flex;
     overflow: hidden;
     width: 100%;
     height: 40px;

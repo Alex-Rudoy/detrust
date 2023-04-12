@@ -49,6 +49,9 @@
   }
 
   &_fontWeight {
+    &_undefined {
+      font-weight: 400;
+    }
     &_FW400 {
       font-weight: 400;
     }
@@ -67,6 +70,9 @@
   }
 
   &_textTransform {
+    &_undefined {
+      text-transform: initial;
+    }
     &_lowercase {
       text-transform: lowercase;
     }
@@ -87,4 +93,28 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+}
+
+.customLink {
+  position: relative;
+
+  &:not(.disabledLink)::after {
+    content: '';
+    display: block;
+    bottom: -2px;
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-500);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.disabledLink {
+  cursor: not-allowed;
 }

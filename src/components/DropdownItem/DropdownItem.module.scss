@@ -1,8 +1,7 @@
-@use '../../styles/mixins.scss';
-
 .dropdownItem {
-  @include mixins.flex(row, flex-start, center);
-
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   min-height: 40px;
   width: 100%;
   max-width: 100%;

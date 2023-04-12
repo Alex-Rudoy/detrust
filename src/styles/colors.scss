@@ -33,9 +33,11 @@
   --primary-800: #0e3c80;
   --primary-900: #0e3269;
 
-  --primary-dark1: #082c62;
-  --primary-dark2: #061d41;
-  --primary-dark3: #030f21;
+  --primary-dark-700: #082c62;
+  --primary-dark-800: #061d41;
+  --primary-dark-900: #030f21;
+
+  --sidebar-bg: rgba(3, 15, 33, 0.3); // should be same sa primary-dark-900
 
   --error-25: #fffbfa;
   --error-50: #fef3f2;
