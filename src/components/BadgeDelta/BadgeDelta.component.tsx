@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Badge, BadgeColorsEnum } from '@components/Badge';
-import { IconsEnum } from '@components/SvgIcon';
+import { Badge, BadgeColorsEnum } from '../Badge';
+import { IconsEnum } from '../SvgIcon';
 
 import { BadgeDeltaProps } from './BadgeDelta.types';
 

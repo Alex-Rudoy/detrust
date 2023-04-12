@@ -1,3 +1,4 @@
+import { IconsEnum } from '@/components/SvgIcon';
 import { routes } from '@/views/routes';
 
 export const navItems = [
@@ -6,26 +7,31 @@ export const navItems = [
     links: [
       {
         link: routes().tokens,
-        text: 'TOKEN',
+        text: 'Tokens',
+        icon: IconsEnum.search,
       },
       {
         link: routes().game,
-        text: 'GAME',
+        text: 'Game',
+        icon: IconsEnum.search,
         disabled: true,
       },
       {
         link: routes().nft,
         text: 'NFT',
+        icon: IconsEnum.search,
         disabled: true,
       },
       {
         link: routes().fund,
-        text: 'FUND',
+        text: 'Fund',
+        icon: IconsEnum.search,
         disabled: true,
       },
       {
         link: routes().account,
-        text: 'ACCOUNT',
+        text: 'Account',
+        icon: IconsEnum.search,
         disabled: true,
       },
     ],

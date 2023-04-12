@@ -1,67 +1,112 @@
 .wrapper {
   min-width: 250px;
   max-width: 250px;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+  background: var(--primary-dark-900);
+  border-right: 1px solid var(--primary-300);
+
+  &.collapsed {
+    min-width: 50px;
+    max-width: 50px;
+  }
+}
+
+.sideMenu {
+  min-width: 250px;
+  max-width: 250px;
   white-space: nowrap;
   word-wrap: none;
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow-xl);
+  margin-top: -20px;
+  padding-top: 20px;
+  position: relative;
+  z-index: 2;
 
   &.collapsed {
     min-width: 50px;
     max-width: 50px;
 
-    .sideMenu > * {
+    .content {
+      padding-left: 8px;
+    }
+    .groupHeading,
+    .badge,
+    .link {
       opacity: 0;
+    }
+
+    .linkRow {
+      width: 32px;
     }
   }
 }
 
 .arrow {
   position: absolute;
-  top: 36px;
-  right: 15px;
+  top: 20px;
+  right: -15px;
   cursor: pointer;
+  border: 2px solid var(--primary-200);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  background: var(--primary-dark-900);
+  z-index: 2;
+
+  & > div {
+    padding-top: 1px;
+  }
 }
 
-.sideMenu {
+.content {
   min-width: 250px;
   max-width: 250px;
   flex: 0;
   height: 100vh;
-  background: var(--sidebar-bg);
-  padding: 16px;
-}
-
-.logoLine {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--primary-200);
-  margin-bottom: 16px;
-  position: relative;
-}
-
-.logo {
-  width: 150px;
-  margin-left: -12px;
+  padding: 32px 16px;
 }
 
 .group {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .groupHeading {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .linkRow {
+  width: 218px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(.disabled):hover {
+    background: var(--primary-800);
+  }
+
+  &.active {
+    background: var(--primary-900);
+  }
+
+  .link {
+    margin-right: auto;
+  }
 }

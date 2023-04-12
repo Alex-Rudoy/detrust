@@ -1,3 +1,3 @@
 export type LayoutProps = {
-  activeMenuLink: string;
+  // todo
 };

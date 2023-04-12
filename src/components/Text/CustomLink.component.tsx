@@ -16,7 +16,6 @@ export const CustomLinkComponent = ({
   textTransform,
   size,
   onClick,
-  disabled,
   ...rest
 }: PropsWithChildren<CustomLinkProps>) => {
   const textClass = classNames(
@@ -27,7 +26,6 @@ export const CustomLinkComponent = ({
       [styles[`text_fontWeight_${fontWeight}`]]: fontWeight,
       [styles[`text_textTransform_${textTransform}`]]: textTransform,
       [styles[`text_dots`]]: dots,
-      [styles.disabledLink]: disabled,
     },
     className,
   );
