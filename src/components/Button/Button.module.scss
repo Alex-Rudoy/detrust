@@ -1,0 +1,191 @@
+@use '../../styles/mixins.scss';
+
+.button {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  min-height: inherit;
+  border-radius: 6px;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+
+  &_variant {
+    &_primary {
+      background: var(--primary-600);
+      color: white;
+      stroke: white;
+
+      &:hover {
+        background: var(--primary-700);
+      }
+
+      &.active {
+        background: var(--primary-800);
+      }
+
+      &.disabled {
+        background-color: var(--primary-200);
+      }
+
+      &.loading {
+        .loader {
+          background-color: var(--primary-600);
+
+          >div {
+            svg {
+              stroke: var(--primary-200);
+            }
+          }
+        }
+      }
+    }
+
+    &_secondary {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      color: var(--gray-700);
+      stroke: var(--gray-700);
+
+      &:hover {
+        background: var(--gray-50);
+        color: var(--gray-800);
+        stroke: var(--gray-800);
+      }
+
+      &.active {
+        background: var(--gray-200);
+        color: var(--gray-900);
+        stroke: var(--gray-900);
+      }
+
+      &.disabled {
+        border-color: var(--gray-200);
+        color: var(--gray-300);
+        stroke: var(--gray-300);
+      }
+
+      &.loading {
+        .loader {
+          background-color: white;
+
+          >div {
+            svg {
+              stroke: var(--gray-200);
+            }
+          }
+        }
+      }
+    }
+
+    &_red {
+      background: white;
+      color: var(--error-700);
+      stroke: var(--error-700);
+      border: 1px solid var(--error-300);
+
+      &:hover {
+        background: var(--error-50);
+      }
+
+      &:active {
+        background: var(--error-200);
+      }
+
+      &.disabled {
+        color: var(--error-300);
+        stroke: var(--error-300);
+        border-color: var(--error-200);
+      }
+
+      &.loading {
+        .loader {
+          background-color: white;
+
+          >div {
+            svg {
+              stroke: var(--error-200);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_width {
+    &_full {
+      width: 100%;
+    }
+  }
+
+  &_size {
+    &_sm {
+      height: 36px;
+      padding: 0 14px;
+    }
+
+    &_md {
+      height: 40px;
+      padding: 0 16px;
+    }
+
+    &_lg {
+      height: 44px;
+      padding: 0 18px;
+    }
+  }
+
+  &_icon_position {
+    &_left {
+      flex-direction: row;
+    }
+
+    &_right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  * {
+    pointer-events: none;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.loader {
+  @include mixins.flex(row, center, center);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  --transition-time: 0s;
+}
+
+.loading {
+  cursor: default;
+
+  .loader {
+    opacity: 1;
+    --transition-time: 0.3s;
+
+    svg {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

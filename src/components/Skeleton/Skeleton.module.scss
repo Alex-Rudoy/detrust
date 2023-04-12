@@ -1,0 +1,25 @@
+.skeleton {
+  display: block;
+  height: 16px;
+  width: 100%;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    90deg,
+    var(--gray-100) 0px,
+    transparent 40px,
+    var(--gray-100) 80px,
+    var(--gray-100) 1400px
+  );
+  animation: shine-lines 5s infinite linear;
+}
+
+@keyframes shine-lines {
+  0% {
+    background-position: -80px;
+  }
+
+  50%,
+  100% {
+    background-position: calc(100% + 80px);
+  }
+}

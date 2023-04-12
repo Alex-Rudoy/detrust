@@ -1,6 +1,18 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import '@/styles/index.scss';
+
+export default function App({ Component, pageProps, router }: AppProps) {
+  return (
+    <SwitchTransition mode="out-in">
+      <CSSTransition
+        key={router.pathname}
+        classNames="pageTransition"
+        timeout={300}
+      >
+        <Component {...pageProps} />
+      </CSSTransition>
+    </SwitchTransition>
+  );
 }

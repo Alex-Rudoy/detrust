@@ -1,0 +1,46 @@
+@use '../../styles/mixins.scss';
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include mixins.flex(row, center, center);
+  z-index: 10;
+
+  &.backdrop_enabled {
+    background-color: rgba(52, 64, 84, 0.4);
+    z-index: 10;
+  }
+}
+
+.container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding-left: 48px;
+}
+
+.side_modal {
+  width: min-content;
+  height: 100vh;
+  background: var(--white);
+  border-radius: 0;
+  box-shadow: var(--shadow-xl);
+}
+
+.cross {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  @include mixins.flex(row, center, center);
+  box-shadow: var(--shadow-xs);
+  background-color: var(--white);
+  stroke: var(--gray-700);
+  border-radius: 6px;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+@use '../../styles/mixins.scss';
+
+.dropdownSearch {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: var(--white);
+
+  div[class*='inner'] {
+    border: none;
+    border-bottom: 1px solid var(--gray-100);
+    border-radius: 0;
+    box-shadow: none !important;
+  }
+}
+
+.search {
+  width: 40px;
+  height: 40px;
+  stroke: var(--gray-500);
+  @include mixins.flex(row, center, center);
+}

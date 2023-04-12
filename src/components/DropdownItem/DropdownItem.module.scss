@@ -1,0 +1,33 @@
+@use '../../styles/mixins.scss';
+
+.dropdownItem {
+  @include mixins.flex(row, flex-start, center);
+
+  min-height: 40px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 16px;
+  color: var(--gray-700);
+  stroke: var(--gray-700);
+  gap: 12px;
+  cursor: pointer;
+
+  p {
+    max-width: 100%;
+    word-break: break-all;
+  }
+
+  &:hover {
+    background: var(--primary-50);
+    color: var(--primary-700);
+
+    svg {
+      stroke: var(--primary-700);
+    }
+  }
+
+  .selectedOption {
+    margin-left: auto;
+    stroke: var(--primary-500);
+  }
+}

@@ -1,0 +1,72 @@
+@use '../../styles/mixins.scss';
+
+.table {
+  width: 100%;
+  border: 1px solid var(--gray-200);
+  border-radius: 3px;
+  box-shadow: var(--shadow-md);
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+  }
+
+  .header_row {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  th {
+    height: 44px;
+    background: var(--gray-50);
+    white-space: nowrap;
+    padding: 0;
+
+    svg {
+      opacity: 0;
+      stroke: var(--gray-500);
+    }
+
+    &.sortedColumn svg {
+      opacity: 1 !important;
+    }
+  }
+
+  .th_content {
+    width: 100%;
+    height: 100%;
+    padding: 0px 14px;
+    border-bottom: 1px solid var(--gray-200);
+    @include mixins.flex(row, flex-start, center);
+    gap: 4px;
+  }
+
+  td {
+    padding: 0px 14px;
+    height: 72px;
+    border-bottom: 1px solid var(--gray-200);
+    position: relative;
+    background-color: transparent;
+  }
+
+  tr {
+    background-color: var(--white);
+
+    &:hover {
+      td {
+        background-color: var(--primary-50);
+      }
+
+      th svg {
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 1;
+          stroke: var(--primary-500);
+        }
+      }
+    }
+  }
+}

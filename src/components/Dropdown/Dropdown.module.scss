@@ -1,0 +1,9 @@
+@use '../../styles/mixins';
+
+.emptyState {
+  @include mixins.flex(row, center, center);
+  stroke: var(--gray-900);
+  color: var(--gray-700);
+  padding: 0 16px;
+  height: 40px;
+}

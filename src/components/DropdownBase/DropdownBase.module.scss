@@ -1,0 +1,52 @@
+.container {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+}
+
+.caller {
+  cursor: pointer;
+  width: max-content;
+  max-width: 100%;
+
+  &.disable {
+
+    cursor: not-allowed;
+
+    button {
+      background-color: var(--gray-300) !important;
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  pointer-events: none;
+
+  &_active {
+    pointer-events: initial;
+  }
+}
+
+.dropdown {
+  width: max-content;
+  height: max-content;
+  background-color: var(--white);
+  opacity: 0;
+  pointer-events: none;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+  --transition-property: opacity;
+
+  &_open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

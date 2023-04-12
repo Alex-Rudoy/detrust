@@ -1,0 +1,49 @@
+@use '../../styles/mixins.scss';
+
+.dropdownCaller {
+  @include mixins.flex(row, space-between, center);
+
+  height: 40px;
+  max-height: 40px;
+  padding: 0 10px;
+  gap: 12px;
+  background-color: var(--white);
+  color: var(--gray-700);
+  stroke: var(--gray-700);
+  border: 1px solid var(--gray-300);
+  box-shadow: var(--shadow-xs);
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--gray-50);
+    color: var(--gray-800);
+    stroke: var(--gray-800);
+  }
+
+  &.placeholder {
+    color: var(--gray-500);
+  }
+
+  p {
+    flex: 1;
+    max-width: calc(100% - 30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  [class*='Svg'] {
+    pointer-events: none;
+  }
+
+  &.disabled {
+    background-color: var(--gray-100);
+    color: var(--gray-500);
+    stroke: var(--gray-500);
+    cursor: initial;
+  }
+}
