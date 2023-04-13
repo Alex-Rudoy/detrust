@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, ButtonVariantEnum } from '@/components/Button';
-import { Dropdown } from '@/ui/Dropdown';
-import { IconsEnum } from '@/components/SvgIcon';
+import { Button, ButtonVariantEnum } from '@components/Button';
+import { Dropdown } from '@ui/Dropdown';
+import { IconsEnum } from '@components/SvgIcon';
 import generatePagination from './generatePagination';
 import { TablePaginationProps } from './TablePagination.types';
 

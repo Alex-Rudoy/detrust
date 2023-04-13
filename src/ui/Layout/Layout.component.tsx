@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Scrolling } from '@/components/Scrolling';
+import { Scrolling } from '@components/Scrolling';
+import { Breadcrumbs } from './Breadcrumbs';
 import { Header } from './Header';
 import { SideMenu } from './SideMenu';
 import { LayoutProps } from './Layout.types';
@@ -8,6 +9,7 @@ import styles from './Layout.module.scss';
 
 export const LayoutComponent = ({
   activeMenuLink,
+  breadcrumbs,
   children,
 }: PropsWithChildren<LayoutProps>) => {
   return (
@@ -16,6 +18,7 @@ export const LayoutComponent = ({
       <main className={styles.main}>
         <SideMenu activeMenuLink={activeMenuLink} />
         <Scrolling vertical className={styles.pageContainer}>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
           {children}
         </Scrolling>
       </main>

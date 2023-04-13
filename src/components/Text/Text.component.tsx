@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
+import { CustomTooltip } from '@components/CustomTooltip';
 import { TextProps } from './Text.types';
 
 import styles from './Text.module.scss';
@@ -31,7 +32,9 @@ export const TextComponent = ({
   style,
   textTransform,
   size,
+  tooltip,
   onClick,
+  ...props
 }: PropsWithChildren<TextProps>) => {
   const HtmlTag = htmlTagMapping[size];
 
@@ -47,14 +50,21 @@ export const TextComponent = ({
   );
 
   return (
-    <HtmlTag
-      className={textClass}
-      onClick={onClick}
-      style={{ ...style }}
-      id={id}
-    >
-      {children}
-    </HtmlTag>
+    <>
+      <HtmlTag
+        className={textClass}
+        onClick={onClick}
+        style={{ ...style }}
+        id={id}
+        data-tooltip-id={tooltip?.id}
+        data-tooltip-content={tooltip?.text}
+        {...props}
+      >
+        {children}
+      </HtmlTag>
+
+      {tooltip && <CustomTooltip data-tooltip-id={tooltip.id} />}
+    </>
   );
 };
 

@@ -7,9 +7,8 @@ import React, {
 import classNames from 'classnames';
 import { usePopper } from 'react-popper';
 
-import { Portal } from '../Portal';
-import { Scrolling } from '../Scrolling';
-
+import { Portal } from '@components/Portal';
+import { Scrolling } from '@components/Scrolling';
 import { DropdownBaseProps } from './DropdownBase.types';
 
 import styles from './DropdownBase.module.scss';

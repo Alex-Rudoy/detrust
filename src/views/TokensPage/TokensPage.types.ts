@@ -1,3 +1,6 @@
+import { TokenConnectionType, TokenShortType } from '@typings/tokens';
+
 export type TokensPageProps = {
-  // todo
+  tokens: TokenShortType[];
+  tokenConnections: TokenConnectionType[];
 };

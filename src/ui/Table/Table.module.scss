@@ -1,6 +1,7 @@
+@use 'sass:color';
+
 .table {
   width: 100%;
-  border: 1px solid var(--gray-200);
   border-radius: 3px;
   box-shadow: var(--shadow-md);
 
@@ -18,7 +19,7 @@
 
   th {
     height: 44px;
-    background: var(--gray-50);
+    background-color: var(--primary-dark-800);
     white-space: nowrap;
     padding: 0;
 
@@ -52,11 +53,11 @@
   }
 
   tr {
-    background-color: var(--white);
+    // background-color: var(--white);
 
     &:hover {
       td {
-        background-color: var(--primary-50);
+        // background-color: var(--primary-50);
       }
 
       th svg {
@@ -64,7 +65,7 @@
 
         &:hover {
           opacity: 1;
-          stroke: var(--primary-500);
+          stroke: var(--primary-400);
         }
       }
     }

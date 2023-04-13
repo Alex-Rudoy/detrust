@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { SvgIcon } from '../SvgIcon';
-import { FontWeightEnum, Text, TextSizeEnum } from '../Text';
-
+import { SvgIcon } from '@components/SvgIcon';
+import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { BadgeProps } from './Badge.types';
 
 import styles from './Badge.module.scss';

@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { Badge, BadgeColorsEnum } from '@/components/Badge';
-import { Scrolling } from '@/components/Scrolling';
-import { IconsEnum, SvgIcon } from '@/components/SvgIcon';
-import { FontWeightEnum, Text, TextSizeEnum } from '@/components/Text';
+import { Badge, BadgeColorsEnum } from '@components/Badge';
+import { Scrolling } from '@components/Scrolling';
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { navItems } from './SideMenu.constants';
 import { SideMenuProps } from './SideMenu.types';
 

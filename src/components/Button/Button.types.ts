@@ -1,4 +1,4 @@
-import { IconsEnum } from '../SvgIcon';
+import { IconsEnum } from '@components/SvgIcon';
 
 export enum ButtonVariantEnum {
   primary = 'primary',

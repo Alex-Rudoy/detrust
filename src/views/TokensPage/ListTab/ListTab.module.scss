@@ -1,0 +1,17 @@
+.container {
+  margin-top: 24px;
+  height: calc(
+    100vh - 60px //? header
+    - 24px //? layout topPadding
+    - 37px //? breadcrumps height
+    - 32px //? breadcrumps bottomMargin
+    - 40px //? TabBar height
+    - 24px //? this topMargin
+    - 24px //? to leave some space at the bottom
+  );
+  position: relative;
+
+  > div {
+    box-shadow: none;
+  }
+}

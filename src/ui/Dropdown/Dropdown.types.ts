@@ -1,4 +1,4 @@
-import { simpleOption } from '@/typings/simpleOption';
+import { simpleOption } from '@typings/simpleOption';
 
 export type DropdownProps<T extends string | number> = {
   className?: string;

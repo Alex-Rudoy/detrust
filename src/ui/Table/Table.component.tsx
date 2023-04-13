@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { Skeleton } from '@components/Skeleton';
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+import { Text, FontWeightEnum, TextSizeEnum } from '@components/Text';
 import { TablePagination } from './TablePagination';
-import { Skeleton } from '@/components/Skeleton';
-import { IconsEnum, SvgIcon } from '@/components/SvgIcon';
-import { Text, FontWeightEnum, TextSizeEnum } from '@/components/Text';
 import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';
@@ -24,7 +24,7 @@ export const TableComponent = <T,>({
   onPaginationClick,
   withoutPagination,
 }: TableProps<T>) => {
-  const handleSortClick = (id: string) => {
+  const handleSortClick = (id: keyof T) => {
     if (!onSortClick) return;
 
     if (id === sortedBy) {

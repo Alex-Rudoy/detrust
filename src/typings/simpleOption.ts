@@ -1,4 +1,4 @@
-import { IconsEnum } from '@/components/SvgIcon';
+import { IconsEnum } from '@components/SvgIcon';
 
 export type simpleOption<T = string | number> = {
   value: T;

@@ -1,5 +1,5 @@
-import { IconsEnum } from '@/components/SvgIcon';
-import { routes } from '@/views/routes';
+import { IconsEnum } from '@components/SvgIcon';
+import { routes } from '@views/routes';
 
 export const navItems = [
   {

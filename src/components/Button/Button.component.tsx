@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { IconsEnum, SvgIcon } from '../SvgIcon';
-import { FontWeightEnum, TextSizeEnum, Text } from '../Text';
-
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+import { FontWeightEnum, TextSizeEnum, Text } from '@components/Text';
 import { ButtonProps } from './Button.types';
 
 import styles from './Button.module.scss';

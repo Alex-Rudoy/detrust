@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-import { Text, TextSizeEnum } from '../Text';
-
+import { Text, TextSizeEnum } from '@components/Text';
 import { InputProps } from './Input.types';
 
 import styles from './Input.module.scss';

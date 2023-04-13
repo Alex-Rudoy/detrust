@@ -2,10 +2,9 @@ import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 
-import { Portal } from '../Portal';
-import { Scrolling } from '../Scrolling';
-import { IconsEnum, SvgIcon } from '../SvgIcon';
-
+import { Portal } from '@components/Portal';
+import { Scrolling } from '@components/Scrolling';
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { ModalProps } from './Modal.types';
 
 import styles from './Modal.module.scss';

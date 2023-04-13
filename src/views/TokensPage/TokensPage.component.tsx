@@ -1,33 +1,22 @@
 import { useState } from 'react';
-import { TabBar } from '@/components/TabBar';
-import { Layout } from '@/ui/Layout';
-import { TokensPageTabs } from './TokensPage.constants';
-import { VisualizationsTabComponent } from './VisualizationsTab/VisualizationsTab.component';
-import styles from './TokensPage.module.scss';
+import { TabBar } from '@components/TabBar';
+import { Layout } from '@ui/Layout';
+import { TokenPageTabComponents, TokensPageTabs } from './TokensPage.constants';
+import { TokensPageProps } from './TokensPage.types';
 
-export const TokensPageComponent = () => {
+export const TokensPageComponent = (props: TokensPageProps) => {
   const [selectedTab, setSelectedTab] = useState('Visualizations');
 
+  const TabComponent = TokenPageTabComponents[selectedTab];
+
   return (
-    <Layout activeMenuLink="Tokens">
+    <Layout activeMenuLink="Tokens" breadcrumbs={['Tokens', 'BTC']}>
       <TabBar
         options={TokensPageTabs}
         selectedTab={selectedTab}
         onTabClick={(value) => setSelectedTab(value)}
       />
-      {(() => {
-        switch (selectedTab) {
-          case 'Visualizations':
-            return <VisualizationsTabComponent />;
-          case 'Connections':
-            return;
-          case 'List':
-            return;
-
-          default:
-            return null;
-        }
-      })()}
+      <TabComponent {...props} />
     </Layout>
   );
 };

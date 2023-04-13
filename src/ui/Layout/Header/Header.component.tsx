@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { CustomImage } from '@/components/CustomImage';
-import { routes } from '@/views/routes';
+import { CustomImage } from '@components/CustomImage';
+import { routes } from '@views/routes';
 import logoImg from './logo-white-text.png';
 import styles from './Header.module.scss';
 

@@ -33,6 +33,10 @@ export type TextProps = {
   textTransform?: 'lowercase' | 'uppercase' | 'capitalize';
   className?: string;
   style?: React.CSSProperties;
+  tooltip?: {
+    text: string;
+    id: string;
+  };
   onClick?: () => void;
 };
 

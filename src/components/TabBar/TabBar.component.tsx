@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { FontWeightEnum, Text, TextSizeEnum } from '../Text';
-
+import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { TabBarProps } from './TabBar.types';
 
 import styles from './TabBar.module.scss';

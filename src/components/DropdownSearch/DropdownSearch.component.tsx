@@ -2,9 +2,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Input } from '../Input';
-import { IconsEnum, SvgIcon } from '../SvgIcon';
-
+import { Input } from '@components/Input';
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { DropdownSearchProps } from './DropdownSearch.types';
 
 import styles from './DropdownSearch.module.scss';

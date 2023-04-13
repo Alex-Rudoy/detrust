@@ -36,35 +36,18 @@ div {
   outline: none;
 }
 
-.react-flow__node {
-  cursor: default !important;
-}
-
-#pdf-controls {
-  display: none;
-}
-
-.react-pdf__Document {
-  width: 100%;
-  height: 100%;
-
-  #pdf-page-wrapper {
-    margin: 0;
-  }
-
-  canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
-
-#pdf-renderer {
-  height: 140px;
-  overflow: hidden;
-}
-
-#txt-renderer {
-  padding: 0;
-  font-size: 4px;
-  overflow: hidden;
+.magic-inner-shadows {
+  background-image: linear-gradient(
+      to right,
+      var(--primary-dark-900) 10px,
+      rgba(3, 15, 33, 0)
+    ),
+    linear-gradient(to left, var(--primary-dark-900) 10px, rgba(3, 15, 33, 0)),
+    linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)),
+    linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-position: 0 0, 100% 0, 0 0, 100% 0;
+  background-repeat: no-repeat;
+  // background-color: white;
+  background-size: 50px 100%, 50px 100%, 10px 100%, 10px 100%;
+  background-attachment: local, local, scroll, scroll;
 }

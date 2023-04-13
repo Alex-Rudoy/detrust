@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconsEnum } from '../SvgIcon';
+import { IconsEnum } from '@components/SvgIcon';
 
 export type DropdownCallerProps = {
   text: string;

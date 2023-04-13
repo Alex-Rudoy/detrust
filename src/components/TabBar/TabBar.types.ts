@@ -1,4 +1,4 @@
-import { simpleOption } from '@/typings/simpleOption';
+import { simpleOption } from '@typings/simpleOption';
 
 export type TabBarProps<T = string | number> = {
   id?: string;

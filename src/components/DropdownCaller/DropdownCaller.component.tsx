@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { IconsEnum, SvgIcon } from '../SvgIcon';
-import { FontWeightEnum, Text, TextSizeEnum } from '../Text';
-
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { DropdownCallerProps } from './DropdownCaller.types';
 
 import styles from './DropdownCaller.module.scss';
