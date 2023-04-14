@@ -4,6 +4,7 @@ html {
   stroke: var(--gray-50);
   overflow: hidden;
   background: var(--primary-dark-900);
+  user-select: none;
 }
 
 :root {

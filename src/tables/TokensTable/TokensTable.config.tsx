@@ -1,33 +1,43 @@
+import Link from 'next/link';
+
 import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import {
+  CustomLink,
+  FontWeightEnum,
+  Text,
+  TextSizeEnum,
+} from '@components/Text';
 import { columnConfigType } from '@ui/Table';
+import { routes } from '@views/routes';
 import { TokenShortType } from '@typings/tokens';
 import styles from './TokensTable.module.scss';
 
 export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
-  {
-    id: 'id',
-    name: 'Position',
-    sortable: false,
-    cellRenderer: () => (
-      <>
-        <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-          {/* {index} */}
-        </Text>
-      </>
-    ),
-  },
+  // {
+  //   id: 'id',
+  //   name: 'Position',
+  //   sortable: false,
+  //   cellRenderer: () => (
+  //     <>
+  //       <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
+  //         {/* {index} */}
+  //       </Text>
+  //     </>
+  //   ),
+  // },
   {
     id: 'project_name',
     name: 'Name',
     sortable: true,
     cellRenderer: (data) => (
-      <>
-        <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-          {data.project_name}
-        </Text>
-      </>
+      <Link href={routes({ name: data.project_name }).tokenPage}>
+        <div className={styles.nameCell}>
+          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
+            {data.project_name}
+          </Text>
+        </div>
+      </Link>
     ),
   },
   {

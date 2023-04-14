@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
+
 import { Scrolling } from '@components/Scrolling';
 import { TokensTable } from '@tables/TokensTable';
+import { ABsort } from '@utils/ABsort';
 import { TokenShortType } from '@typings/tokens';
 import { TokensPageProps } from '../TokensPage.types';
 
 import styles from './ListTab.module.scss';
 
 export const ListTabComponent = ({ tokens }: TokensPageProps) => {
-  const [startRecord, setStartRecord] = useState(0);
-  const [recordsPerPage, setRecordsPerPage] = useState(10);
   const [sortedBy, setSortedBy] =
     useState<keyof TokenShortType>('general_score');
-  const [reverseSort, setReverseSort] = useState(true);
+  const [reverseSort, setReverseSort] = useState(false);
   const [data, setData] = useState(tokens);
 
   useEffect(() => {
@@ -20,42 +21,29 @@ export const ListTabComponent = ({ tokens }: TokensPageProps) => {
         .slice()
         .sort((a, b) =>
           reverseSort
-            ? a[sortedBy] < b[sortedBy]
-              ? 1
-              : -1
-            : a[sortedBy] < b[sortedBy]
-            ? -1
-            : 1,
+            ? ABsort(a[sortedBy], b[sortedBy])
+            : ABsort(b[sortedBy], a[sortedBy]),
         ),
     );
-  }, [startRecord, recordsPerPage, sortedBy, reverseSort]);
+  }, [sortedBy, reverseSort]);
 
   const onSortClick = (id: keyof TokenShortType, reverseSort: boolean) => {
-    setStartRecord(0);
     setSortedBy(id);
     setReverseSort(reverseSort);
-  };
-
-  const onPaginationClick = (start: number, recordsPerPage: number) => {
-    setStartRecord(start);
-    setRecordsPerPage(recordsPerPage);
   };
 
   return (
     <Scrolling
       horizontal
       vertical
-      className={(styles.container, 'magic-inner-shadows')}
+      className={classNames(styles.container, 'magic-inner-shadows')}
     >
       <TokensTable
         data={data}
         sortedBy={sortedBy}
         reverseSort={reverseSort}
         totalRecords={data.length}
-        startRecord={startRecord}
-        recordsPerPage={recordsPerPage}
         onSortClick={onSortClick}
-        onPaginationClick={onPaginationClick}
       />
     </Scrolling>
   );

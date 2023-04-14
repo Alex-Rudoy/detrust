@@ -10,7 +10,7 @@ export const TokensPageComponent = (props: TokensPageProps) => {
   const TabComponent = TokenPageTabComponents[selectedTab];
 
   return (
-    <Layout activeMenuLink="Tokens" breadcrumbs={['Tokens', 'BTC']}>
+    <Layout activeMenuLink="Tokens" breadcrumbs={['Tokens']}>
       <TabBar
         options={TokensPageTabs}
         selectedTab={selectedTab}

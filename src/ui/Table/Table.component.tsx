@@ -5,6 +5,7 @@ import { Skeleton } from '@components/Skeleton';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { Text, FontWeightEnum, TextSizeEnum } from '@components/Text';
 import { TablePagination } from './TablePagination';
+import { hasValue } from '@utils/hasValue';
 import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';
@@ -100,17 +101,17 @@ export const TableComponent = <T,>({
         </tbody>
       </table>
       {!withoutPagination &&
-        totalRecords &&
-        startRecord &&
-        recordsPerPage &&
-        onPaginationClick && (
-          <TablePagination
-            totalRecords={totalRecords}
-            startRecord={startRecord}
-            recordsPerPage={recordsPerPage}
-            onPaginationClick={onPaginationClick}
-          />
-        )}
+      totalRecords &&
+      hasValue(startRecord) &&
+      recordsPerPage &&
+      onPaginationClick ? (
+        <TablePagination
+          totalRecords={totalRecords}
+          startRecord={startRecord}
+          recordsPerPage={recordsPerPage}
+          onPaginationClick={onPaginationClick}
+        />
+      ) : null}
     </div>
   );
 };

@@ -1,3 +1,10 @@
+.nameCell {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .centeredCell {
   display: flex;
   justify-content: center;

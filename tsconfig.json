@@ -25,6 +25,7 @@
       "@tables/*": ["./src/tables/*"],
       "@typings/*": ["./src/typings/*"],
       "@ui/*": ["./src/ui/*"],
+      "@utils/*": ["./src/utils/*"],
       "@views/*": ["./src/views/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
