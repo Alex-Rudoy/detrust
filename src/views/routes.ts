@@ -1,9 +1,8 @@
-export const routes = (params?: Record<string, string>) => ({
-  tokens: '/tokens',
-  tokenPage: `/tokens/${params?.name}`,
-
-  game: '/game',
-  nft: '/nft',
-  fund: '/fund',
-  account: '/account',
-});
+export const routes = {
+  tokens: () => '/tokens',
+  tokenPage: (id: string | number) => `/tokens/${id}`,
+  game: () => '/game',
+  nft: () => '/nft',
+  fund: () => '/fund',
+  account: () => '/account',
+};

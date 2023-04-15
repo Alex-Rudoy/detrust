@@ -1,6 +1,7 @@
-.customTooltip {
+.tooltip {
   background: var(--primary-dark-900);
   border: 1px solid var(--primary-200);
+  border-radius: 6px;
   box-shadow: var(--shadow-md);
   transition: none !important;
   z-index: 10;
@@ -11,11 +12,4 @@
   word-wrap: break-word;
   white-space: break-spaces;
   word-break: break-word;
-
-  [class*='react-tooltip-arrow'] {
-    border-top: 1px solid transparent;
-    border-left: 1px solid transparent;
-    border-bottom: 1px solid var(--primary-200);
-    border-right: 1px solid var(--primary-200);
-  }
 }

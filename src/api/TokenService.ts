@@ -10,4 +10,7 @@ export const TokenService = {
   getTokenConnections(): ApiPromise<TokenConnectionType[]> {
     return api.get('/general/getTokenConnections');
   },
+  getTokenData(tokenId: string): ApiPromise<TokenShortType> {
+    return api.get(`/general/getCoinProject/${tokenId}`);
+  },
 };

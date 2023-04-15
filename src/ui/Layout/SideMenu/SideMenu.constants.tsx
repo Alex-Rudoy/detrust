@@ -6,30 +6,30 @@ export const navItems = [
     heading: 'SUBJECTS',
     links: [
       {
-        link: routes().tokens,
+        link: routes.tokens(),
         text: 'Tokens',
         icon: IconsEnum.search,
       },
       {
-        link: routes().game,
+        link: routes.game(),
         text: 'Game',
         icon: IconsEnum.search,
         disabled: true,
       },
       {
-        link: routes().nft,
+        link: routes.nft(),
         text: 'NFT',
         icon: IconsEnum.search,
         disabled: true,
       },
       {
-        link: routes().fund,
+        link: routes.fund(),
         text: 'Fund',
         icon: IconsEnum.search,
         disabled: true,
       },
       {
-        link: routes().account,
+        link: routes.account(),
         text: 'Account',
         icon: IconsEnum.search,
         disabled: true,

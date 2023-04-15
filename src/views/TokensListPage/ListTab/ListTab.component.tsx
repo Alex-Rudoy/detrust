@@ -5,11 +5,11 @@ import { Scrolling } from '@components/Scrolling';
 import { TokensTable } from '@tables/TokensTable';
 import { ABsort } from '@utils/ABsort';
 import { TokenShortType } from '@typings/tokens';
-import { TokensPageProps } from '../TokensPage.types';
+import { TokensListPageProps } from '../TokensListPage.types';
 
 import styles from './ListTab.module.scss';
 
-export const ListTabComponent = ({ tokens }: TokensPageProps) => {
+export const ListTabComponent = ({ tokens }: TokensListPageProps) => {
   const [sortedBy, setSortedBy] =
     useState<keyof TokenShortType>('general_score');
   const [reverseSort, setReverseSort] = useState(false);

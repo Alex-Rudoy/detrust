@@ -9,7 +9,7 @@ import styles from './Header.module.scss';
 export const HeaderComponent = () => {
   return (
     <div className={styles.header}>
-      <Link href={routes().tokens}>
+      <Link href={routes.tokens()}>
         <CustomImage src={logoImg} alt="logo" fill className={styles.logo} />
       </Link>
     </div>

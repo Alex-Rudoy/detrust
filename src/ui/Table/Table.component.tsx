@@ -10,7 +10,7 @@ import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';
 
-export const TableComponent = <T,>({
+export const TableComponent = <T extends { id: number | string }>({
   className,
   columns,
   data,
@@ -89,11 +89,11 @@ export const TableComponent = <T,>({
                   ))}
                 </tr>
               ))
-            : data.map((row, rowIndex) => (
-                <tr key={rowIndex}>
+            : data.map((row) => (
+                <tr key={row.id}>
                   {columns.map((column) => (
-                    <td key={`${rowIndex}_${column.id}`}>
-                      {column.cellRenderer(row, rowIndex)}
+                    <td key={`${row.id}_${column.id}`}>
+                      {column.cellRenderer(row)}
                     </td>
                   ))}
                 </tr>

@@ -1,14 +1,14 @@
 import React from 'react';
 
-export type columnConfigType<T> = {
+export type columnConfigType<T extends { id: number | string }> = {
   id: Extract<keyof T, string>;
   name: string;
   sortable?: boolean;
-  cellRenderer: (data: T, index: number) => React.ReactNode;
+  cellRenderer: (data: T) => React.ReactNode;
   tooltip?: { 'data-tip': string; 'data-for': string };
 }[];
 
-export type TableProps<T> = {
+export type TableProps<T extends { id: number | string }> = {
   columns: columnConfigType<T>;
   data: T[];
   sortedBy?: string;

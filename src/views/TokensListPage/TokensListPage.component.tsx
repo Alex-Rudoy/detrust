@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import { TabBar } from '@components/TabBar';
 import { Layout } from '@ui/Layout';
-import { TokenPageTabComponents, TokensPageTabs } from './TokensPage.constants';
-import { TokensPageProps } from './TokensPage.types';
+import {
+  TokensListPageTabComponents,
+  TokensListPageTabs,
+} from './TokensListPage.constants';
+import { TokensListPageProps } from './TokensListPage.types';
 
-export const TokensPageComponent = (props: TokensPageProps) => {
+export const TokensListPageComponent = (props: TokensListPageProps) => {
   const [selectedTab, setSelectedTab] = useState('Visualizations');
 
-  const TabComponent = TokenPageTabComponents[selectedTab];
+  const TabComponent = TokensListPageTabComponents[selectedTab];
 
   return (
     <Layout activeMenuLink="Tokens" breadcrumbs={['Tokens']}>
       <TabBar
-        options={TokensPageTabs}
+        options={TokensListPageTabs}
         selectedTab={selectedTab}
         onTabClick={(value) => setSelectedTab(value)}
       />
@@ -21,4 +24,4 @@ export const TokensPageComponent = (props: TokensPageProps) => {
   );
 };
 
-TokensPageComponent.displayName = 'TokensPage';
+TokensListPageComponent.displayName = 'TokensListPage';
