@@ -6,6 +6,7 @@ import styles from './ScorePie.module.scss';
 
 export const ScorePieComponent: React.FC<ScorePieProps> = ({
   percent,
+  absoluteData,
   ...props
 }) => {
   const percentNumber = Math.round(percent * 100);
@@ -19,6 +20,9 @@ export const ScorePieComponent: React.FC<ScorePieProps> = ({
       <Text size={TextSizeEnum.S12} fontWeight={FontWeightEnum.FW500}>
         {percentNumber}
       </Text>
+      {absoluteData ? (
+        <div className={styles.tooltip}>{Math.round(absoluteData)}</div>
+      ) : null}
     </div>
   );
 };

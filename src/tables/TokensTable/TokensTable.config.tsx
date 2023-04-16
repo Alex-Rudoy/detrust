@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { columnConfigType } from '@ui/Table';
@@ -109,12 +108,7 @@ const ScoreCell = ({
 }) => {
   return (
     <div className={styles.centeredCell}>
-      <ScorePie
-        percent={normalizedData}
-        data-tooltip-id={id}
-        data-tooltip-content={(absoluteData || '').toString()}
-      />
-      {absoluteData && id ? <CustomTooltip data-tooltip-id={id} /> : null}
+      <ScorePie percent={normalizedData} absoluteData={absoluteData} />
     </div>
   );
 };
