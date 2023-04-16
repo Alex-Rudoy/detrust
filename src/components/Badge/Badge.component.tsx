@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { SvgIcon } from '@components/SvgIcon';
@@ -7,7 +6,7 @@ import { BadgeProps } from './Badge.types';
 
 import styles from './Badge.module.scss';
 
-export const BadgeComponent: React.FC<BadgeProps> = ({
+export const BadgeComponent = ({
   className,
   color,
   dots,
@@ -16,7 +15,7 @@ export const BadgeComponent: React.FC<BadgeProps> = ({
   id,
   text,
   onClick = () => null,
-}) => {
+}: BadgeProps) => {
   const badgeClass = classNames(
     styles.badge,
     {

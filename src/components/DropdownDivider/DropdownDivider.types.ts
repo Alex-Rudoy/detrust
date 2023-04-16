@@ -1,4 +1,6 @@
+import { CSSProperties } from 'react';
+
 export type DropdownDividerProps = {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 };

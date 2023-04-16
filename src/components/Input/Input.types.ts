@@ -1,3 +1,11 @@
+import {
+  ReactNode,
+  CSSProperties,
+  ChangeEvent,
+  FocusEvent,
+  MouseEvent,
+} from 'react';
+
 export type InputProps = {
   autoComplete?: string;
   className?: string;
@@ -7,17 +15,17 @@ export type InputProps = {
   hasError?: boolean;
   id: string;
   label?: string;
-  leftBlock?: React.ReactNode;
+  leftBlock?: ReactNode;
   maxLength?: number;
   placeholder?: string;
-  rightBlock?: React.ReactNode;
+  rightBlock?: ReactNode;
   rightBlockClassName?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   type?: 'password' | 'text';
   value: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+  onClick?: (e: MouseEvent<HTMLInputElement>) => void;
   alwaysFocused?: boolean;
 };

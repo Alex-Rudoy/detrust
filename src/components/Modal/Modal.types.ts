@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 export type ModalProps = {
   customStyles?: Record<string, string>;
@@ -7,5 +7,5 @@ export type ModalProps = {
   className?: string;
   isVisible: boolean;
   onClose: () => void;
-  renderCustomCross?: (onClose: () => void) => React.ReactNode;
+  renderCustomCross?: (onClose: () => void) => ReactNode;
 };

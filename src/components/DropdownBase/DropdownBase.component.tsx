@@ -1,8 +1,10 @@
-import React, {
+import {
   useState,
   useRef,
   useImperativeHandle,
   PropsWithChildren,
+  forwardRef,
+  MouseEvent,
 } from 'react';
 import classNames from 'classnames';
 import { usePopper } from 'react-popper';
@@ -13,7 +15,7 @@ import { DropdownBaseProps } from './DropdownBase.types';
 
 import styles from './DropdownBase.module.scss';
 
-export const DropdownBaseComponent = React.forwardRef<
+export const DropdownBaseComponent = forwardRef<
   { forceUpdatePosition: () => void },
   PropsWithChildren<DropdownBaseProps>
 >(
@@ -80,14 +82,14 @@ export const DropdownBaseComponent = React.forwardRef<
       !disabled && setIsOpen(!isOpen);
     };
 
-    const backdropClick = (e: React.MouseEvent) => {
+    const backdropClick = (e: MouseEvent) => {
       if (e.target === backdropRef.current && isOpen) {
         onClickOutsideCallback && onClickOutsideCallback();
         toggleDropdown();
       }
     };
 
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = (e: MouseEvent) => {
       if ((e?.target as HTMLDivElement)?.classList?.contains('removeItem')) {
         return;
       }

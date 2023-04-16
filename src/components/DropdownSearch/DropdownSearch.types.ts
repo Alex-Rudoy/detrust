@@ -1,3 +1,5 @@
+import { ChangeEvent, FocusEvent } from 'react';
+
 export type DropdownSearchProps = {
   value: string;
   id: string;
@@ -6,8 +8,8 @@ export type DropdownSearchProps = {
   className?: string;
   errorMessage?: string;
   disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   alwaysFocused?: boolean;
 };

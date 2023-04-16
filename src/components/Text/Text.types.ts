@@ -1,4 +1,4 @@
-import React from 'react';
+import { CSSProperties } from 'react';
 import { LinkProps } from 'next/link';
 
 export enum TextSizeEnum {
@@ -32,7 +32,7 @@ export type TextProps = {
   dots?: boolean;
   textTransform?: 'lowercase' | 'uppercase' | 'capitalize';
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   tooltip?: {
     text: string;
     id: string;

@@ -1,4 +1,5 @@
 import { Layout } from '@ui/Layout';
+import { TokenInfoSection } from './TokenInfoSection';
 import { TokenPageProps } from './TokenPage.types';
 
 export const TokenPageComponent = ({ token }: TokenPageProps) => {
@@ -7,7 +8,7 @@ export const TokenPageComponent = ({ token }: TokenPageProps) => {
       activeMenuLink="Tokens"
       breadcrumbs={['Tokens', token.project_name]}
     >
-      Content
+      <TokenInfoSection token={token} />
     </Layout>
   );
 };

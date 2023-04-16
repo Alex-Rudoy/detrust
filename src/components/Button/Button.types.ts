@@ -1,3 +1,4 @@
+import { CSSProperties, MouseEvent } from 'react';
 import { IconsEnum } from '@components/SvgIcon';
 
 export enum ButtonVariantEnum {
@@ -15,11 +16,11 @@ export type ButtonProps = {
   icon?: IconsEnum;
   iconPosition?: 'left' | 'right';
   onClick?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void | undefined;
   type?: 'button' | 'submit';
   disabled?: boolean;
   loading?: boolean;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 };

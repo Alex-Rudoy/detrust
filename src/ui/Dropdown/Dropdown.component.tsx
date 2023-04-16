@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { DropdownBase } from '@components/DropdownBase';
 import { DropdownCaller } from '@components/DropdownCaller';
 import { DropdownItem } from '@components/DropdownItem';

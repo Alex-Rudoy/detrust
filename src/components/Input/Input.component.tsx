@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import React, { useState } from 'react';
+import { FocusEvent, forwardRef, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { Text, TextSizeEnum } from '@components/Text';
@@ -7,7 +7,7 @@ import { InputProps } from './Input.types';
 
 import styles from './Input.module.scss';
 
-export const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
+export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       id,
@@ -34,16 +34,16 @@ export const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     const [isFocused, setIsFocused] = useState(!!alwaysFocused);
-    const innerRef = React.useRef<HTMLInputElement>(null);
+    const innerRef = useRef<HTMLInputElement>(null);
 
-    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
       if (disabled) return;
 
       setIsFocused(true);
       onFocus(e);
     };
 
-    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
       if (disabled) return;
 
       setIsFocused(false);

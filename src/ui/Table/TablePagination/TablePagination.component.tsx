@@ -1,20 +1,19 @@
-import React from 'react';
 import { Button, ButtonVariantEnum } from '@components/Button';
-import { Dropdown } from '@ui/Dropdown';
 import { IconsEnum } from '@components/SvgIcon';
+import { Dropdown } from '@ui/Dropdown';
 import generatePagination from './generatePagination';
 import { TablePaginationProps } from './TablePagination.types';
 
 import styles from './TablePagination.module.scss';
 
-export const TablePaginationComponent: React.FC<TablePaginationProps> = ({
+export const TablePaginationComponent = ({
   totalRecords,
   startRecord,
   recordsPerPage,
   onPaginationClick,
   itemsPerPageOptions = [5, 10, 20, 50],
   immutableRecordPerPage,
-}) => {
+}: TablePaginationProps) => {
   const { pages, currentPage } = generatePagination(
     totalRecords,
     startRecord,

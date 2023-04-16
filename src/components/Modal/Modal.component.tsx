@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useRef } from 'react';
+import { MouseEvent, PropsWithChildren, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 
@@ -21,7 +21,7 @@ export const ModalComponent = ({
 }: PropsWithChildren<ModalProps>) => {
   const backdropRef = useRef(null);
 
-  const backdropClick = (e: React.MouseEvent) => {
+  const backdropClick = (e: MouseEvent) => {
     if (e.target === backdropRef.current) {
       onClose();
     }

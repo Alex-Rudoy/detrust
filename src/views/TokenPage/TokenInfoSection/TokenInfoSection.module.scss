@@ -1,0 +1,23 @@
+.infoSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.description {
+  flex: 1 1;
+}
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.titleBlock {
+  margin-bottom: 24px;
+}
+
+.chartContainer {
+  min-width: 800px;
+}

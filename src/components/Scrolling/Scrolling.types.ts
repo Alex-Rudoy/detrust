@@ -1,8 +1,8 @@
-import React from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
 
-export type ScrollingProps = React.PropsWithChildren<{
+export type ScrollingProps = PropsWithChildren<{
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   horizontal?: boolean;
   vertical?: boolean;
   onClick?: () => void;

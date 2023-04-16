@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 export enum IconsEnum {
   search = '/icons/common/search.svg',
   minus = '/icons/common/minus.svg',
@@ -15,5 +17,5 @@ export type SvgIconProps = {
   size?: number;
   rotate?: '0' | '90' | '180' | '270';
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 };

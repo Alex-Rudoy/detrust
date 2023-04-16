@@ -1,4 +1,4 @@
-import React from 'react';
+import { CSSProperties } from 'react';
 import { IconsEnum } from '@components/SvgIcon';
 
 export type DropdownCallerProps = {
@@ -6,7 +6,7 @@ export type DropdownCallerProps = {
   icon?: IconsEnum | null;
   iconOnly?: boolean;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   placeholder?: string;
   disabled?: boolean;
 };

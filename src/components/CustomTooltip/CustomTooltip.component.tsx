@@ -1,11 +1,10 @@
-import React from 'react';
 import { Tooltip } from 'react-tooltip';
 
 import { CustomTooltipProps } from './CustomTooltip.types';
 
 import styles from './CustomTooltip.module.scss';
 
-export const CustomTooltipComponent: React.FC<CustomTooltipProps> = ({
+export const CustomTooltipComponent = ({
   'data-tooltip-id': id,
 }: CustomTooltipProps) => {
   return (

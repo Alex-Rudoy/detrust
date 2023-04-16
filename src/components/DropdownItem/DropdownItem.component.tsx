@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
@@ -7,13 +6,13 @@ import { DropdownItemProps } from './DropdownItem.types';
 
 import styles from './DropdownItem.module.scss';
 
-export const DropdownItemComponent: React.FC<DropdownItemProps> = ({
+export const DropdownItemComponent = ({
   icon,
   text,
   onClick,
   className,
   selected,
-}) => {
+}: DropdownItemProps) => {
   const dropdownItemClass = classNames(styles.dropdownItem, className);
 
   return (

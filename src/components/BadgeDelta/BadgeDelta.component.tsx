@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Badge, BadgeColorsEnum } from '@components/Badge';
@@ -7,12 +6,12 @@ import { BadgeDeltaProps } from './BadgeDelta.types';
 
 import styles from './BadgeDelta.module.scss';
 
-export const BadgeDeltaComponent: React.FC<BadgeDeltaProps> = ({
+export const BadgeDeltaComponent = ({
   value,
   percent = false,
   className,
   onClick = () => null,
-}) => {
+}: BadgeDeltaProps) => {
   const color =
     value > 0
       ? BadgeColorsEnum.success

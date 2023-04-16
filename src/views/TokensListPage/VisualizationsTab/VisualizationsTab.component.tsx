@@ -120,7 +120,7 @@ export const VisualizationsTabComponent = ({
             name="general_score"
           />
           <Tooltip cursor={false} content={ScatterChartTooltip} />
-          <Scatter data={tokens} fill="#8884d8" />
+          <Scatter data={tokens} fill="#5c98f1" />
           {selectionStart.x && selectionEnd.x ? (
             <ReferenceArea
               x1={selectionStart.x}
@@ -146,3 +146,5 @@ export const VisualizationsTabComponent = ({
     </div>
   );
 };
+
+VisualizationsTabComponent.displayName = 'VisualizationsTab';

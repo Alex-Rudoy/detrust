@@ -1,4 +1,3 @@
-import React from 'react';
 import { Table } from '@ui/Table';
 import { tokensTableColumns } from './TokensTable.config';
 import { TokensTableProps } from './TokensTable.types';

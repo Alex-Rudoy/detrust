@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ import styles from './SideMenu.module.scss';
 export const SideMenuComponent = ({
   activeMenuLink = 'Tokens',
 }: SideMenuProps) => {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <div
       className={classNames(styles.wrapper, { [styles.collapsed]: collapsed })}

@@ -1,5 +1,5 @@
+import { forwardRef } from 'react';
 /* eslint-disable jsx-a11y/no-autofocus */
-import React from 'react';
 import classNames from 'classnames';
 
 import { Input } from '@components/Input';
@@ -8,7 +8,7 @@ import { DropdownSearchProps } from './DropdownSearch.types';
 
 import styles from './DropdownSearch.module.scss';
 
-export const DropdownSearchComponent = React.forwardRef<
+export const DropdownSearchComponent = forwardRef<
   HTMLInputElement,
   DropdownSearchProps
 >(

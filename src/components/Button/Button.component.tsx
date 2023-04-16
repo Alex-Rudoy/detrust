@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
@@ -13,7 +12,7 @@ const textSizeMap = {
   lg: TextSizeEnum.S16,
 } as const;
 
-export const ButtonComponent: React.FC<ButtonProps> = ({
+export const ButtonComponent = ({
   text,
   id,
   variant = ButtonVariantEnum.primary,
@@ -27,7 +26,8 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
   loading,
   style,
   className,
-}) => {
+  ...props
+}: ButtonProps) => {
   const buttonClass = classNames(
     styles.button,
     {
@@ -52,6 +52,7 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
       type={type}
       id={id}
       data-testid="button-as"
+      {...props}
     >
       <div
         className={styles.loader}

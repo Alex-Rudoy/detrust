@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
@@ -7,7 +6,7 @@ import { DropdownCallerProps } from './DropdownCaller.types';
 
 import styles from './DropdownCaller.module.scss';
 
-export const DropdownCallerComponent: React.FC<DropdownCallerProps> = ({
+export const DropdownCallerComponent = ({
   icon,
   iconOnly,
   text,
@@ -15,7 +14,7 @@ export const DropdownCallerComponent: React.FC<DropdownCallerProps> = ({
   style,
   placeholder,
   disabled,
-}) => {
+}: DropdownCallerProps) => {
   const dropdownCallerClass = classNames(
     styles.dropdownCaller,
     { [styles.disabled]: disabled },

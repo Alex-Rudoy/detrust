@@ -1,7 +1,9 @@
+import { CSSProperties, Dispatch, SetStateAction } from 'react';
+
 export type DropdownBaseProps = {
   caller: JSX.Element;
   maxHeight?: number;
-  customState?: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+  customState?: [boolean, Dispatch<SetStateAction<boolean>>];
   disabled?: boolean;
   placement?:
     | 'auto-end'
@@ -24,6 +26,6 @@ export type DropdownBaseProps = {
   dontCloseOnInnerClick?: boolean;
   className?: string;
   containerClass?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   onClickOutsideCallback?: () => void;
 };
