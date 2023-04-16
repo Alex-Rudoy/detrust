@@ -39,7 +39,7 @@ export const SideMenuComponent = ({
               <div>
                 {item.links.map((link) => (
                   <Link
-                    href={link.link}
+                    href={link.disabled ? '#' : link.link}
                     key={link.link}
                     className={classNames(styles.linkRow, {
                       [styles.active]: activeMenuLink === link.text,

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { FontWeightEnum, TextSizeEnum, Text } from '@components/Text';
-import { ButtonProps } from './Button.types';
+import { ButtonProps, ButtonVariantEnum } from './Button.types';
 
 import styles from './Button.module.scss';
 
@@ -16,14 +16,13 @@ const textSizeMap = {
 export const ButtonComponent: React.FC<ButtonProps> = ({
   text,
   id,
-  variant = 'primary',
+  variant = ButtonVariantEnum.primary,
   size = 'md',
   width = 'content',
   icon,
   iconPosition = 'left',
   onClick,
   type = 'button',
-  active,
   disabled,
   loading,
   style,
@@ -37,7 +36,6 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
       [styles[`button_width_${width}`]]: width,
       [styles[`button_icon_position_${iconPosition}`]]: iconPosition,
       [styles.disabled]: disabled,
-      [styles.active]: active,
       [styles.loading]: loading,
     },
     className,

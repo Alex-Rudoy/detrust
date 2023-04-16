@@ -19,7 +19,6 @@ export type ButtonProps = {
   ) => void | undefined;
   type?: 'button' | 'submit';
   disabled?: boolean;
-  active?: boolean;
   loading?: boolean;
   className?: string;
   style?: React.CSSProperties;

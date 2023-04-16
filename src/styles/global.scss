@@ -53,3 +53,38 @@ div {
   background-size: 50px 100%, 50px 100%, 10px 100%, 10px 100%;
   background-attachment: local, local, scroll, scroll;
 }
+
+.loaderContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--primary-dark-900-02);
+  backdrop-filter: blur(5px);
+  stroke: var(--primary-400);
+
+  &.loading {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .loader {
+    animation: spin 1s linear infinite;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

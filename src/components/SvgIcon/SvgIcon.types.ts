@@ -6,6 +6,7 @@ export enum IconsEnum {
   loader = '/icons/common/loader.svg',
   checkboxV = '/icons/common/checkbox-v.svg',
   cross = '/icons/common/cross.svg',
+  refresh = '/icons/common/refresh.svg',
 }
 
 export type SvgIconProps = {

@@ -17,6 +17,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "downlevelIteration": true,
     "paths": {
       "@api/*": ["./src/api/*"],
       "@components/*": ["./src/components/*"],
