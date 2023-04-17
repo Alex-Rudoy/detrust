@@ -20,15 +20,13 @@ export const getServerSideProps: GetServerSideProps<
     props: {
       tokens: tokensResponse.data,
       chartBoundaries: getBoundaries(tokensResponse.data),
-      ...prepareTokensListProps(
-        tokensResponse.data,
-        tokenConnectionsResponse.data,
-      ),
+      ...prepareGraph(tokensResponse.data, tokenConnectionsResponse.data),
+      ...prepareGraph2(tokensResponse.data, tokenConnectionsResponse.data),
     },
   };
 };
 
-function prepareTokensListProps(
+function prepareGraph(
   tokens: TokenShortType[],
   tokenConnectionsRaw: TokenConnectionType[],
 ) {
@@ -66,6 +64,39 @@ function prepareTokensListProps(
   const nodes = [...tokenNodes, ...userNodes];
 
   return { nodes, edges };
+}
+
+function prepareGraph2(
+  tokens: TokenShortType[],
+  tokenConnectionsRaw: TokenConnectionType[],
+) {
+  const uniqueTokens = new Set(tokens.map((token) => token.id));
+  const tokenConnections = tokenConnectionsRaw.filter((connection) =>
+    uniqueTokens.has(connection.target_id),
+  );
+
+  const edges2 = tokenConnections.map((connection) => ({
+    target: `user_${connection.follower_username}`,
+    source: `token_${connection.target_id}`,
+  }));
+
+  const tokenNodes = tokens.map((token) => ({
+    id: `token_${token.id}`,
+    label: token.project_name,
+  }));
+
+  const uniqueUsers = [
+    ...new Set(tokenConnections.map((c) => c.follower_username)),
+  ];
+
+  const userNodes = uniqueUsers.map((username) => ({
+    id: `user_${username}`,
+    label: username,
+  }));
+
+  const nodes2 = [...tokenNodes, ...userNodes];
+
+  return { nodes2, edges2 };
 }
 
 function generateNodeStyles(color: string) {
