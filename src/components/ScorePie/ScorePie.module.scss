@@ -78,6 +78,7 @@
   text-align: start;
   opacity: 0;
   transition-property: opacity;
+  pointer-events: none;
 
   &::after {
     content: '';

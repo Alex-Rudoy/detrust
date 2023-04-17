@@ -11,9 +11,7 @@ import { SideMenuProps } from './SideMenu.types';
 
 import styles from './SideMenu.module.scss';
 
-export const SideMenuComponent = ({
-  activeMenuLink = 'Tokens',
-}: SideMenuProps) => {
+export const SideMenuComponent = ({ activeMenuLink }: SideMenuProps) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <div

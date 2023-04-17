@@ -18,7 +18,7 @@ export const LayoutComponent = ({
       <main className={styles.main}>
         <SideMenu activeMenuLink={activeMenuLink} />
         <Scrolling vertical className={styles.pageContainer}>
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
+          {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
           {children}
         </Scrolling>
       </main>

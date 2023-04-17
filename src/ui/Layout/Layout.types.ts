@@ -1,4 +1,5 @@
+
 export type LayoutProps = {
-  activeMenuLink: string;
-  breadcrumbs: string[];
+  activeMenuLink?: string;
+  breadcrumbs?: string[];
 };

@@ -11,19 +11,28 @@ export default function Tokens(props: TokensListPageProps) {
 export const getServerSideProps: GetServerSideProps<
   TokensListPageProps
 > = async () => {
-  const [tokensResponse, tokenConnectionsResponse] = await Promise.all([
-    TokenService.getTokens(),
-    TokenService.getTokenConnections(),
-  ]);
+  try {
+    const [tokensResponse, tokenConnectionsResponse] = await Promise.all([
+      TokenService.getTokens(),
+      TokenService.getTokenConnections(),
+    ]);
 
-  return {
-    props: {
-      tokens: tokensResponse.data,
-      chartBoundaries: getBoundaries(tokensResponse.data),
-      ...prepareGraph(tokensResponse.data, tokenConnectionsResponse.data),
-      ...prepareGraph2(tokensResponse.data, tokenConnectionsResponse.data),
-    },
-  };
+    console.log('ololo');
+
+    return {
+      props: {
+        tokens: tokensResponse.data,
+        chartBoundaries: getBoundaries(tokensResponse.data),
+        ...prepareGraph(tokensResponse.data, tokenConnectionsResponse.data),
+        ...prepareGraph2(tokensResponse.data, tokenConnectionsResponse.data),
+      },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 function prepareGraph(

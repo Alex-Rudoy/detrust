@@ -1,5 +1,6 @@
+
 export type SideMenuProps = {
-  activeMenuLink: string;
+  activeMenuLink?: string;
 };
 
 export enum SideMenuLink {

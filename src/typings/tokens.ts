@@ -1,3 +1,4 @@
+
 export type TokenShortType = {
   id: number;
   project_name: string;
@@ -26,4 +27,23 @@ export type TokenConnectionType = {
   target_id: number;
   name: string;
   follower_username: string;
+};
+
+export type TokenPriceChartItemType = {
+  dt: string;
+  dt_h: string;
+  price: number;
+  project_id: `${number}`;
+};
+
+export type TokenInfluencerType = {
+  user_id: `${number}`;
+  username: string;
+  project_id: `${number}`;
+  mentions_count: `${number}`;
+  price_change: number;
+  positive_mentions_count: `${number}`;
+  positive_price_change: number;
+  negative_mentions_count: `${number}`;
+  negative_price_change: number;
 };

@@ -17,12 +17,22 @@ export const getServerSideProps: GetServerSideProps<TokenPageProps> = async (
       };
     }
 
-    const tokenData = await TokenService.getTokenData(ctx.params.id as string);
+    const [tokenDataResponse, tokenPriceResponse, tokenInfluencersResponse] =
+      await Promise.all([
+        TokenService.getTokenData(ctx.params.id as string),
+        TokenService.getTokenPrice(ctx.params.id as string),
+        TokenService.getTokenInfluencersStat(ctx.params.id as string),
+      ]);
 
     return {
-      props: { token: tokenData.data },
+      props: {
+        token: tokenDataResponse.data,
+        tokenPrice: tokenPriceResponse.data,
+        tokenInfluencers: tokenInfluencersResponse.data,
+      },
     };
   } catch (error) {
+    console.log(error);
     return {
       notFound: true,
     };
