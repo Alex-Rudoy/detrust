@@ -15,9 +15,7 @@ export type ButtonProps = {
   width?: 'full' | 'content';
   icon?: IconsEnum;
   iconPosition?: 'left' | 'right';
-  onClick?: (
-    event: MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void | undefined;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit';
   disabled?: boolean;
   loading?: boolean;

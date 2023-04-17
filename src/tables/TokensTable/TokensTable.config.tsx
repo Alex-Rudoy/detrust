@@ -30,7 +30,6 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
       <ScoreCell
         normalizedData={data.project_count_followers_10k_scaled}
         absoluteData={data.project_count_followers_10k}
-        id={`project_count_followers_10k_${data.id}`}
       />
     ),
   },
@@ -42,7 +41,6 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
       <ScoreCell
         normalizedData={data.project_token_ranked_followers_10k_scaled}
         absoluteData={data.project_token_ranked_followers_10k}
-        id={`project_token_ranked_followers_10k_${data.id}`}
       />
     ),
   },
@@ -60,7 +58,6 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
       <ScoreCell
         normalizedData={data.holders_count_scaled}
         absoluteData={data.holders_count}
-        id={`holders_count_${data.id}`}
       />
     ),
   },
@@ -72,7 +69,6 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
       <ScoreCell
         normalizedData={data.holders_value_scaled}
         absoluteData={data.holders_value}
-        id={`holders_value_${data.id}`}
       />
     ),
   },
@@ -84,7 +80,6 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
       <ScoreCell
         normalizedData={data.volume_to_mc_scaled}
         absoluteData={data.volume_to_mc}
-        id={`volume_to_mc_${data.id}`}
       />
     ),
   },
@@ -100,11 +95,9 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
 const ScoreCell = ({
   normalizedData,
   absoluteData,
-  id,
 }: {
   normalizedData: number;
   absoluteData?: number;
-  id?: string;
 }) => {
   return (
     <div className={styles.centeredCell}>

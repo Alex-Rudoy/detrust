@@ -1,4 +1,3 @@
-import { Badge, BadgeColorsEnum } from '@components/Badge';
 import { Button, ButtonVariantEnum } from '@components/Button';
 import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';

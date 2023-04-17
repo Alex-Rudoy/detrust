@@ -20,7 +20,7 @@ export const ButtonComponent = ({
   width = 'content',
   icon,
   iconPosition = 'left',
-  onClick,
+  onClick = () => null,
   type = 'button',
   disabled,
   loading,
@@ -51,16 +51,12 @@ export const ButtonComponent = ({
       style={style}
       type={type}
       id={id}
-      data-testid="button-as"
       {...props}
     >
-      <div
-        className={styles.loader}
-        data-testid={`button-loader-${loading ? 'active' : 'inactive'}`}
-      >
+      <div className={styles.loader}>
         <SvgIcon src={IconsEnum.loader} size={30} />
       </div>
-      {icon && <SvgIcon src={icon} size={20} data-testid="button-icon" />}
+      {icon && <SvgIcon src={icon} size={20} />}
       {text && (
         <Text size={textSizeMap[size]} fontWeight={FontWeightEnum.FW500}>
           {text}
