@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { TabBar } from '@components/TabBar';
+
 import { Layout } from '@ui/Layout';
+import { TabBar } from '@ui/TabBar';
 import {
   TokensListPageTabComponents,
   TokensListPageTabs,
 } from './TokensListPage.constants';
+
 import { TokensListPageProps } from './TokensListPage.types';
 
 export const TokensListPageComponent = (props: TokensListPageProps) => {

@@ -5,7 +5,7 @@ import {
   TokenConnectionType,
   TokenInfluencerType,
   TokenMentionType,
-  TokenPriceChartItemType,
+  TokenPriceChartItemRawType,
   TokenType,
 } from '@typings/tokens';
 
@@ -26,7 +26,7 @@ export const TokenService = {
     return api.get(`/general/getProjectInfluencersStat/${tokenId}`);
   },
 
-  getTokenPrice(tokenId: string): ApiPromise<TokenPriceChartItemType[]> {
+  getTokenPrice(tokenId: string): ApiPromise<TokenPriceChartItemRawType[]> {
     return api.get(`/general/getProjectPrice/${tokenId}`);
   },
 

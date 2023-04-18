@@ -1,4 +1,5 @@
 import { ScorePie } from '@components/ScorePie';
+
 import { ScoreCellProps } from './ScoreCell.types';
 
 import styles from './ScoreCell.module.scss';

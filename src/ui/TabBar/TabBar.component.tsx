@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import { Text, TextSizeEnum } from '@components/Text';
+
 import { TabBarProps } from './TabBar.types';
 
 import styles from './TabBar.module.scss';
@@ -26,9 +27,7 @@ export const TabBarComponent = <T extends string | number>({
           })}
           onClick={() => onTabClick(option.value)}
         >
-          <Text size={TextSizeEnum.S16} fontWeight={FontWeightEnum.FW500}>
-            {option.label}
-          </Text>
+          <Text size={TextSizeEnum.S16}>{option.label}</Text>
           <div className={styles.underline} />
         </div>
       ))}

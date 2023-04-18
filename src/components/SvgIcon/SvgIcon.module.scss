@@ -12,6 +12,9 @@
   }
 
   &_rotate {
+    &_0 {
+      display: flex; // do nothing
+    }
     &_90 {
       transform: rotate(90deg);
     }

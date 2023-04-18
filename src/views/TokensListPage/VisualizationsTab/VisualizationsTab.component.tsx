@@ -14,10 +14,14 @@ import {
 import { CategoricalChartFunc } from 'recharts/types/chart/generateCategoricalChart';
 
 import { Button, ButtonVariantEnum } from '@components/Button';
+import { InfoHover } from '@components/InfoHover';
 import { IconsEnum } from '@components/SvgIcon';
+import { Text, TextSizeEnum } from '@components/Text';
 import { routes } from '@views/routes';
 import { ScatterChartTooltip } from './ScatterChartTooltip/ScatterChartTooltip';
+
 import { hasValue } from '@utils/hasValue';
+
 import { TokensListPageProps } from '../TokensListPage.types';
 
 import styles from './VisualizationsTab.module.scss';
@@ -104,6 +108,7 @@ export const VisualizationsTabComponent = ({
             allowDataOverflow={true}
             tickFormatter={(value) => Math.round(value).toString()}
             tickCount={10}
+            tick={{ fontSize: 12 }}
           />
           <YAxis
             dataKey="y"
@@ -112,6 +117,7 @@ export const VisualizationsTabComponent = ({
             tickFormatter={(value) => Math.round(value).toString()}
             allowDataOverflow={true}
             tickCount={5}
+            tick={{ fontSize: 12 }}
           />
           <ZAxis
             dataKey="general_score"
@@ -132,17 +138,29 @@ export const VisualizationsTabComponent = ({
           ) : null}
         </ScatterChart>
       </ResponsiveContainer>
-      {domainX[0] !== minX ||
-      domainX[1] !== maxX ||
-      domainY[0] !== minY ||
-      domainY[1] !== maxY ? (
-        <Button
-          onClick={resetChart}
-          variant={ButtonVariantEnum.primary}
-          text="Reset chart"
-          icon={IconsEnum.refresh}
-        />
-      ) : null}
+      <div className={styles.controls}>
+        {domainX[0] !== minX ||
+        domainX[1] !== maxX ||
+        domainY[0] !== minY ||
+        domainY[1] !== maxY ? (
+          <Button
+            onClick={resetChart}
+            variant={ButtonVariantEnum.primary}
+            text="Reset chart"
+            icon={IconsEnum.refresh}
+          />
+        ) : null}
+        <div className={styles.info}>
+          <InfoHover id="scatter_chart_help">
+            <Text size={TextSizeEnum.S12}>
+              Draw a rectangle with mouse to zoom in
+            </Text>
+            <Text size={TextSizeEnum.S12}>
+              Click on node to go to token page
+            </Text>
+          </InfoHover>
+        </div>
+      </div>
     </div>
   );
 };

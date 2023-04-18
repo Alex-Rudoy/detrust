@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+
 import '@styles/index.scss';
 
 export default function App({ Component, pageProps, router }: AppProps) {
@@ -12,12 +13,10 @@ export default function App({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     const handleRouteChange = () => {
       setLoading(true);
-      return;
     };
 
     const handleRouteComplete = () => {
       setLoading(false);
-      return;
     };
 
     router.events.on('routeChangeStart', handleRouteChange);

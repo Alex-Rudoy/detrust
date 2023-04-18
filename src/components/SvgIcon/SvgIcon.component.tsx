@@ -8,7 +8,7 @@ import styles from './SvgIcon.module.scss';
 export const SvgIconComponent = ({
   src,
   size = 24,
-  rotate,
+  rotate = '0',
   className,
   style,
   onClick,

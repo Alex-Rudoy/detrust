@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
-import { DropdownBase } from '@components/DropdownBase';
-import { DropdownCaller } from '@components/DropdownCaller';
-import { DropdownItem } from '@components/DropdownItem';
-import { DropdownSearch } from '@components/DropdownSearch';
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+
+import { Text, TextSizeEnum } from '@components/Text';
+import { DropdownBase } from '@ui/Dropdown/DropdownBase';
+import { DropdownCaller } from './DropdownCaller';
+import { DropdownItem } from './DropdownItem';
+import { DropdownSearch } from './DropdownSearch';
+
 import { DropdownProps } from './Dropdown.types';
 
 import styles from './Dropdown.module.scss';
@@ -77,15 +79,15 @@ export const DropdownComponent = <T extends string | number>({
 
       {filteredOptions.length === 0 && !includeAll && (
         <div className={styles.emptyState}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
+          <Text size={TextSizeEnum.S14}>
             {emptyStateText || 'No values found'}
           </Text>
         </div>
       )}
 
-      {filteredOptions.map((option, index) => (
+      {filteredOptions.map((option) => (
         <DropdownItem
-          key={index}
+          key={option.value}
           text={option.label}
           icon={option.icon}
           onClick={() => handleSelect(option.value)}

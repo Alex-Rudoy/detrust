@@ -1,5 +1,7 @@
 import { CSSProperties } from 'react';
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+
+import { Text, TextSizeEnum } from '@components/Text';
+
 import { ScorePieProps } from './ScorePie.types';
 
 import styles from './ScorePie.module.scss';
@@ -21,9 +23,7 @@ export const ScorePieComponent = ({
 
   return (
     <div className={styles.pie} style={style} {...props}>
-      <Text size={fontSize} fontWeight={FontWeightEnum.FW500}>
-        {percentNumber}
-      </Text>
+      <Text size={fontSize}>{percentNumber}</Text>
       {absoluteData ? (
         <div className={styles.tooltip}>{Math.round(absoluteData)}</div>
       ) : null}

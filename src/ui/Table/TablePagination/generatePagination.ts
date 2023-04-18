@@ -1,4 +1,3 @@
-
 const generatePagination = (
   totalRecords: number,
   startRecord: number,

@@ -2,6 +2,7 @@ import { Layout } from '@ui/Layout';
 import { TokenInfluencersSection } from './TokenInfluencersSection';
 import { TokenInfoSection } from './TokenInfoSection';
 import { TokenPriceChart } from './TokenPriceChart';
+
 import { TokenPageProps } from './TokenPage.types';
 
 export const TokenPageComponent = ({

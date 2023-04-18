@@ -1,7 +1,7 @@
 import { ConnectionsTab } from './ConnectionsTab';
-import { ConnectionsTab2Component } from './ConnectionsTab/ConnectionsTab2.component';
 import { ListTab } from './ListTab';
 import { VisualizationsTab } from './VisualizationsTab';
+
 import { TokensListPageProps } from './TokensListPage.types';
 
 export const TokensListPageTabComponents: Record<
@@ -10,7 +10,6 @@ export const TokensListPageTabComponents: Record<
 > = {
   Visualizations: VisualizationsTab,
   Connections: ConnectionsTab,
-  Connections3d: ConnectionsTab2Component,
   List: ListTab,
 };
 

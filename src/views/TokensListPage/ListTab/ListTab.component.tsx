@@ -3,8 +3,11 @@ import classNames from 'classnames';
 
 import { Scrolling } from '@components/Scrolling';
 import { TokensTable } from '@tables/TokensTable';
+
 import { ABsort } from '@utils/ABsort';
+
 import { TokenType } from '@typings/tokens';
+
 import { TokensListPageProps } from '../TokensListPage.types';
 
 import styles from './ListTab.module.scss';

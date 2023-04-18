@@ -1,5 +1,6 @@
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { Layout } from '@ui/Layout';
+
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPageComponent = () => {
@@ -9,9 +10,7 @@ export const NotFoundPageComponent = () => {
         <Text size={TextSizeEnum.S48} fontWeight={FontWeightEnum.FW700}>
           404
         </Text>
-        <Text size={TextSizeEnum.S24} fontWeight={FontWeightEnum.FW500}>
-          Page not found
-        </Text>
+        <Text size={TextSizeEnum.S24}>Page not found</Text>
       </div>
     </Layout>
   );

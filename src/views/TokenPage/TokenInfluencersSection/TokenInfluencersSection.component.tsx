@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 
-import { Scrolling } from '@components/Scrolling';
 import { TokenInfluencersTable } from '@tables/TokenInfluencersTable';
-import { ABsort } from '@utils/ABsort';
-import { TokenInfluencerType } from '@typings/tokens';
-import { TokenInfluencersSectionProps } from './TokenInfluencersSection.types';
 
-import styles from './TokenInfluencersSection.module.scss';
+import { ABsort } from '@utils/ABsort';
+
+import { TokenInfluencerType } from '@typings/tokens';
+
+import { TokenInfluencersSectionProps } from './TokenInfluencersSection.types';
 
 export const TokenInfluencersSectionComponent = ({
   tokenInfluencers,
@@ -35,22 +34,13 @@ export const TokenInfluencersSectionComponent = ({
   };
 
   return (
-    <Scrolling
-      horizontal
-      vertical
-      className={classNames(
-        // styles.container,
-        'magic-inner-shadows',
-      )}
-    >
-      <TokenInfluencersTable
-        data={data}
-        sortedBy={sortedBy}
-        reverseSort={reverseSort}
-        totalRecords={data.length}
-        onSortClick={onSortClick}
-      />
-    </Scrolling>
+    <TokenInfluencersTable
+      data={data}
+      sortedBy={sortedBy}
+      reverseSort={reverseSort}
+      totalRecords={data.length}
+      onSortClick={onSortClick}
+    />
   );
 };
 TokenInfluencersSectionComponent.displayName = 'TokenInfluencersSection';

@@ -1,8 +1,10 @@
 import { BadgeDelta } from '@components/BadgeDelta';
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import { Text, TextSizeEnum } from '@components/Text';
 import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
+
 import { TokenInfluencerType } from '@typings/tokens';
+
 import styles from './TokenInfluencersTable.module.scss';
 
 export const tokenInfluencersTableColumns =
@@ -13,9 +15,7 @@ export const tokenInfluencersTableColumns =
       sortable: true,
       cellRenderer: (data) => (
         <div className={styles.textCell}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-            {data.username}
-          </Text>
+          <Text size={TextSizeEnum.S14}>{data.username}</Text>
         </div>
       ),
     },
@@ -25,9 +25,7 @@ export const tokenInfluencersTableColumns =
       sortable: true,
       cellRenderer: (data) => (
         <div className={styles.textCell}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-            {data.positive_mentions_count}
-          </Text>
+          <Text size={TextSizeEnum.S14}>{data.positive_mentions_count}</Text>
         </div>
       ),
     },
@@ -37,9 +35,7 @@ export const tokenInfluencersTableColumns =
       sortable: true,
       cellRenderer: (data) => (
         <div className={styles.textCell}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-            {data.negative_mentions_count}
-          </Text>
+          <Text size={TextSizeEnum.S14}>{data.negative_mentions_count}</Text>
         </div>
       ),
     },
@@ -49,9 +45,7 @@ export const tokenInfluencersTableColumns =
       sortable: true,
       cellRenderer: (data) => (
         <div className={styles.textCell}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-            {data.mentions_count}
-          </Text>
+          <Text size={TextSizeEnum.S14}>{data.mentions_count}</Text>
         </div>
       ),
     },
@@ -87,9 +81,7 @@ export const tokenInfluencersTableColumns =
       sortable: true,
       cellRenderer: (data) => (
         <div className={styles.textCell}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-            {data.reputation}
-          </Text>
+          <Text size={TextSizeEnum.S14}>{data.reputation}</Text>
         </div>
       ),
     },

@@ -2,6 +2,7 @@ import { Button, ButtonVariantEnum } from '@components/Button';
 import { IconsEnum } from '@components/SvgIcon';
 import { Dropdown } from '@ui/Dropdown';
 import generatePagination from './generatePagination';
+
 import { TablePaginationProps } from './TablePagination.types';
 
 import styles from './TablePagination.module.scss';

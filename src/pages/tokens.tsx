@@ -1,7 +1,9 @@
 import { GetServerSideProps } from 'next';
 
 import { TokensListPage, TokensListPageProps } from '@views/TokensListPage';
+
 import { TokenService } from '@api/TokenService';
+
 import { TokenConnectionType, TokenType } from '@typings/tokens';
 
 export default function Tokens(props: TokensListPageProps) {
@@ -22,7 +24,6 @@ export const getServerSideProps: GetServerSideProps<
         tokens: tokensResponse.data,
         chartBoundaries: getBoundaries(tokensResponse.data),
         ...prepareGraph(tokensResponse.data, tokenConnectionsResponse.data),
-        ...prepareGraph2(tokensResponse.data, tokenConnectionsResponse.data),
       },
     };
   } catch (error) {
@@ -42,47 +43,7 @@ function prepareGraph(
     uniqueTokens.has(connection.target_id),
   );
 
-  const edges = tokenConnections.map((connection) => ({
-    data: {
-      target: `user_${connection.follower_username}`,
-      source: `token_${connection.target_id}`,
-    },
-  }));
-
-  const tokenNodes: cytoscape.ElementDefinition[] = tokens.map((token) => ({
-    data: {
-      id: `token_${token.id}`,
-      label: token.project_name,
-    },
-    ...generateNodeStyles('#5c98f1'),
-  }));
-
-  const uniqueUsers = [
-    ...new Set(tokenConnections.map((c) => c.follower_username)),
-  ];
-
-  const userNodes: cytoscape.ElementDefinition[] = uniqueUsers.map(
-    (username) => ({
-      data: { id: `user_${username}`, label: username },
-      ...generateNodeStyles('#32d583'),
-    }),
-  );
-
-  const nodes = [...tokenNodes, ...userNodes];
-
-  return { nodes, edges };
-}
-
-function prepareGraph2(
-  tokens: TokenType[],
-  tokenConnectionsRaw: TokenConnectionType[],
-) {
-  const uniqueTokens = new Set(tokens.map((token) => token.id));
-  const tokenConnections = tokenConnectionsRaw.filter((connection) =>
-    uniqueTokens.has(connection.target_id),
-  );
-
-  const edges2 = tokenConnections.map((connection) => ({
+  const links = tokenConnections.map((connection) => ({
     target: `user_${connection.follower_username}`,
     source: `token_${connection.target_id}`,
   }));
@@ -101,25 +62,9 @@ function prepareGraph2(
     label: username,
   }));
 
-  const nodes2 = [...tokenNodes, ...userNodes];
+  const nodes = [...tokenNodes, ...userNodes];
 
-  return { nodes2, edges2 };
-}
-
-function generateNodeStyles(color: string) {
-  return {
-    grabbable: false,
-    style: {
-      width: 75,
-      height: 75,
-      backgroundColor: color,
-      label: 'data(name)',
-      'text-valign': 'center',
-      color: 'white',
-      'text-outline-color': color,
-      'text-outline-width': 2,
-    },
-  };
+  return { nodes, links };
 }
 
 function getBoundaries(tokens: TokenType[]) {

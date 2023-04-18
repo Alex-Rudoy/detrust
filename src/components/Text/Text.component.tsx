@@ -2,7 +2,8 @@ import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { CustomTooltip } from '@components/CustomTooltip';
-import { TextProps } from './Text.types';
+
+import { FontWeightEnum, TextProps } from './Text.types';
 
 import styles from './Text.module.scss';
 
@@ -28,7 +29,7 @@ export const TextComponent = ({
   children,
   className,
   dots,
-  fontWeight,
+  fontWeight = FontWeightEnum.FW500,
   style,
   textTransform,
   size,

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import { Badge, BadgeColorsEnum } from '@components/Badge';
 import { IconsEnum } from '@components/SvgIcon';
+
 import { BadgeDeltaProps } from './BadgeDelta.types';
 
 import styles from './BadgeDelta.module.scss';
@@ -12,12 +13,9 @@ export const BadgeDeltaComponent = ({
   className,
   onClick = () => null,
 }: BadgeDeltaProps) => {
-  const color =
-    value > 0
-      ? BadgeColorsEnum.success
-      : value === 0
-      ? BadgeColorsEnum.primary
-      : BadgeColorsEnum.error;
+  let color = BadgeColorsEnum.primary;
+  if (value > 0) color = BadgeColorsEnum.success;
+  if (value < 0) color = BadgeColorsEnum.error;
 
   const badgeDeltaClass = classNames({ [styles.bigger]: value > 0 }, className);
 

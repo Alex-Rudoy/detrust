@@ -1,4 +1,3 @@
-
 export type TokenType = {
   id: number;
   project_name: string;
@@ -29,11 +28,15 @@ export type TokenConnectionType = {
   follower_username: string;
 };
 
-export type TokenPriceChartItemType = {
+export type TokenPriceChartItemRawType = {
   dt: string;
   dt_h: string;
   price: number;
   project_id: `${number}`;
+};
+
+export type TokenPriceChartItemType = TokenPriceChartItemRawType & {
+  timestamp: number;
 };
 
 export type TokenInfluencerType = {

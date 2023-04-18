@@ -9,6 +9,15 @@ export enum IconsEnum {
   checkboxV = '/icons/common/checkbox-v.svg',
   cross = '/icons/common/cross.svg',
   refresh = '/icons/common/refresh.svg',
+  info = '/icons/common/info.svg',
+  help = '/icons/common/help.svg',
+
+  // side menu
+  tokens = '/icons/common/tokens.svg',
+  game = '/icons/common/game.svg',
+  nft = '/icons/common/nft.svg',
+  fund = '/icons/common/fund.svg',
+  account = '/icons/common/account.svg',
 }
 
 export type SvgIconProps = {

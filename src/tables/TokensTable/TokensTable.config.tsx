@@ -1,10 +1,12 @@
 import Link from 'next/link';
 
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import { Text, TextSizeEnum } from '@components/Text';
 import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
 import { routes } from '@views/routes';
+
 import { TokenType } from '@typings/tokens';
+
 import styles from './TokensTable.module.scss';
 
 export const tokensTableColumns = (): columnConfigType<TokenType> => [
@@ -15,9 +17,7 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
     cellRenderer: (data) => (
       <Link href={routes.tokenPage(data.id)}>
         <div className={styles.nameCell}>
-          <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW500}>
-            {data.project_name}
-          </Text>
+          <Text size={TextSizeEnum.S14}>{data.project_name}</Text>
         </div>
       </Link>
     ),

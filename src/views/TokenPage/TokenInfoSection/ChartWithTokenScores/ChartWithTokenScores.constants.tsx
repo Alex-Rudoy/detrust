@@ -7,11 +7,6 @@ export const generateChartWithTokenScoresData = (token: TokenType) => [
     fullMark: 1,
   },
   {
-    quality: 'project_token_ranked_followers_10k_scaled',
-    percent: token.project_token_ranked_followers_10k_scaled,
-    fullMark: 1,
-  },
-  {
     quality: 'buying_power',
     percent: token.buying_power,
     fullMark: 1,
@@ -19,6 +14,11 @@ export const generateChartWithTokenScoresData = (token: TokenType) => [
   {
     quality: 'holders_count_scaled',
     percent: token.holders_count_scaled,
+    fullMark: 1,
+  },
+  {
+    quality: 'project_token_ranked_followers_10k_scaled',
+    percent: token.project_token_ranked_followers_10k_scaled,
     fullMark: 1,
   },
   {
@@ -41,13 +41,6 @@ export const tickLabels = {
     isPercent: false,
     dy: '-2.5em',
   },
-  project_token_ranked_followers_10k_scaled: {
-    title: 'Influence',
-    description: 'Amount of influencers from top 10K list in current domain',
-    key: 'project_token_ranked_followers_10k',
-    isPercent: false,
-    dy: '-0.5em',
-  },
   buying_power: {
     title: 'Buying power',
     description: 'Buying Power of subject community',
@@ -59,6 +52,13 @@ export const tickLabels = {
     title: 'Holders count',
     description: 'Count of unique token holders',
     key: 'holders_count',
+    isPercent: false,
+    dy: '-0.5em',
+  },
+  project_token_ranked_followers_10k_scaled: {
+    title: 'Influence',
+    description: 'Amount of influencers from top 10K list in current domain',
+    key: 'project_token_ranked_followers_10k',
     isPercent: false,
     dy: '0.5em',
   },

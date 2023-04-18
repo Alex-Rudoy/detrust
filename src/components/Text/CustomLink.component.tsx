@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { CustomLinkProps } from './Text.types';
+import { CustomLinkProps, FontWeightEnum } from './Text.types';
 
 import styles from './Text.module.scss';
 
@@ -11,7 +11,7 @@ export const CustomLinkComponent = ({
   children,
   className,
   dots,
-  fontWeight,
+  fontWeight = FontWeightEnum.FW500,
   style,
   textTransform,
   size,

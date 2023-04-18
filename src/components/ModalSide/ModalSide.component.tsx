@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Portal } from '@components/Portal';
 import { Scrolling } from '@components/Scrolling';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+
 import { ModalSideProps } from './ModalSide.types';
 
 import styles from './ModalSide.module.scss';

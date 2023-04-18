@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 
 import { SvgIcon } from '@components/SvgIcon';
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import { Text, TextSizeEnum } from '@components/Text';
+
 import { BadgeProps } from './Badge.types';
 
 import styles from './Badge.module.scss';
@@ -30,11 +31,7 @@ export const BadgeComponent = ({
     <div className={badgeClass} id={id} onClick={onClick}>
       {icon && <SvgIcon src={icon} size={12} />}
       {text && (
-        <Text
-          size={TextSizeEnum.S12}
-          fontWeight={FontWeightEnum.FW500}
-          dots={dots}
-        >
+        <Text size={TextSizeEnum.S12} dots={dots}>
           {text}
         </Text>
       )}

@@ -2,9 +2,11 @@ import classNames from 'classnames';
 
 import { Skeleton } from '@components/Skeleton';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
-import { Text, FontWeightEnum, TextSizeEnum } from '@components/Text';
+import { Text, TextSizeEnum } from '@components/Text';
 import { TablePagination } from './TablePagination';
+
 import { hasValue } from '@utils/hasValue';
+
 import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';
@@ -52,12 +54,7 @@ export const TableComponent = <T extends { id: number | string }>({
                     <Skeleton />
                   ) : (
                     <>
-                      <Text
-                        size={TextSizeEnum.S16}
-                        fontWeight={FontWeightEnum.FW500}
-                      >
-                        {column.name}
-                      </Text>
+                      <Text size={TextSizeEnum.S16}>{column.name}</Text>
                       {column.sortable && (
                         <SvgIcon
                           src={IconsEnum.arrow}

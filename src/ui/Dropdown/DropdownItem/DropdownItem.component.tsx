@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+
 import { DropdownItemProps } from './DropdownItem.types';
 
 import styles from './DropdownItem.module.scss';

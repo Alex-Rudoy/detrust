@@ -3,6 +3,7 @@ import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { ChartWithTokenScores } from './ChartWithTokenScores';
+
 import { TokenInfoSectionProps } from './TokenInfoSection.types';
 
 import styles from './TokenInfoSection.module.scss';
@@ -12,9 +13,7 @@ export const TokenInfoSectionComponent = ({ token }: TokenInfoSectionProps) => {
     <div className={styles.infoSection}>
       <div className={styles.description}>
         <div className={styles.titleBlock}>
-          <Text size={TextSizeEnum.S24} fontWeight={FontWeightEnum.FW500}>
-            General Score
-          </Text>
+          <Text size={TextSizeEnum.S24}>General Score</Text>
           <ScorePie
             percent={token.general_score}
             width={60}

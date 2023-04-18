@@ -7,6 +7,7 @@ import { Scrolling } from '@components/Scrolling';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
 import { navItems } from './SideMenu.constants';
+
 import { SideMenuProps } from './SideMenu.types';
 
 import styles from './SideMenu.module.scss';
@@ -45,11 +46,7 @@ export const SideMenuComponent = ({ activeMenuLink }: SideMenuProps) => {
                     })}
                   >
                     <SvgIcon src={link.icon} size={16} />
-                    <Text
-                      size={TextSizeEnum.S14}
-                      fontWeight={FontWeightEnum.FW500}
-                      className={styles.link}
-                    >
+                    <Text size={TextSizeEnum.S14} className={styles.link}>
                       {link.text}
                     </Text>
                     {link.disabled ? (

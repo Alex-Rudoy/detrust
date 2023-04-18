@@ -1,4 +1,5 @@
 import { CSSProperties, MouseEvent } from 'react';
+
 import { IconsEnum } from '@components/SvgIcon';
 
 export enum ButtonVariantEnum {

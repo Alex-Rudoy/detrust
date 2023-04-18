@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
+
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+
 import { BreadcrumbsProps } from './Breadcrumbs.types';
 
 import styles from './Breadcrumbs.module.scss';
