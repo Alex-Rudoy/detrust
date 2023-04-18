@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useCallback, useState } from 'react';
 import {
   CartesianGrid,
   Line,
@@ -16,8 +16,11 @@ import { InfoHover } from '@components/InfoHover';
 import { IconsEnum } from '@components/SvgIcon';
 import { Text, TextSizeEnum } from '@components/Text';
 
+import { primary_400 } from '@utils/colors';
 import { ONE_DAY } from '@utils/constants';
 import { hasValue } from '@utils/hasValue';
+
+import { TokenPriceChartItemType } from '@typings/tokens';
 
 import { TokenPriceChartProps } from './TokenPriceChart.types';
 
@@ -65,6 +68,43 @@ export const TokenPriceChartComponent = ({
     setDomainX(['dataMin', 'dataMax']);
   };
 
+  const CustomDot = useCallback(
+    ({
+      cx,
+      cy,
+      payload,
+      key,
+      ...rest
+    }: {
+      cx: number;
+      cy: number;
+      stroke: string;
+      key: string;
+      payload: TokenPriceChartItemType;
+    }): ReactElement<SVGElement> => {
+      console.log(rest);
+      if (!payload.color) return <svg key={key} />;
+      console.log('has color');
+
+      return (
+        <svg
+          key={key}
+          x={cx - 10}
+          y={cy - 10}
+          width={20}
+          height={20}
+          fill={payload.color}
+          stroke={payload.stroke}
+          strokeWidth={2}
+          viewBox="0 0 20 20"
+        >
+          <circle cx="10" cy="10" r="8" />
+        </svg>
+      );
+    },
+    [],
+  );
+
   return (
     <div className={styles.tokenPriceChart}>
       <div className={styles.heading}>
@@ -100,13 +140,14 @@ export const TokenPriceChartComponent = ({
             tickCount={5}
             tickFormatter={(value) => value.toString().slice(0, 5)}
             allowDataOverflow
+            padding={{ top: 10, bottom: 10 }}
           />
           <Line
             type="monotone"
             dataKey="price"
-            stroke="#8884d8"
+            stroke={primary_400}
             activeDot={false}
-            dot={false}
+            dot={CustomDot}
           />
           <Tooltip content={() => null} />
           {selectionStart.x && selectionEnd.x ? (

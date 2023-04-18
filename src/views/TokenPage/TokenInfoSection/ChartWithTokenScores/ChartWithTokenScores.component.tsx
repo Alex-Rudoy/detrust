@@ -12,6 +12,8 @@ import {
   tickLabels,
 } from './ChartWithTokenScores.constants';
 
+import { gray_100, primary_100, primary_400 } from '@utils/colors';
+
 import { TokenType } from '@typings/tokens';
 
 import { ChartWithTokenScoresProps } from './ChartWithTokenScores.types';
@@ -47,13 +49,13 @@ export const ChartWithTokenScoresComponent = ({
             textAnchor={textAnchor}
             fontSize={14}
           >
-            <tspan x={x} dy={tickLabels[label].dy} fill="#dbe6f8">
+            <tspan x={x} dy={tickLabels[label].dy} fill={primary_100}>
               {tickLabels[label].title}
             </tspan>
-            <tspan x={x} dy="1.5em" fontSize={10} fill="#f2f4f7">
+            <tspan x={x} dy="1.5em" fontSize={10} fill={gray_100}>
               {tickLabels[label].description}
             </tspan>
-            <tspan x={x} dy="1.5em" fill="#5c98f1">
+            <tspan x={x} dy="1.5em" fill={primary_400}>
               {Math.round(+token[tickLabels[label].key as keyof TokenType])}
               {tickLabels[label].isPercent && '%'}
             </tspan>
@@ -76,8 +78,8 @@ export const ChartWithTokenScoresComponent = ({
         <PolarAngleAxis dataKey="quality" tickLine={false} tick={CustomTick} />
         <Radar
           dataKey="percent"
-          stroke="#5c98f1"
-          fill="#5c98f1"
+          stroke={primary_400}
+          fill={primary_400}
           fillOpacity={0.6}
         />
       </RadarChart>

@@ -35,8 +35,11 @@ export type TokenPriceChartItemRawType = {
   project_id: `${number}`;
 };
 
-export type TokenPriceChartItemType = TokenPriceChartItemRawType & {
+export type TokenPriceChartItemType = {
   timestamp: number;
+  price: number;
+  color?: string;
+  stroke?: string;
 };
 
 export type TokenInfluencerType = {
@@ -54,5 +57,11 @@ export type TokenInfluencerType = {
 };
 
 export type TokenMentionType = {
-  id: `${number}`;
+  content_creation_dt: string;
+  content_creation_dt_h: string;
+  project_id: `${number}`;
+  sentiment: number;
+  sentiment_score: number;
+  user_id: `${number}`;
+  username: string;
 };
