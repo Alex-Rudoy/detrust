@@ -1,11 +1,11 @@
 import {
   TokenInfluencerType,
   TokenPriceChartItemType,
-  TokenShortType,
+  TokenType,
 } from '@typings/tokens';
 
 export type TokenPageProps = {
-  token: TokenShortType;
+  token: TokenType;
   tokenPrice: TokenPriceChartItemType[];
   tokenInfluencers: TokenInfluencerType[];
 };

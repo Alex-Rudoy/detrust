@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import { ScorePie } from '@components/ScorePie';
 import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
 import { routes } from '@views/routes';
-import { TokenShortType } from '@typings/tokens';
+import { TokenType } from '@typings/tokens';
 import styles from './TokensTable.module.scss';
 
-export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
+export const tokensTableColumns = (): columnConfigType<TokenType> => [
   {
     id: 'project_name',
     name: 'Name',
@@ -90,18 +90,3 @@ export const tokensTableColumns = (): columnConfigType<TokenShortType> => [
     cellRenderer: (data) => <ScoreCell normalizedData={data.general_score} />,
   },
 ];
-
-// todo: maybe move to separate file when more tables might use it
-const ScoreCell = ({
-  normalizedData,
-  absoluteData,
-}: {
-  normalizedData: number;
-  absoluteData?: number;
-}) => {
-  return (
-    <div className={styles.centeredCell}>
-      <ScorePie percent={normalizedData} absoluteData={absoluteData} />
-    </div>
-  );
-};

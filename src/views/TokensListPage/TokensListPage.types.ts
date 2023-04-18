@@ -1,7 +1,7 @@
-import { TokenShortType } from '@typings/tokens';
+import { TokenType } from '@typings/tokens';
 
 export type TokensListPageProps = {
-  tokens: TokenShortType[];
+  tokens: TokenType[];
   nodes: cytoscape.NodeDefinition[];
   edges: cytoscape.EdgeDefinition[];
   nodes2: { id: string; label: string }[];

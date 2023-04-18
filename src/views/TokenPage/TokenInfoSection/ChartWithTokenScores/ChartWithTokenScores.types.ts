@@ -1,5 +1,5 @@
-import { TokenShortType } from '@typings/tokens';
+import { TokenType } from '@typings/tokens';
 
 export type ChartWithTokenScoresProps = {
-  token: TokenShortType;
+  token: TokenType;
 };

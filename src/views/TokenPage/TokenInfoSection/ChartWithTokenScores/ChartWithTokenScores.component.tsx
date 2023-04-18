@@ -10,7 +10,7 @@ import {
   generateChartWithTokenScoresData,
   tickLabels,
 } from './ChartWithTokenScores.constants';
-import { TokenShortType } from '@typings/tokens';
+import { TokenType } from '@typings/tokens';
 import { ChartWithTokenScoresProps } from './ChartWithTokenScores.types';
 
 export const ChartWithTokenScoresComponent = ({
@@ -49,7 +49,7 @@ export const ChartWithTokenScoresComponent = ({
                   </tspan>
                   <tspan x={x} dy="1.5em" fill="#5c98f1">
                     {Math.round(
-                      +token[tickLabels[label].key as keyof TokenShortType],
+                      +token[tickLabels[label].key as keyof TokenType],
                     )}
                     {tickLabels[label].isPercent && '%'}
                   </tspan>

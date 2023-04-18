@@ -16,7 +16,7 @@ export const BadgeDeltaComponent = ({
     value > 0
       ? BadgeColorsEnum.success
       : value === 0
-      ? BadgeColorsEnum.blue
+      ? BadgeColorsEnum.primary
       : BadgeColorsEnum.error;
 
   const badgeDeltaClass = classNames({ [styles.bigger]: value > 0 }, className);

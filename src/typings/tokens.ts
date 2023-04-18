@@ -1,5 +1,5 @@
 
-export type TokenShortType = {
+export type TokenType = {
   id: number;
   project_name: string;
   contract_address: string;
@@ -37,13 +37,19 @@ export type TokenPriceChartItemType = {
 };
 
 export type TokenInfluencerType = {
-  user_id: `${number}`;
+  id: `${number}`;
+  mentions_count: number;
   username: string;
   project_id: `${number}`;
-  mentions_count: `${number}`;
   price_change: number;
-  positive_mentions_count: `${number}`;
+  positive_mentions_count: number;
   positive_price_change: number;
-  negative_mentions_count: `${number}`;
+  negative_mentions_count: number;
   negative_price_change: number;
+  reputation: number;
+  won: number;
+};
+
+export type TokenMentionType = {
+  id: `${number}`;
 };

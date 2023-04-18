@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 
 import { TokensListPage, TokensListPageProps } from '@views/TokensListPage';
 import { TokenService } from '@api/TokenService';
-import { TokenConnectionType, TokenShortType } from '@typings/tokens';
+import { TokenConnectionType, TokenType } from '@typings/tokens';
 
 export default function Tokens(props: TokensListPageProps) {
   return <TokensListPage {...props} />;
@@ -16,8 +16,6 @@ export const getServerSideProps: GetServerSideProps<
       TokenService.getTokens(),
       TokenService.getTokenConnections(),
     ]);
-
-    console.log('ololo');
 
     return {
       props: {
@@ -36,7 +34,7 @@ export const getServerSideProps: GetServerSideProps<
 };
 
 function prepareGraph(
-  tokens: TokenShortType[],
+  tokens: TokenType[],
   tokenConnectionsRaw: TokenConnectionType[],
 ) {
   const uniqueTokens = new Set(tokens.map((token) => token.id));
@@ -76,7 +74,7 @@ function prepareGraph(
 }
 
 function prepareGraph2(
-  tokens: TokenShortType[],
+  tokens: TokenType[],
   tokenConnectionsRaw: TokenConnectionType[],
 ) {
   const uniqueTokens = new Set(tokens.map((token) => token.id));
@@ -124,7 +122,7 @@ function generateNodeStyles(color: string) {
   };
 }
 
-function getBoundaries(tokens: TokenShortType[]) {
+function getBoundaries(tokens: TokenType[]) {
   let minX = tokens.reduce(
     (acc, token) => (token.x < acc ? token.x : acc),
     Infinity,

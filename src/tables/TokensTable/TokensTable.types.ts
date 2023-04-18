@@ -1,4 +1,4 @@
 import { TableProps } from '@ui/Table';
-import { TokenShortType } from '@typings/tokens';
+import { TokenType } from '@typings/tokens';
 
-export type TokensTableProps = Omit<TableProps<TokenShortType>, 'columns'>;
+export type TokensTableProps = Omit<TableProps<TokenType>, 'columns'>;

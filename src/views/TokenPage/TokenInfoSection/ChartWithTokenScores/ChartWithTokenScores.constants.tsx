@@ -1,6 +1,6 @@
-import { TokenShortType } from '@typings/tokens';
+import { TokenType } from '@typings/tokens';
 
-export const generateChartWithTokenScoresData = (token: TokenShortType) => [
+export const generateChartWithTokenScoresData = (token: TokenType) => [
   {
     quality: 'project_count_followers_10k_scaled',
     percent: token.project_count_followers_10k_scaled,
