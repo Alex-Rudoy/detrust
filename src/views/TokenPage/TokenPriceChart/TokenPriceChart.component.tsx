@@ -17,7 +17,7 @@ import { IconsEnum } from '@components/SvgIcon';
 import { Text, TextSizeEnum } from '@components/Text';
 
 import { primary_400 } from '@utils/colors';
-import { ONE_DAY } from '@utils/constants';
+import { ONE_DAY, TEN_DAYS } from '@utils/constants';
 import { hasValue } from '@utils/hasValue';
 
 import { TokenPriceChartItemType } from '@typings/tokens';
@@ -74,32 +74,33 @@ export const TokenPriceChartComponent = ({
       cy,
       payload,
       key,
+      width,
+      height,
       ...rest
     }: {
       cx: number;
       cy: number;
       stroke: string;
       key: string;
+      width: number;
+      height: number;
       payload: TokenPriceChartItemType;
     }): ReactElement<SVGElement> => {
-      console.log(rest);
       if (!payload.color) return <svg key={key} />;
-      console.log('has color');
+      console.log(rest);
 
       return (
-        <svg
-          key={key}
-          x={cx - 10}
-          y={cy - 10}
-          width={20}
-          height={20}
+        <circle
           fill={payload.color}
           stroke={payload.stroke}
-          strokeWidth={2}
-          viewBox="0 0 20 20"
-        >
-          <circle cx="10" cy="10" r="8" />
-        </svg>
+          strokeWidth="2"
+          width={width}
+          height={height}
+          cx={cx}
+          cy={cy}
+          r="8"
+          className="recharts-dot recharts-line-dot"
+        />
       );
     },
     [],
@@ -129,7 +130,15 @@ export const TokenPriceChartComponent = ({
             domain={domainX}
             tick={{ fontSize: 12 }}
             tickCount={10}
-            tickFormatter={(value) => new Date(value).toLocaleDateString()}
+            tickFormatter={(value) =>
+              domainX[1] !== 'dataMax' &&
+              domainX[0] !== 'dataMin' &&
+              domainX[1] - domainX[0] < TEN_DAYS
+                ? new Date(value).toLocaleDateString() +
+                  ' ' +
+                  new Date(value).toLocaleTimeString()
+                : new Date(value).toLocaleDateString()
+            }
             allowDataOverflow
           />
           <YAxis

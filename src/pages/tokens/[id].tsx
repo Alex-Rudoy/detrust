@@ -95,8 +95,6 @@ function getMentionsEntries(
         tokenPrice[i].price,
       );
 
-      console.log(mention);
-
       let color = success_600;
       let stroke = success_400;
 
