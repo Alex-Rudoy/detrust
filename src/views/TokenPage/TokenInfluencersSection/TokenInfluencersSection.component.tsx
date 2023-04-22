@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { TokenInfluencersTable } from '@tables/TokenInfluencersTable';
+import { DegensTable } from '@tables/DegensTable';
 
 import { ABsort } from '@utils/ABsort';
 
@@ -34,11 +34,12 @@ export const TokenInfluencersSectionComponent = ({
   };
 
   return (
-    <TokenInfluencersTable
+    <DegensTable
       data={data}
       sortedBy={sortedBy}
       reverseSort={reverseSort}
       totalRecords={data.length}
+      emptyState={<div>No influencers found</div>}
       onSortClick={onSortClick}
     />
   );

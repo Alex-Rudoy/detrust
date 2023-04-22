@@ -1,7 +1,8 @@
 import { Button, ButtonVariantEnum } from '@components/Button';
 import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';
-import { FontWeightEnum, Text, TextSizeEnum } from '@components/Text';
+import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+import { Text, TextSizeEnum } from '@components/Text';
 import { ChartWithTokenScores } from './ChartWithTokenScores';
 
 import { TokenInfoSectionProps } from './TokenInfoSection.types';
@@ -19,19 +20,15 @@ export const TokenInfoSectionComponent = ({ token }: TokenInfoSectionProps) => {
             width={60}
             fontSize={TextSizeEnum.S22}
           />
-          <Button
-            variant={ButtonVariantEnum.primary}
-            text="Customize"
-            size="sm"
-            disabled
+          <SvgIcon
+            src={IconsEnum.settings}
+            size={20}
             data-tooltip-id={'customize_button'}
             data-tooltip-content={'Coming soon'}
           />
           <CustomTooltip data-tooltip-id={'customize_button'} />
         </div>
-        <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW400}>
-          {token.description}
-        </Text>
+        <Text size={TextSizeEnum.S14}>{token.description}</Text>
       </div>
       <div className={styles.chartContainer}>
         <ChartWithTokenScores token={token} />

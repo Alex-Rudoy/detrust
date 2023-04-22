@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   CartesianGrid,
@@ -42,9 +42,17 @@ export const VisualizationsTabComponent = ({
   const [domainX, setDomainX] = useState<number[]>([minX, maxX]);
   const [domainY, setDomainY] = useState<number[]>([minY, maxY]);
 
+  const symbols = useMemo(
+    () =>
+      tokens.reduce((obj, token) => ({ ...obj, [token.id]: token.symbol }), {}),
+    [tokens],
+  );
+
   const handleMouseDown: CategoricalChartFunc = (nextState, e) => {
     if (e.target?.classList?.contains('recharts-symbols') && e.target?.id) {
-      router.push(routes.tokenPage(e.target.id));
+      router.push(
+        routes.tokenPage(symbols[e.target.id as keyof typeof symbols]),
+      );
       return;
     }
     if (!nextState?.xValue || !nextState?.yValue) return;
@@ -91,24 +99,35 @@ export const VisualizationsTabComponent = ({
 
   return (
     <div className={styles.visualizationTab}>
+      <div className={styles.heading}>
+        <Text size={TextSizeEnum.S12}>
+          This Plot show how similar are projects depends on community, more
+          closer are 2 project, more similar are their community
+        </Text>
+        <InfoHover id="scatter_chart_help">
+          <Text size={TextSizeEnum.S12}>
+            Draw a rectangle with mouse to zoom in
+          </Text>
+          <Text size={TextSizeEnum.S12}>Click on node to go to token page</Text>
+        </InfoHover>
+      </div>
+
       <ResponsiveContainer height={600}>
         <ScatterChart
-          margin={{
-            top: 24,
-          }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
+          margin={{ left: -59 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid stroke="white" />
           <XAxis
             dataKey="x"
             type="number"
             domain={domainX}
             allowDataOverflow={true}
             tickFormatter={(value) => Math.round(value).toString()}
-            tickCount={10}
-            tick={{ fontSize: 12 }}
+            tick={false}
+            strokeWidth={0}
           />
           <YAxis
             dataKey="y"
@@ -116,8 +135,8 @@ export const VisualizationsTabComponent = ({
             domain={domainY}
             tickFormatter={(value) => Math.round(value).toString()}
             allowDataOverflow={true}
-            tickCount={5}
-            tick={{ fontSize: 12 }}
+            tick={false}
+            strokeWidth={0}
           />
           <ZAxis
             dataKey="general_score"
@@ -138,29 +157,18 @@ export const VisualizationsTabComponent = ({
           ) : null}
         </ScatterChart>
       </ResponsiveContainer>
-      <div className={styles.controls}>
-        {domainX[0] !== minX ||
-        domainX[1] !== maxX ||
-        domainY[0] !== minY ||
-        domainY[1] !== maxY ? (
-          <Button
-            onClick={resetChart}
-            variant={ButtonVariantEnum.primary}
-            text="Reset chart"
-            icon={IconsEnum.refresh}
-          />
-        ) : null}
-        <div className={styles.info}>
-          <InfoHover id="scatter_chart_help">
-            <Text size={TextSizeEnum.S12}>
-              Draw a rectangle with mouse to zoom in
-            </Text>
-            <Text size={TextSizeEnum.S12}>
-              Click on node to go to token page
-            </Text>
-          </InfoHover>
-        </div>
-      </div>
+
+      {domainX[0] !== minX ||
+      domainX[1] !== maxX ||
+      domainY[0] !== minY ||
+      domainY[1] !== maxY ? (
+        <Button
+          onClick={resetChart}
+          variant={ButtonVariantEnum.primary}
+          text="Reset chart"
+          icon={IconsEnum.refresh}
+        />
+      ) : null}
     </div>
   );
 };

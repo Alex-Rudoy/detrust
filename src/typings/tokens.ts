@@ -1,5 +1,6 @@
 export type TokenType = {
   id: number;
+  symbol: string;
   project_name: string;
   contract_address: string;
   categories: string;
@@ -32,7 +33,9 @@ export type TokenPriceChartItemRawType = {
   dt: string;
   dt_h: string;
   price: number;
+  volume: number;
   project_id: `${number}`;
+  symbol: string;
 };
 
 export type TokenPriceChartItemType = {

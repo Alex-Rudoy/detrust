@@ -12,7 +12,7 @@ export const BreadcrumbsComponent = ({ breadcrumbs }: BreadcrumbsProps) => {
     <div className={styles.breadcrumbs}>
       {breadcrumbs.map((breadcrumb, index) => (
         <Fragment key={breadcrumb}>
-          <Text size={TextSizeEnum.S32} fontWeight={FontWeightEnum.FW600}>
+          <Text size={TextSizeEnum.S32} fontWeight={FontWeightEnum.FW700}>
             {breadcrumb}
           </Text>
           {index !== breadcrumbs.length - 1 && (

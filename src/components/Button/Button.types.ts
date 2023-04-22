@@ -9,7 +9,7 @@ export enum ButtonVariantEnum {
 }
 
 export type ButtonProps = {
-  text: string;
+  text?: string;
   id?: string;
   variant?: ButtonVariantEnum;
   size?: 'sm' | 'md' | 'lg';

@@ -5,7 +5,7 @@ export type columnConfigType<T extends { id: number | string }> = {
   name: string;
   sortable?: boolean;
   cellRenderer: (data: T) => ReactNode;
-  tooltip?: { 'data-tip': string; 'data-for': string };
+  tooltip?: string;
 }[];
 
 export type TableProps<T extends { id: number | string }> = {

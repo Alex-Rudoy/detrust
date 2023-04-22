@@ -25,7 +25,8 @@ export const getServerSideProps: GetServerSideProps<TokenPageProps> = async (
   ctx,
 ) => {
   try {
-    if (!ctx.params?.id) {
+    const symbol = ctx.params?.symbol as string;
+    if (!symbol) {
       return {
         notFound: true,
       };
@@ -37,11 +38,13 @@ export const getServerSideProps: GetServerSideProps<TokenPageProps> = async (
       tokenInfluencersResponse,
       tokenMentionsResponse,
     ] = await Promise.all([
-      TokenService.getTokenData(ctx.params.id as string),
-      TokenService.getTokenPrice(ctx.params.id as string),
-      TokenService.getTokenInfluencersStat(ctx.params.id as string),
-      TokenService.getTokenMentions(ctx.params.id as string),
+      TokenService.getTokenData(symbol),
+      TokenService.getTokenPrice(symbol),
+      TokenService.getTokenInfluencersStat(symbol),
+      TokenService.getTokenMentions(symbol),
     ]);
+
+    console.log(tokenInfluencersResponse.data);
 
     const tokenPrice = tokenPriceResponse.data
       .map((item) => ({

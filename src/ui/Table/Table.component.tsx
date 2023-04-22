@@ -54,7 +54,16 @@ export const TableComponent = <T extends { id: number | string }>({
                     <Skeleton />
                   ) : (
                     <>
-                      <Text size={TextSizeEnum.S16}>{column.name}</Text>
+                      <Text
+                        size={TextSizeEnum.S16}
+                        tooltip={
+                          column.tooltip
+                            ? { id: column.id, text: column.tooltip }
+                            : undefined
+                        }
+                      >
+                        {column.name}
+                      </Text>
                       {column.sortable && (
                         <SvgIcon
                           src={IconsEnum.arrow}

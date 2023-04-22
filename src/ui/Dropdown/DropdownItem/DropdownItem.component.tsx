@@ -19,9 +19,7 @@ export const DropdownItemComponent = ({
   return (
     <div className={dropdownItemClass} onClick={onClick}>
       {icon && <SvgIcon src={icon} size={16} />}
-      <Text size={TextSizeEnum.S14} fontWeight={FontWeightEnum.FW400}>
-        {text}
-      </Text>
+      <Text size={TextSizeEnum.S14}>{text}</Text>
       {selected && (
         <SvgIcon
           src={IconsEnum.checkboxV}

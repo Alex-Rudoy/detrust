@@ -11,6 +11,7 @@ export enum IconsEnum {
   refresh = '/icons/common/refresh.svg',
   info = '/icons/common/info.svg',
   help = '/icons/common/help.svg',
+  settings = '/icons/common/settings.svg',
 
   // side menu
   tokens = '/icons/common/tokens.svg',

@@ -76,7 +76,6 @@ export const TokenPriceChartComponent = ({
       key,
       width,
       height,
-      ...rest
     }: {
       cx: number;
       cy: number;
@@ -87,7 +86,6 @@ export const TokenPriceChartComponent = ({
       payload: TokenPriceChartItemType;
     }): ReactElement<SVGElement> => {
       if (!payload.color) return <svg key={key} />;
-      console.log(rest);
 
       return (
         <circle

@@ -29,7 +29,7 @@ export const TextComponent = ({
   children,
   className,
   dots,
-  fontWeight = FontWeightEnum.FW500,
+  fontWeight = FontWeightEnum.FW400,
   style,
   textTransform,
   size,

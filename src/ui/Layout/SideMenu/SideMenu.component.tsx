@@ -28,11 +28,11 @@ export const SideMenuComponent = ({ activeMenuLink }: SideMenuProps) => {
           {navItems.map((item) => (
             <div key={item.heading} className={styles.group}>
               <div className={styles.groupHeading}>
-                <Text size={TextSizeEnum.S10} fontWeight={FontWeightEnum.FW600}>
+                <Text size={TextSizeEnum.S10} fontWeight={FontWeightEnum.FW700}>
                   {item.heading}
                 </Text>
                 {item.disabled ? (
-                  <Badge color={BadgeColorsEnum.error} text="soon"></Badge>
+                  <Badge color={BadgeColorsEnum.error} text="Soon"></Badge>
                 ) : null}
               </div>
               <div>
@@ -52,7 +52,7 @@ export const SideMenuComponent = ({ activeMenuLink }: SideMenuProps) => {
                     {link.disabled ? (
                       <Badge
                         color={BadgeColorsEnum.error}
-                        text="soon"
+                        text="Soon"
                         className={styles.badge}
                       />
                     ) : null}

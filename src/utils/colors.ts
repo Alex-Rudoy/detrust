@@ -6,6 +6,8 @@ export const gray_600 = '#475467';
 export const primary_100 = '#dbe6f8';
 export const primary_400 = '#5c98f1';
 
+export const primary_dark_900 = '#030f21';
+
 export const success_400 = '#32d583';
 export const success_500 = '#12b76a';
 export const success_600 = '#039855';

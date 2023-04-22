@@ -13,6 +13,7 @@ import {
 } from './ChartWithTokenScores.constants';
 
 import { gray_100, primary_100, primary_400 } from '@utils/colors';
+import { postfixNumber } from '@utils/postfixNumber';
 
 import { TokenType } from '@typings/tokens';
 
@@ -56,8 +57,13 @@ export const ChartWithTokenScoresComponent = ({
               {tickLabels[label].description}
             </tspan>
             <tspan x={x} dy="1.5em" fill={primary_400}>
-              {Math.round(+token[tickLabels[label].key as keyof TokenType])}
-              {tickLabels[label].isPercent && '%'}
+              {tickLabels[label].isPercent
+                ? `${Math.round(
+                    +token[tickLabels[label].key as keyof TokenType] * 100,
+                  )}%`
+                : postfixNumber(
+                    +token[tickLabels[label].key as keyof TokenType],
+                  )}
             </tspan>
           </text>
         </g>

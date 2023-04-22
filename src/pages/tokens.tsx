@@ -1,7 +1,13 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
-import { TokensListPage, TokensListPageProps } from '@views/TokensListPage';
+import {
+  GraphLink,
+  GraphNode,
+  TokensListPage,
+  TokensListPageProps,
+} from '@views/TokensListPage';
 
+import { primary_400, success_400 } from '@utils/colors';
 import { TokenService } from '@api/TokenService';
 
 import { TokenConnectionType, TokenType } from '@typings/tokens';
@@ -10,9 +16,7 @@ export default function Tokens(props: TokensListPageProps) {
   return <TokensListPage {...props} />;
 }
 
-export const getServerSideProps: GetServerSideProps<
-  TokensListPageProps
-> = async () => {
+export const getStaticProps: GetStaticProps<TokensListPageProps> = async () => {
   try {
     const [tokensResponse, tokenConnectionsResponse] = await Promise.all([
       TokenService.getTokens(),
@@ -25,6 +29,7 @@ export const getServerSideProps: GetServerSideProps<
         chartBoundaries: getBoundaries(tokensResponse.data),
         ...prepareGraph(tokensResponse.data, tokenConnectionsResponse.data),
       },
+      revalidate: 10, // In seconds
     };
   } catch (error) {
     console.log(error);
@@ -37,7 +42,10 @@ export const getServerSideProps: GetServerSideProps<
 function prepareGraph(
   tokens: TokenType[],
   tokenConnectionsRaw: TokenConnectionType[],
-) {
+): {
+  nodes: GraphNode[];
+  links: GraphLink[];
+} {
   const uniqueTokens = new Set(tokens.map((token) => token.id));
   const tokenConnections = tokenConnectionsRaw.filter((connection) =>
     uniqueTokens.has(connection.target_id),
@@ -48,18 +56,27 @@ function prepareGraph(
     source: `token_${connection.target_id}`,
   }));
 
-  const tokenNodes = tokens.map((token) => ({
+  const tokenNodes: GraphNode[] = tokens.map((token) => ({
     id: `token_${token.id}`,
+    type: 'token',
+    symbol: token.symbol,
     label: token.project_name,
+    color: primary_400,
+    neighbors: [],
+    links: [],
   }));
 
   const uniqueUsers = [
     ...new Set(tokenConnections.map((c) => c.follower_username)),
   ];
 
-  const userNodes = uniqueUsers.map((username) => ({
+  const userNodes: GraphNode[] = uniqueUsers.map((username) => ({
     id: `user_${username}`,
+    type: 'user',
     label: username,
+    color: success_400,
+    neighbors: [],
+    links: [],
   }));
 
   const nodes = [...tokenNodes, ...userNodes];

@@ -15,7 +15,7 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
     name: 'Name',
     sortable: true,
     cellRenderer: (data) => (
-      <Link href={routes.tokenPage(data.id)}>
+      <Link href={routes.tokenPage(data.symbol)}>
         <div className={styles.nameCell}>
           <Text size={TextSizeEnum.S14}>{data.project_name}</Text>
         </div>
@@ -25,6 +25,7 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
   {
     id: 'project_count_followers_10k',
     name: 'Big Followers',
+    tooltip: 'Amount of followers with more than 10K Followers',
     sortable: true,
     cellRenderer: (data) => (
       <ScoreCell
@@ -36,6 +37,7 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
   {
     id: 'project_token_ranked_followers_10k',
     name: 'Influence',
+    tooltip: 'Amount of influencers from top 10K list in current domain',
     sortable: true,
     cellRenderer: (data) => (
       <ScoreCell
@@ -47,12 +49,14 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
   {
     id: 'buying_power',
     name: 'Buying Power',
+    tooltip: 'Buying Power of subject community',
     sortable: true,
     cellRenderer: (data) => <ScoreCell normalizedData={data.buying_power} />,
   },
   {
     id: 'holders_count',
     name: 'Unique Holders',
+    tooltip: 'Count of unique token holders',
     sortable: true,
     cellRenderer: (data) => (
       <ScoreCell
@@ -64,6 +68,7 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
   {
     id: 'holders_value',
     name: 'Holders Capital',
+    tooltip: 'Amount of top 1000 holders capital',
     sortable: true,
     cellRenderer: (data) => (
       <ScoreCell
@@ -75,6 +80,7 @@ export const tokensTableColumns = (): columnConfigType<TokenType> => [
   {
     id: 'volume_to_mc',
     name: 'Volume Score',
+    tooltip: 'AVG daily volume to MC',
     sortable: true,
     cellRenderer: (data) => (
       <ScoreCell
