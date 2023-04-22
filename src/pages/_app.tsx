@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 import { Loader } from '@components/Loader';
@@ -9,8 +10,9 @@ import { wrapper } from '@store/index';
 
 import '@styles/index.scss';
 
-function App({ Component, pageProps, router }: AppProps) {
+function App({ Component, router, ...rest }: AppProps) {
   const [loading, setLoading] = useState(false);
+  const { store, props } = wrapper.useWrappedStore(rest);
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -31,21 +33,21 @@ function App({ Component, pageProps, router }: AppProps) {
   }, []);
 
   return (
-    <>
+    <Provider store={store}>
       <SwitchTransition mode="out-in">
         <CSSTransition
           key={router.pathname}
           classNames="pageTransition"
           timeout={300}
         >
-          <Component {...pageProps} />
+          <Component {...props.pageProps} />
         </CSSTransition>
       </SwitchTransition>
       <div className={classNames('loaderContainer', { loading: loading })}>
         <Loader />
       </div>
-    </>
+    </Provider>
   );
 }
 
-export default wrapper.withRedux(App);
+export default App;

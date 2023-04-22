@@ -1,5 +1,4 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { lerp } from 'three/src/math/MathUtils';
 
 import {
   fetchTokenPriceSuccessAction,
@@ -15,6 +14,7 @@ import {
   success_400,
   success_600,
 } from '@utils/colors';
+import { lerp } from '@utils/lerp';
 import { logger } from '@utils/logger';
 import { norm } from '@utils/norm';
 import { TokenService } from '@api/TokenService';

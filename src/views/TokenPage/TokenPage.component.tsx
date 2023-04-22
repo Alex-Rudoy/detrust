@@ -22,6 +22,7 @@ export const TokenPageComponent = () => {
     useTokensActions();
 
   useEffect(() => {
+    if (!token.symbol) return;
     fetchTokenPriceAction({ symbol: token.symbol });
     fetchTokenInfluencersAction({ symbol: token.symbol });
   }, [token.symbol]);
