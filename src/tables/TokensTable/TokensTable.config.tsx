@@ -5,7 +5,7 @@ import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
 import { routes } from '@views/routes';
 
-import { TokenType } from '@typings/tokens';
+import { TokenType } from '@store/tokens/token/token.types';
 
 import styles from './TokensTable.module.scss';
 

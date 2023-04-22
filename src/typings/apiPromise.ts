@@ -1,3 +1,3 @@
 import { AxiosResponse } from 'axios';
 
-export type ApiPromise<T> = Promise<AxiosResponse<T>>;
+export type BackendResponse<T> = AxiosResponse<T>;

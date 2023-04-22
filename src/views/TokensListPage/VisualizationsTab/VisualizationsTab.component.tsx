@@ -21,15 +21,19 @@ import { routes } from '@views/routes';
 import { ScatterChartTooltip } from './ScatterChartTooltip/ScatterChartTooltip';
 
 import { hasValue } from '@utils/hasValue';
+import { useTokensListSelector } from '@store/tokens/tokensList/useTokensListSelector';
 
-import { TokensListPageProps } from '../TokensListPage.types';
+import { requestStatusEnum } from '@typings/requestStatus';
 
 import styles from './VisualizationsTab.module.scss';
 
-export const VisualizationsTabComponent = ({
-  tokens,
-  chartBoundaries: { minX, maxX, minY, maxY },
-}: TokensListPageProps) => {
+export const VisualizationsTabComponent = () => {
+  const {
+    tokensList,
+    tokenBoundaries: { minX, maxX, minY, maxY },
+    status,
+  } = useTokensListSelector();
+
   const router = useRouter();
   const [selectionStart, setSelectionStart] = useState<{
     x?: number;
@@ -44,8 +48,11 @@ export const VisualizationsTabComponent = ({
 
   const symbols = useMemo(
     () =>
-      tokens.reduce((obj, token) => ({ ...obj, [token.id]: token.symbol }), {}),
-    [tokens],
+      tokensList.reduce(
+        (obj, token) => ({ ...obj, [token.id]: token.symbol }),
+        {},
+      ),
+    [tokensList],
   );
 
   const handleMouseDown: CategoricalChartFunc = (nextState, e) => {
@@ -97,12 +104,14 @@ export const VisualizationsTabComponent = ({
     setDomainY([minY, maxY]);
   };
 
+  if (status !== requestStatusEnum.SUCCESS) return null;
+
   return (
     <div className={styles.visualizationTab}>
       <div className={styles.heading}>
         <Text size={TextSizeEnum.S12}>
-          This Plot show how similar are projects depends on community, more
-          closer are 2 project, more similar are their community
+          This graph shows how similar projects are based on their communities.
+          The closer two projects are, the more similar their community is.
         </Text>
         <InfoHover id="scatter_chart_help">
           <Text size={TextSizeEnum.S12}>
@@ -145,7 +154,7 @@ export const VisualizationsTabComponent = ({
             name="general_score"
           />
           <Tooltip cursor={false} content={ScatterChartTooltip} />
-          <Scatter data={tokens} fill="#5c98f1" />
+          <Scatter data={tokensList} fill="#5c98f1" />
           {selectionStart.x && selectionEnd.x ? (
             <ReferenceArea
               x1={selectionStart.x}

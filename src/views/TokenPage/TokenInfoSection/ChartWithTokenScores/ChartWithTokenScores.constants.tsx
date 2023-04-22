@@ -1,4 +1,4 @@
-import { TokenType } from '@typings/tokens';
+import { TokenType } from '@store/tokens/token/token.types';
 
 export const generateChartWithTokenScoresData = (token: TokenType) => [
   {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Layout } from '@ui/Layout';
 import { TabBar } from '@ui/TabBar';
@@ -7,10 +7,20 @@ import {
   TokensListPageTabs,
 } from './TokensListPage.constants';
 
-import { TokensListPageProps } from './TokensListPage.types';
+import { useTokenConnectionsSelector } from '@store/tokens/tokenConnections/useTokenConnectionsSelector';
+import { useTokensActions } from '@store/tokens/useTokensActions';
 
-export const TokensListPageComponent = (props: TokensListPageProps) => {
+import { requestStatusEnum } from '@typings/requestStatus';
+
+export const TokensListPageComponent = () => {
   const [selectedTab, setSelectedTab] = useState('Visualizations');
+  const { fetchTokenConnectionsAction } = useTokensActions();
+  const { status } = useTokenConnectionsSelector();
+
+  useEffect(() => {
+    if (status !== requestStatusEnum.INITIAL) return;
+    fetchTokenConnectionsAction();
+  }, []);
 
   const TabComponent = TokensListPageTabComponents[selectedTab];
 
@@ -21,7 +31,7 @@ export const TokensListPageComponent = (props: TokensListPageProps) => {
         selectedTab={selectedTab}
         onTabClick={(value) => setSelectedTab(value)}
       />
-      <TabComponent {...props} />
+      <TabComponent />
     </Layout>
   );
 };

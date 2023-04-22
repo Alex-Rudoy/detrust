@@ -19,16 +19,13 @@ import { Text, TextSizeEnum } from '@components/Text';
 import { primary_400 } from '@utils/colors';
 import { ONE_DAY, TEN_DAYS } from '@utils/constants';
 import { hasValue } from '@utils/hasValue';
-
-import { TokenPriceChartItemType } from '@typings/tokens';
-
-import { TokenPriceChartProps } from './TokenPriceChart.types';
+import { TokenPriceChartItemType } from '@store/tokens/tokenPrice/tokenPrice.types';
+import { useTokenPriceSelector } from '@store/tokens/tokenPrice/useTokenPriceSelector';
 
 import styles from './TokenPriceChart.module.scss';
 
-export const TokenPriceChartComponent = ({
-  tokenPrice,
-}: TokenPriceChartProps) => {
+export const TokenPriceChartComponent = () => {
+  const { tokenPrice } = useTokenPriceSelector();
   const [selectionStart, setSelectionStart] = useState<{
     x?: number;
   }>({});

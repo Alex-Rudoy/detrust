@@ -1,15 +1,16 @@
-import { Button, ButtonVariantEnum } from '@components/Button';
 import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { Text, TextSizeEnum } from '@components/Text';
 import { ChartWithTokenScores } from './ChartWithTokenScores';
 
-import { TokenInfoSectionProps } from './TokenInfoSection.types';
+import { useTokenSelector } from '@store/tokens/token/useTokenSelector';
 
 import styles from './TokenInfoSection.module.scss';
 
-export const TokenInfoSectionComponent = ({ token }: TokenInfoSectionProps) => {
+export const TokenInfoSectionComponent = () => {
+  const { token } = useTokenSelector();
+
   return (
     <div className={styles.infoSection}>
       <div className={styles.description}>
@@ -31,7 +32,7 @@ export const TokenInfoSectionComponent = ({ token }: TokenInfoSectionProps) => {
         <Text size={TextSizeEnum.S14}>{token.description}</Text>
       </div>
       <div className={styles.chartContainer}>
-        <ChartWithTokenScores token={token} />
+        <ChartWithTokenScores />
       </div>
     </div>
   );

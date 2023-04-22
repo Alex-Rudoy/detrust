@@ -3,11 +3,13 @@ import classNames from 'classnames';
 import type { AppProps } from 'next/app';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
-import { IconsEnum, SvgIcon } from '@components/SvgIcon';
+import { Loader } from '@components/Loader';
+
+import { wrapper } from '@store/index';
 
 import '@styles/index.scss';
 
-export default function App({ Component, pageProps, router }: AppProps) {
+function App({ Component, pageProps, router }: AppProps) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -40,8 +42,10 @@ export default function App({ Component, pageProps, router }: AppProps) {
         </CSSTransition>
       </SwitchTransition>
       <div className={classNames('loaderContainer', { loading: loading })}>
-        <SvgIcon src={IconsEnum.loader} size={40} className="loader" />
+        <Loader />
       </div>
     </>
   );
 }
+
+export default wrapper.withRedux(App);

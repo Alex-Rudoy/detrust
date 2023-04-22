@@ -29,11 +29,11 @@
     1px -1px 2px var(--node-stroke-color), -1px 1px 2px var(--node-stroke-color),
     1px 1px 2px var(--node-stroke-color);
 
-  &.token {
+  &.tokens {
     --node-stroke-color: var(--primary-400);
   }
 
-  &.user {
+  &.degens {
     --node-stroke-color: var(--success-400);
   }
 
@@ -43,6 +43,6 @@
   }
 
   &.small {
-    font-size: 8px;
+    font-size: 10px;
   }
 }

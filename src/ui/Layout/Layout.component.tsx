@@ -1,12 +1,9 @@
-import { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { Scrolling } from '@components/Scrolling';
 import { Breadcrumbs } from './Breadcrumbs';
 import { Header } from './Header';
 import { SideMenu } from './SideMenu';
-
-import { isBrowser } from '@utils/isBrowser';
-import { DegensService } from '@api/DegensService';
 
 import { LayoutProps } from './Layout.types';
 
@@ -17,19 +14,6 @@ export const LayoutComponent = ({
   breadcrumbs,
   children,
 }: PropsWithChildren<LayoutProps>) => {
-  useEffect(() => {
-    (async () => {
-      if (!isBrowser(window)) return;
-      try {
-        const res = await DegensService.getGroups();
-        // .then((res) => console.log(res.data));
-        console.log(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
   return (
     <Scrolling horizontal>
       <Header />

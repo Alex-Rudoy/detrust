@@ -3,8 +3,6 @@ import dynamic from 'next/dynamic';
 import { ListTab } from './ListTab';
 import { VisualizationsTab } from './VisualizationsTab';
 
-import { TokensListPageProps } from './TokensListPage.types';
-
 const ConnectionsTab = dynamic(
   () => import('./ConnectionsTab').then((mod) => mod.ConnectionsTab),
   {
@@ -12,10 +10,7 @@ const ConnectionsTab = dynamic(
   },
 );
 
-export const TokensListPageTabComponents: Record<
-  string,
-  React.FC<TokensListPageProps>
-> = {
+export const TokensListPageTabComponents: Record<string, React.FC> = {
   Visualizations: VisualizationsTab,
   Connections: ConnectionsTab as React.FC,
   List: ListTab,

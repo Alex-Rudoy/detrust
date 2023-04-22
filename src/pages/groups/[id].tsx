@@ -1,39 +1,27 @@
-import { GetServerSideProps } from 'next';
+import { END } from 'redux-saga';
 
-import { DegenGroupPage, DegenGroupPageProps } from '@views/DegenGroupPage';
+import { DegenGroupPage } from '@views/DegenGroupPage';
 
-import { DegensService } from '@api/DegensService';
+import { SagaStore, wrapper } from '@store/index';
 
-export default function DegenGroup(props: DegenGroupPageProps) {
-  return <DegenGroupPage {...props} />;
+export default function DegenGroup() {
+  return <DegenGroupPage />;
 }
 
-export const getServerSideProps: GetServerSideProps<
-  DegenGroupPageProps
-> = async (ctx) => {
-  try {
-    const id = ctx.params?.id as string;
-    if (!ctx.params?.id) {
-      return {
-        notFound: true,
-      };
-    }
-
-    const [groupProjectsResponse, groupDegensResponse] = await Promise.all([
-      DegensService.getGroupProjects(id),
-      DegensService.getGroupDegens(id),
-    ]);
-
-    return {
-      props: {
-        degens: groupDegensResponse.data,
-        projects: groupProjectsResponse.data, // todo: add type
-      },
-    };
-  } catch (error) {
-    console.log(error);
+export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
+  const symbol = ctx.params?.symbol as string;
+  if (!symbol) {
     return {
       notFound: true,
     };
   }
-};
+  // store.dispatch(fetchTokenAction({ symbol })); // todo
+
+  store.dispatch(END);
+  await (store as SagaStore).sagaTask.toPromise();
+
+  return {
+    props: {},
+    revalidate: 10,
+  };
+});

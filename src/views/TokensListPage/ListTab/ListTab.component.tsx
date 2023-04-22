@@ -5,21 +5,20 @@ import { Scrolling } from '@components/Scrolling';
 import { TokensTable } from '@tables/TokensTable';
 
 import { ABsort } from '@utils/ABsort';
-
-import { TokenType } from '@typings/tokens';
-
-import { TokensListPageProps } from '../TokensListPage.types';
+import { TokenType } from '@store/tokens/token/token.types';
+import { useTokensListSelector } from '@store/tokens/tokensList/useTokensListSelector';
 
 import styles from './ListTab.module.scss';
 
-export const ListTabComponent = ({ tokens }: TokensListPageProps) => {
+export const ListTabComponent = () => {
+  const { tokensList } = useTokensListSelector();
   const [sortedBy, setSortedBy] = useState<keyof TokenType>('general_score');
   const [reverseSort, setReverseSort] = useState(false);
-  const [data, setData] = useState(tokens);
+  const [data, setData] = useState(tokensList);
 
   useEffect(() => {
     setData(
-      tokens
+      tokensList
         .slice()
         .sort((a, b) =>
           reverseSort

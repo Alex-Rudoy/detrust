@@ -14,14 +14,12 @@ import {
 
 import { gray_100, primary_100, primary_400 } from '@utils/colors';
 import { postfixNumber } from '@utils/postfixNumber';
+import { TokenType } from '@store/tokens/token/token.types';
+import { useTokenSelector } from '@store/tokens/token/useTokenSelector';
 
-import { TokenType } from '@typings/tokens';
+export const ChartWithTokenScoresComponent = () => {
+  const { token } = useTokenSelector();
 
-import { ChartWithTokenScoresProps } from './ChartWithTokenScores.types';
-
-export const ChartWithTokenScoresComponent = ({
-  token,
-}: ChartWithTokenScoresProps) => {
   const CustomTick = useCallback(
     ({
       payload,
