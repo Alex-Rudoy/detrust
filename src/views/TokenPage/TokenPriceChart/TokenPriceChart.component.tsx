@@ -2,7 +2,6 @@ import { ReactElement, useCallback, useState } from 'react';
 import {
   Area,
   CartesianGrid,
-  Line,
   AreaChart,
   ReferenceArea,
   ResponsiveContainer,

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { Scrolling } from '@components/Scrolling';
 import { TokensTable } from '@tables/TokensTable';
 
 import { ABsort } from '@utils/ABsort';
