@@ -3,19 +3,18 @@ import { useEffect, useState } from 'react';
 import { DegensTable } from '@tables/DegensTable';
 
 import { ABsort } from '@utils/ABsort';
-import { useTokenInfluencersSelector } from '@store/tokens/tokenInfluencers/useTokenInfluencersSelector';
-
-import { DegenType } from '@typings/degens';
+import { DegenType } from '@store/degens/degen/degen.types';
+import { useDegensListSelector } from '@store/degens/degensList/useDegensListSelector';
 
 export const TokenInfluencersSectionComponent = () => {
-  const { tokenInfluencers } = useTokenInfluencersSelector();
+  const { degensList } = useDegensListSelector();
   const [sortedBy, setSortedBy] = useState<keyof DegenType>('username');
   const [reverseSort, setReverseSort] = useState(false);
-  const [data, setData] = useState(tokenInfluencers);
+  const [data, setData] = useState(degensList);
 
   useEffect(() => {
     setData(
-      tokenInfluencers
+      degensList
         .slice()
         .sort((a, b) =>
           reverseSort
@@ -23,7 +22,7 @@ export const TokenInfluencersSectionComponent = () => {
             : ABsort(b[sortedBy], a[sortedBy]),
         ),
     );
-  }, [sortedBy, reverseSort]);
+  }, [sortedBy, reverseSort, degensList]);
 
   const onSortClick = (id: keyof DegenType, reverseSort: boolean) => {
     setSortedBy(id);

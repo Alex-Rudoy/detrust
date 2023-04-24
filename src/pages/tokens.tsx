@@ -19,6 +19,7 @@ export const getStaticProps = wrapper.getServerSideProps(
 
     return {
       props: {},
+      revalidate: 10,
     };
   },
 );

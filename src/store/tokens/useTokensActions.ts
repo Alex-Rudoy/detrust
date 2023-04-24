@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 
 import { fetchTokenAction } from './token/token.reducer';
 import { fetchTokenConnectionsAction } from './tokenConnections/tokenConnections.reducer';
-import { fetchTokenInfluencersAction } from './tokenInfluencers/tokenInfluencers.reducer';
 import { fetchTokenPriceAction } from './tokenPrice/tokenPrice.reducer';
 import { fetchTokensListAction } from './tokensList/tokensList.reducer';
 
@@ -16,7 +15,6 @@ export const useTokensActions = () => {
       fetchTokenConnectionsAction,
       fetchTokenAction,
       fetchTokenPriceAction,
-      fetchTokenInfluencersAction,
     },
     dispatch,
   );

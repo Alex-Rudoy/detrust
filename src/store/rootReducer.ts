@@ -1,7 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import degenReducer from './degens/degen/degen.reducer';
+import degensListReducer from './degens/degensList/degensList.reducer';
+import groupsReducer from './degens/groups/groups.reducer';
 import tokenReducer from './tokens/token/token.reducer';
 import tokenConnectionsReducer from './tokens/tokenConnections/tokenConnections.reducer';
-import tokenInfluencersReducer from './tokens/tokenInfluencers/tokenInfluencers.reducer';
 import tokenPriceReducer from './tokens/tokenPrice/tokenPrice.reducer';
 import tokensListReducer from './tokens/tokensList/tokensList.reducer';
 
@@ -10,6 +12,10 @@ export default combineReducers({
   tokensList: tokensListReducer,
   tokenConnections: tokenConnectionsReducer,
   token: tokenReducer,
-  tokenInfluencers: tokenInfluencersReducer,
   tokenPrice: tokenPriceReducer,
+
+  // degens
+  groups: groupsReducer,
+  degensList: degensListReducer,
+  degen: degenReducer,
 });

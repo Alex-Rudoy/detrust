@@ -3,7 +3,7 @@ import { Text, TextSizeEnum } from '@components/Text';
 import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
 
-import { DegenType } from '@typings/degens';
+import { DegenType } from '@store/degens/degen/degen.types';
 
 import styles from './DegensTable.module.scss';
 

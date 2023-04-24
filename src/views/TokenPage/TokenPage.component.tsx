@@ -6,6 +6,7 @@ import { TokenInfluencersSection } from './TokenInfluencersSection';
 import { TokenInfoSection } from './TokenInfoSection';
 import { TokenPriceChart } from './TokenPriceChart';
 
+import { useDegensActions } from '@store/degens/useDegensActions';
 import { useTokenSelector } from '@store/tokens/token/useTokenSelector';
 import { useTokenPriceSelector } from '@store/tokens/tokenPrice/useTokenPriceSelector';
 import { useTokensActions } from '@store/tokens/useTokensActions';
@@ -18,13 +19,13 @@ export const TokenPageComponent = () => {
   const { token } = useTokenSelector();
   const { status } = useTokenPriceSelector();
 
-  const { fetchTokenPriceAction, fetchTokenInfluencersAction } =
-    useTokensActions();
+  const { fetchTokenPriceAction } = useTokensActions();
+  const { fetchDegensListForTokenAction } = useDegensActions();
 
   useEffect(() => {
     if (!token.symbol) return;
     fetchTokenPriceAction({ symbol: token.symbol });
-    fetchTokenInfluencersAction({ symbol: token.symbol });
+    fetchDegensListForTokenAction({ symbol: token.symbol });
   }, [token.symbol]);
 
   return (

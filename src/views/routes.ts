@@ -6,6 +6,6 @@ export const routes = {
   fund: () => '/fund',
   account: () => '/account',
 
-  groupPage: (id: string) => `/groups/${id}`,
-  degenPage: (id: string) => `/degens/${id}`,
+  groupPage: (id: number) => `/groups/${id}`,
+  degenPage: (username: string) => `/degens/${username}`,
 };

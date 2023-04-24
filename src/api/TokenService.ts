@@ -1,7 +1,7 @@
 import { api } from '.';
 
+import { FetchDegensListResponse } from '@store/degens/degensList/degensList.types';
 import { FetchTokenConnectionsResponse } from '@store/tokens/tokenConnections/tokenConnections.types';
-import { FetchTokenInfluencersResponse } from '@store/tokens/tokenInfluencers/tokenInfluencers.types';
 import {
   FetchTokenMentionsResponse,
   FetchTokenPriceResponse,
@@ -21,9 +21,7 @@ export const TokenService = {
     return api.get(`/general/getCoinProject/${symbol}`); // api returns one item in array
   },
 
-  getTokenInfluencersStat(
-    tokenId: string,
-  ): Promise<FetchTokenInfluencersResponse> {
+  getTokenInfluencersStat(tokenId: string): Promise<FetchDegensListResponse> {
     return api.get(`/general/getProjectInfluencersStat/${tokenId}`);
   },
 

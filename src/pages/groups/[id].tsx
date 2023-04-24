@@ -2,6 +2,7 @@ import { END } from 'redux-saga';
 
 import { DegenGroupPage } from '@views/DegenGroupPage';
 
+import { DegensService } from '@api/DegensService';
 import { SagaStore, wrapper } from '@store/index';
 
 export default function DegenGroup() {
@@ -9,13 +10,13 @@ export default function DegenGroup() {
 }
 
 export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
-  const symbol = ctx.params?.symbol as string;
-  if (!symbol) {
+  const id = ctx.params?.id as string;
+  if (!id) {
     return {
       notFound: true,
     };
   }
-  // store.dispatch(fetchTokenAction({ symbol })); // todo
+  // store.dispatch(fetchGrou({ id }));
 
   store.dispatch(END);
   await (store as SagaStore).sagaTask.toPromise();
@@ -25,3 +26,13 @@ export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
     revalidate: 10,
   };
 });
+
+export async function getStaticPaths() {
+  const res = await DegensService.getGroups();
+
+  const paths = res.data.map(({ category_id: id }) => ({
+    params: { id },
+  }));
+
+  return { paths, fallback: 'blocking' };
+}
