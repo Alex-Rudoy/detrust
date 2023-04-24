@@ -1,6 +1,4 @@
-import { HYDRATE } from 'next-redux-wrapper';
-
-import { createSlice } from '@reduxjs/toolkit';
+import { createHydrationSlice } from '@store/createHydrationSlice';
 
 import { requestStatusEnum } from '@typings/requestStatus';
 
@@ -27,7 +25,7 @@ const initialState: DegenReducerType = {
   },
 };
 
-const degenSlice = createSlice({
+const degenSlice = createHydrationSlice({
   name: 'degen',
   initialState,
   reducers: {
@@ -40,14 +38,6 @@ const degenSlice = createSlice({
     ) => {
       state.status = requestStatusEnum.SUCCESS;
       state.degen = payload;
-    },
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      return (state = {
-        ...state,
-        ...action.payload.degen,
-      });
     },
   },
 });

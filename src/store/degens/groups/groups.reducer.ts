@@ -1,6 +1,4 @@
-import { HYDRATE } from 'next-redux-wrapper';
-
-import { createSlice } from '@reduxjs/toolkit';
+import { createHydrationSlice } from '@store/createHydrationSlice';
 
 import { requestStatusEnum } from '@typings/requestStatus';
 
@@ -14,7 +12,7 @@ const initialState: GroupsReducerType = {
   groups: [],
 };
 
-const groupsSlice = createSlice({
+const groupsSlice = createHydrationSlice({
   name: 'token',
   initialState,
   reducers: {
@@ -27,14 +25,6 @@ const groupsSlice = createSlice({
     ) => {
       state.status = requestStatusEnum.SUCCESS;
       state.groups = payload;
-    },
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      return (state = {
-        ...state,
-        ...action.payload.token,
-      });
     },
   },
 });

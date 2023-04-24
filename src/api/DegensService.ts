@@ -1,16 +1,16 @@
 import { api } from '.';
-import { AxiosResponse } from 'axios';
 
 import { FetchDegenResponse } from '@store/degens/degen/degen.types';
 import { FetchDegensListResponse } from '@store/degens/degensList/degensList.types';
-import { GroupShortType } from '@store/degens/groups/groups.types';
+import { FetchGroupsResponse } from '@store/degens/groups/groups.types';
+import { FetchGroupTokensResponse } from '@store/degens/groupTokens/groupTokens.types';
 
 export const DegensService = {
-  getGroups(): Promise<AxiosResponse<GroupShortType[]>> {
+  getGroups(): Promise<FetchGroupsResponse> {
     return api.get('/general/groupList');
   },
 
-  getGroupProjects(id: string): Promise<AxiosResponse<any[]>> {
+  getGroupTokens(id: number): Promise<FetchGroupTokensResponse> {
     return api.get(`/general/groupProjects/${id}`);
   },
 
