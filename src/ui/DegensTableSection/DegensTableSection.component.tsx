@@ -6,7 +6,7 @@ import { ABsort } from '@utils/ABsort';
 import { DegenType } from '@store/degens/degen/degen.types';
 import { useDegensListSelector } from '@store/degens/degensList/useDegensListSelector';
 
-export const TokenInfluencersSectionComponent = () => {
+export const DegensTableSectionComponent = () => {
   const { degensList } = useDegensListSelector();
   const [sortedBy, setSortedBy] = useState<keyof DegenType>('username');
   const [reverseSort, setReverseSort] = useState(false);
@@ -40,4 +40,4 @@ export const TokenInfluencersSectionComponent = () => {
     />
   );
 };
-TokenInfluencersSectionComponent.displayName = 'TokenInfluencersSection';
+DegensTableSectionComponent.displayName = 'DegensTableSection';

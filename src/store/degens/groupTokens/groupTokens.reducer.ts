@@ -28,7 +28,7 @@ const groupTokensSlice = createHydrationSlice({
       { payload }: FetchGroupTokensSuccessActionType,
     ) => {
       state.status = requestStatusEnum.SUCCESS;
-      state.GroupTokens = payload;
+      state.groupTokens = payload;
     },
   },
 });

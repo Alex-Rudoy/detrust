@@ -1,7 +1,10 @@
+import Link from 'next/link';
+
 import { BadgeDelta } from '@components/BadgeDelta';
 import { Text, TextSizeEnum } from '@components/Text';
 import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
+import { routes } from '@views/routes';
 
 import { DegenType } from '@store/degens/degen/degen.types';
 
@@ -13,9 +16,11 @@ export const degensTableColumns = (): columnConfigType<DegenType> => [
     name: 'Name',
     sortable: true,
     cellRenderer: (data) => (
-      <div className={styles.textCell}>
-        <Text size={TextSizeEnum.S14}>{data.username}</Text>
-      </div>
+      <Link href={routes.degenPage(data.username)}>
+        <div className={styles.textCell}>
+          <Text size={TextSizeEnum.S14}>{data.username}</Text>
+        </div>
+      </Link>
     ),
   },
   {

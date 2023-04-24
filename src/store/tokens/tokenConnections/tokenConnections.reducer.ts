@@ -1,4 +1,4 @@
-import { createHydrationSlice } from '@store/createHydrationSlice';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { requestStatusEnum } from '@typings/requestStatus';
 
@@ -13,7 +13,7 @@ const initialState: TokenConnectionsReducerType = {
   links: [],
 };
 
-const tokenConnectionsSlice = createHydrationSlice({
+const tokenConnectionsSlice = createSlice({
   name: 'tokenConnections',
   initialState,
   reducers: {

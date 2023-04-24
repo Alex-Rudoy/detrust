@@ -16,7 +16,7 @@ export const BreadcrumbsComponent = ({ breadcrumbs }: BreadcrumbsProps) => {
             {breadcrumb}
           </Text>
           {index !== breadcrumbs.length - 1 && (
-            <SvgIcon src={IconsEnum.arrowChevron} size={12} rotate="270" />
+            <SvgIcon src={IconsEnum.arrowChevron} size={16} rotate="270" />
           )}
         </Fragment>
       ))}

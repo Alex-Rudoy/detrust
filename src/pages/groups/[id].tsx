@@ -3,6 +3,8 @@ import { END } from 'redux-saga';
 import { DegenGroupPage } from '@views/DegenGroupPage';
 
 import { DegensService } from '@api/DegensService';
+import { fetchDegensListForGroupAction } from '@store/degens/degensList/degensList.reducer';
+import { fetchGroupTokensAction } from '@store/degens/groupTokens/groupTokens.reducer';
 import { SagaStore, wrapper } from '@store/index';
 
 export default function DegenGroup() {
@@ -16,7 +18,9 @@ export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
       notFound: true,
     };
   }
-  // store.dispatch(fetchGrou({ id }));
+
+  store.dispatch(fetchGroupTokensAction({ id: +id }));
+  store.dispatch(fetchDegensListForGroupAction({ id: +id }));
 
   store.dispatch(END);
   await (store as SagaStore).sagaTask.toPromise();
@@ -31,7 +35,7 @@ export async function getStaticPaths() {
   const res = await DegensService.getGroups();
 
   const paths = res.data.map(({ category_id: id }) => ({
-    params: { id },
+    params: { id: id.toString() },
   }));
 
   return { paths, fallback: 'blocking' };

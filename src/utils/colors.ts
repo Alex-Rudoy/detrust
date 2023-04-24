@@ -15,3 +15,13 @@ export const success_700 = '#027a48';
 
 export const error_400 = '#f97066';
 export const error_600 = '#d92d20';
+
+export const warning_400 = '#fdb022';
+export const blue_gray_400 = '#717bbc';
+export const blue_light_400 = '#36bffa';
+export const blue_400 = '#53b1fd';
+export const indigo_400 = '#8098f9';
+export const purple_400 = '#9b8afb';
+export const pink_400 = '#f670c7';
+export const rose_400 = '#fd6f8e';
+export const orange_400 = '#fd853a';

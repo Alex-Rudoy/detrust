@@ -22,6 +22,12 @@ export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
   store.dispatch(END);
   await (store as SagaStore).sagaTask.toPromise();
 
+  if (!store.getState().token.token.id) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {},
     revalidate: 10,

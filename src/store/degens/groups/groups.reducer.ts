@@ -1,4 +1,4 @@
-import { createHydrationSlice } from '@store/createHydrationSlice';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { requestStatusEnum } from '@typings/requestStatus';
 
@@ -12,8 +12,8 @@ const initialState: GroupsReducerType = {
   groups: [],
 };
 
-const groupsSlice = createHydrationSlice({
-  name: 'token',
+const groupsSlice = createSlice({
+  name: 'groups',
   initialState,
   reducers: {
     fetchGroupsAction: (state) => {

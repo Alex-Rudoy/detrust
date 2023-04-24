@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 
 import { Loader } from '@components/Loader';
 import { Layout } from '@ui/Layout';
-import { TokenInfluencersSection } from './TokenInfluencersSection';
 import { TokenInfoSection } from './TokenInfoSection';
 import { TokenPriceChart } from './TokenPriceChart';
+import { DegensTableSection } from '../../ui/DegensTableSection';
 
 import { useDegensActions } from '@store/degens/useDegensActions';
 import { useTokenSelector } from '@store/tokens/token/useTokenSelector';
@@ -37,7 +37,7 @@ export const TokenPageComponent = () => {
       {status === requestStatusEnum.SUCCESS ? (
         <>
           <TokenPriceChart />
-          <TokenInfluencersSection />
+          <DegensTableSection />
         </>
       ) : (
         <div className={styles.loadingContainer}>
