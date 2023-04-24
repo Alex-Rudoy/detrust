@@ -14,7 +14,7 @@ export type FetchDegenActionType = PayloadAction<{ username: string }>;
 export type FetchDegenSuccessActionType = PayloadAction<DegenType>;
 
 // api
-export type FetchDegenResponse = AxiosResponse<DegenType>;
+export type FetchDegenResponse = AxiosResponse<DegenType[]>;
 
 // utils
 export type DegenType = {

@@ -1,6 +1,10 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-import { fetchDegenSuccessAction, fetchDegenAction } from './degen.reducer';
+import {
+  fetchDegenSuccessAction,
+  fetchDegenAction,
+  fetchDegenErrorAction,
+} from './degen.reducer';
 
 import { logger } from '@utils/logger';
 import { DegensService } from '@api/DegensService';
@@ -14,7 +18,11 @@ function* fetchDegenSaga({ payload }: FetchDegenActionType) {
       payload.username,
     );
 
-    yield put(fetchDegenSuccessAction(res.data));
+    if (res.data.length) {
+      yield put(fetchDegenSuccessAction(res.data[0]));
+    } else {
+      yield put(fetchDegenErrorAction());
+    }
   } catch (error) {
     logger(error);
   }

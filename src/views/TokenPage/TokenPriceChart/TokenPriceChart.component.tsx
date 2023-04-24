@@ -1,8 +1,9 @@
 import { ReactElement, useCallback, useState } from 'react';
 import {
+  Area,
   CartesianGrid,
   Line,
-  LineChart,
+  AreaChart,
   ReferenceArea,
   ResponsiveContainer,
   Tooltip,
@@ -13,6 +14,7 @@ import { CategoricalChartFunc } from 'recharts/types/chart/generateCategoricalCh
 
 import { Button, ButtonVariantEnum } from '@components/Button';
 import { InfoHover } from '@components/InfoHover';
+import { Loader } from '@components/Loader';
 import { IconsEnum } from '@components/SvgIcon';
 import { Text, TextSizeEnum } from '@components/Text';
 
@@ -22,10 +24,12 @@ import { hasValue } from '@utils/hasValue';
 import { TokenPriceChartItemType } from '@store/tokens/tokenPrice/tokenPrice.types';
 import { useTokenPriceSelector } from '@store/tokens/tokenPrice/useTokenPriceSelector';
 
+import { requestStatusEnum } from '@typings/requestStatus';
+
 import styles from './TokenPriceChart.module.scss';
 
 export const TokenPriceChartComponent = () => {
-  const { tokenPrice } = useTokenPriceSelector();
+  const { tokenPrice, status } = useTokenPriceSelector();
   const [selectionStart, setSelectionStart] = useState<{
     x?: number;
   }>({});
@@ -111,68 +115,88 @@ export const TokenPriceChartComponent = () => {
           </Text>
         </InfoHover>
       </div>
-      <ResponsiveContainer height={500}>
-        <LineChart
-          data={tokenPrice}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis
-            dataKey="timestamp"
-            type="number"
-            domain={domainX}
-            tick={{ fontSize: 12 }}
-            tickCount={10}
-            tickFormatter={(value) =>
-              domainX[1] !== 'dataMax' &&
-              domainX[0] !== 'dataMin' &&
-              domainX[1] - domainX[0] < TEN_DAYS
-                ? new Date(value).toLocaleDateString() +
-                  ' ' +
-                  new Date(value).toLocaleTimeString()
-                : new Date(value).toLocaleDateString()
-            }
-            allowDataOverflow
-          />
-          <YAxis
-            dataKey="price"
-            type="number"
-            domain={['dataMin', 'dataMax']}
-            tick={{ fontSize: 12 }}
-            tickCount={5}
-            tickFormatter={(value) => value.toString().slice(0, 5)}
-            allowDataOverflow
-            padding={{ top: 10, bottom: 10 }}
-          />
-          <Line
-            type="monotone"
-            dataKey="price"
-            stroke={primary_400}
-            activeDot={false}
-            dot={CustomDot}
-          />
-          <Tooltip content={() => null} />
-          {selectionStart.x && selectionEnd.x ? (
-            <ReferenceArea
-              x1={selectionStart.x}
-              x2={selectionEnd.x}
-              strokeOpacity={0.3}
-            />
-          ) : null}
-        </LineChart>
-      </ResponsiveContainer>
-      <div className={styles.controls}>
-        {domainX[0] !== 'dataMin' || domainX[1] !== 'dataMax' ? (
-          <Button
-            onClick={resetChart}
-            variant={ButtonVariantEnum.primary}
-            text="Reset chart"
-            icon={IconsEnum.refresh}
-          />
-        ) : null}
-      </div>
+      {status !== requestStatusEnum.SUCCESS ? (
+        <div className={styles.loadingContainer}>
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <ResponsiveContainer height={500}>
+            <AreaChart
+              data={tokenPrice}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+            >
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop
+                    offset="10%"
+                    stopColor={primary_400}
+                    stopOpacity={0.3}
+                  />
+                  <stop offset="90%" stopColor={primary_400} stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="timestamp"
+                type="number"
+                domain={domainX}
+                tick={{ fontSize: 12 }}
+                tickCount={10}
+                tickFormatter={(value) =>
+                  domainX[1] !== 'dataMax' &&
+                  domainX[0] !== 'dataMin' &&
+                  domainX[1] - domainX[0] < TEN_DAYS
+                    ? new Date(value).toLocaleDateString() +
+                      ' ' +
+                      new Date(value).toLocaleTimeString()
+                    : new Date(value).toLocaleDateString()
+                }
+                allowDataOverflow
+              />
+              <YAxis
+                dataKey="price"
+                type="number"
+                domain={['dataMin', 'dataMax']}
+                tick={{ fontSize: 12 }}
+                tickCount={5}
+                tickFormatter={(value) => value.toString().slice(0, 5)}
+                allowDataOverflow
+                padding={{ top: 10, bottom: 10 }}
+              />
+              <Area
+                type="monotone"
+                dataKey="price"
+                stroke={primary_400}
+                activeDot={false}
+                dot={CustomDot}
+                fillOpacity={1}
+                fill="url(#colorUv)"
+              />
+              <Tooltip content={() => null} />
+              {selectionStart.x && selectionEnd.x ? (
+                <ReferenceArea
+                  x1={selectionStart.x}
+                  x2={selectionEnd.x}
+                  strokeOpacity={0.3}
+                />
+              ) : null}
+            </AreaChart>
+          </ResponsiveContainer>
+          <div className={styles.controls}>
+            {domainX[0] !== 'dataMin' || domainX[1] !== 'dataMax' ? (
+              <Button
+                onClick={resetChart}
+                variant={ButtonVariantEnum.primary}
+                text="Reset chart"
+                icon={IconsEnum.refresh}
+              />
+            ) : null}
+          </div>
+        </>
+      )}
     </div>
   );
 };

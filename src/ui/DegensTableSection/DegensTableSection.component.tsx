@@ -6,8 +6,12 @@ import { ABsort } from '@utils/ABsort';
 import { DegenType } from '@store/degens/degen/degen.types';
 import { useDegensListSelector } from '@store/degens/degensList/useDegensListSelector';
 
+import { requestStatusEnum } from '@typings/requestStatus';
+
+import styles from './DegensTableSection.module.scss';
+
 export const DegensTableSectionComponent = () => {
-  const { degensList } = useDegensListSelector();
+  const { degensList, status } = useDegensListSelector();
   const [sortedBy, setSortedBy] = useState<keyof DegenType>('username');
   const [reverseSort, setReverseSort] = useState(false);
   const [data, setData] = useState(degensList);
@@ -35,8 +39,10 @@ export const DegensTableSectionComponent = () => {
       sortedBy={sortedBy}
       reverseSort={reverseSort}
       totalRecords={data.length}
-      emptyState={<div>No influencers found</div>}
+      emptyState={<div className={styles.emptyState}>No influencers found</div>}
       onSortClick={onSortClick}
+      isLoading={status !== requestStatusEnum.SUCCESS}
+      className={styles.degensTable}
     />
   );
 };

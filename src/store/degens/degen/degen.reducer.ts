@@ -39,9 +39,16 @@ const degenSlice = createHydrationSlice({
       state.status = requestStatusEnum.SUCCESS;
       state.degen = payload;
     },
+    fetchDegenErrorAction: (state) => {
+      state.status = requestStatusEnum.ERROR;
+    },
   },
 });
 
-export const { fetchDegenAction, fetchDegenSuccessAction } = degenSlice.actions;
+export const {
+  fetchDegenAction,
+  fetchDegenSuccessAction,
+  fetchDegenErrorAction,
+} = degenSlice.actions;
 
 export default degenSlice.reducer;

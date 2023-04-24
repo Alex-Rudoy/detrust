@@ -25,6 +25,15 @@ export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
   store.dispatch(END);
   await (store as SagaStore).sagaTask.toPromise();
 
+  if (
+    !store.getState().groupTokens.groupTokens.length &&
+    !store.getState().degensList.degensList.length
+  ) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {},
     revalidate: 10,

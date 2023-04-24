@@ -34,11 +34,7 @@ export const ListTabComponent = () => {
   };
 
   return (
-    <Scrolling
-      horizontal
-      vertical
-      className={classNames(styles.container, 'magic-inner-shadows')}
-    >
+    <div className={classNames(styles.container)}>
       <TokensTable
         data={data}
         sortedBy={sortedBy}
@@ -46,7 +42,7 @@ export const ListTabComponent = () => {
         totalRecords={data.length}
         onSortClick={onSortClick}
       />
-    </Scrolling>
+    </div>
   );
 };
 ListTabComponent.displayName = 'ListTab';

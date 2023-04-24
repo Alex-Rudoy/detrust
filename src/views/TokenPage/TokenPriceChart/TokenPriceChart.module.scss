@@ -25,3 +25,12 @@
     color: var(--gray-500);
   }
 }
+
+.loadingContainer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+}

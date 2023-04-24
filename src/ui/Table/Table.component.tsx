@@ -10,6 +10,7 @@ import { hasValue } from '@utils/hasValue';
 import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';
+import { Scrolling } from '@components/Scrolling';
 
 export const TableComponent = <T extends { id: number | string }>({
   className,
@@ -37,10 +38,12 @@ export const TableComponent = <T extends { id: number | string }>({
     onSortClick(id, false);
   };
 
-  if (!isLoading && data.length === 0 && emptyState) return <>{emptyState}</>;
-
   return (
-    <div className={classNames(styles.table, className)}>
+    <Scrolling
+      vertical
+      horizontal
+      className={classNames(styles.table, className, 'magic-inner-shadows')}
+    >
       <table>
         <thead>
           <tr className={styles.header_row}>
@@ -50,33 +53,27 @@ export const TableComponent = <T extends { id: number | string }>({
                 className={sortedBy === column.id ? styles.sortedColumn : ''}
               >
                 <div className={styles.th_content}>
-                  {isLoading ? (
-                    <Skeleton />
-                  ) : (
-                    <>
-                      <Text
-                        size={TextSizeEnum.S16}
-                        tooltip={
-                          column.tooltip
-                            ? { id: column.id, text: column.tooltip }
-                            : undefined
-                        }
-                      >
-                        {column.name}
-                      </Text>
-                      {column.sortable && (
-                        <SvgIcon
-                          src={IconsEnum.arrow}
-                          rotate={
-                            sortedBy === column.id && reverseSort
-                              ? '180'
-                              : undefined
-                          }
-                          size={16}
-                          onClick={() => handleSortClick(column.id)}
-                        />
-                      )}
-                    </>
+                  <Text
+                    size={TextSizeEnum.S16}
+                    tooltip={
+                      column.tooltip
+                        ? { id: column.id, text: column.tooltip }
+                        : undefined
+                    }
+                  >
+                    {column.name}
+                  </Text>
+                  {column.sortable && (
+                    <SvgIcon
+                      src={IconsEnum.arrow}
+                      rotate={
+                        sortedBy === column.id && reverseSort
+                          ? '180'
+                          : undefined
+                      }
+                      size={16}
+                      onClick={() => handleSortClick(column.id)}
+                    />
                   )}
                 </div>
               </th>
@@ -105,6 +102,9 @@ export const TableComponent = <T extends { id: number | string }>({
               ))}
         </tbody>
       </table>
+
+      {!isLoading && data.length === 0 && emptyState ? <>{emptyState}</> : null}
+
       {!withoutPagination &&
       totalRecords &&
       hasValue(startRecord) &&
@@ -117,7 +117,7 @@ export const TableComponent = <T extends { id: number | string }>({
           onPaginationClick={onPaginationClick}
         />
       ) : null}
-    </div>
+    </Scrolling>
   );
 };
 
