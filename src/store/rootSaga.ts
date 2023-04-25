@@ -1,7 +1,9 @@
 import { all, fork } from 'redux-saga/effects';
 
-import { degenWatcher } from './degens/degen/degen.saga';
+import { degenInfoWatcher } from './degens/degenInfo/degenInfo.saga';
 import { degensListWatcher } from './degens/degensList/degensList.saga';
+import { degenTagsWatcher } from './degens/degenTags/degenTags.saga';
+import { degenTokensWatcher } from './degens/degenTokens/degenTokens.saga';
 import { groupsWatcher } from './degens/groups/groups.saga';
 import { groupTokensWatcher } from './degens/groupTokens/groupTokens.saga';
 import { tokenWatcher } from './tokens/token/token.saga';
@@ -21,6 +23,8 @@ export default function* rootSaga() {
     fork(groupsWatcher),
     fork(groupTokensWatcher),
     fork(degensListWatcher),
-    fork(degenWatcher),
+    fork(degenInfoWatcher),
+    fork(degenTagsWatcher),
+    fork(degenTokensWatcher),
   ]);
 }

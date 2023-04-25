@@ -35,10 +35,10 @@
 .dropdown {
   width: max-content;
   height: max-content;
-  background-color: var(--white);
+  background-color: var(--primary-dark-900);
   opacity: 0;
   pointer-events: none;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--gray-500);
   border-radius: 8px;
   box-shadow: var(--shadow-lg);
   z-index: 10;

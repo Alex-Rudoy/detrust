@@ -32,4 +32,4 @@ const groupsSlice = createSlice({
 export const { fetchGroupsAction, fetchGroupsSuccessAction } =
   groupsSlice.actions;
 
-export default groupsSlice.reducer;
+export const groupsReducer = groupsSlice.reducer;

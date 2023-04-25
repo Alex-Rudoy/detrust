@@ -36,4 +36,4 @@ const groupTokensSlice = createHydrationSlice({
 export const { fetchGroupTokensAction, fetchGroupTokensSuccessAction } =
   groupTokensSlice.actions;
 
-export default groupTokensSlice.reducer;
+export const groupTokensReducer = groupTokensSlice.reducer;

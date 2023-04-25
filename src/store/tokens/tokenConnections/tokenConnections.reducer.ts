@@ -36,4 +36,4 @@ export const {
   fetchTokenConnectionsSuccessAction,
 } = tokenConnectionsSlice.actions;
 
-export default tokenConnectionsSlice.reducer;
+export const tokenConnectionsReducer = tokenConnectionsSlice.reducer;

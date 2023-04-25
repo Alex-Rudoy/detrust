@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchDegenAction } from './degen/degen.reducer';
+import { fetchDegenInfoAction } from './degenInfo/degenInfo.reducer';
 import {
   fetchDegensListForGroupAction,
   fetchDegensListForTokenAction,
@@ -16,7 +16,7 @@ export const useDegensActions = () => {
       fetchGroupsAction,
       fetchDegensListForTokenAction,
       fetchDegensListForGroupAction,
-      fetchDegenAction,
+      fetchDegenInfoAction,
     },
     dispatch,
   );

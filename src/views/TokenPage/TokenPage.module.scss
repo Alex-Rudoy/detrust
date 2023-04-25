@@ -1,6 +1,10 @@
-.loadingContainer {
+.heading {
+  margin-bottom: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  gap: 16px;
+}
+
+.infoIcon {
+  margin-top: 2px;
 }

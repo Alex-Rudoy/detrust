@@ -6,7 +6,7 @@ import { ScoreCell } from '@ui/ScoreCell';
 import { columnConfigType } from '@ui/Table';
 import { routes } from '@views/routes';
 
-import { DegenType } from '@store/degens/degen/degen.types';
+import { DegenType } from '@store/degens/degensList/degensList.types';
 
 import styles from './DegensTable.module.scss';
 

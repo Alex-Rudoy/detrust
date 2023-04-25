@@ -1,0 +1,33 @@
+.textCell {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.badgeCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 20px;
+}
+
+.Negative {
+  color: var(--error-400);
+}
+
+.Positive {
+  color: var(--success-400);
+}
+
+.Neutral {
+  color: var(--primary-400);
+}
+
+// max 4 lines
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

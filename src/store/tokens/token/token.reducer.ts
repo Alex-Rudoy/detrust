@@ -61,4 +61,4 @@ export const {
   fetchTokenErrorAction,
 } = tokenSlice.actions;
 
-export default tokenSlice.reducer;
+export const tokenReducer = tokenSlice.reducer;

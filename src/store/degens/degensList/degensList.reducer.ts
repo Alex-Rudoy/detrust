@@ -46,4 +46,4 @@ export const {
   fetchDegensListSuccessAction,
 } = degensListSlice.actions;
 
-export default degensListSlice.reducer;
+export const degensListReducer = degensListSlice.reducer;

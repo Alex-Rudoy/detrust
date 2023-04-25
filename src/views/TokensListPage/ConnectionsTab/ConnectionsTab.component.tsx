@@ -10,7 +10,6 @@ import { Text, TextSizeEnum } from '@components/Text';
 
 import { primary_dark_900 } from '@utils/colors';
 import { deepCopy } from '@utils/deepCopy';
-import { isBrowser } from '@utils/isBrowser';
 import {
   GraphNode,
   GraphLink,
@@ -37,7 +36,6 @@ export const ConnectionsTabComponent = () => {
   const [iterationStopped, setIterationStopped] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isBrowser(window)) return;
     if (!fgRef.current) return;
     if (status !== requestStatusEnum.SUCCESS) return;
 
@@ -57,7 +55,7 @@ export const ConnectionsTabComponent = () => {
     });
 
     fgRef.current?.d3Force('link')?.distance(() => 800);
-  }, [isBrowser(window), status]);
+  }, [status]);
 
   const handleNodeHover = (node: GraphNode) => {
     if (node === hoverNode) return;

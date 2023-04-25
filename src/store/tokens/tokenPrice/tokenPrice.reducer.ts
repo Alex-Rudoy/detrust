@@ -4,6 +4,7 @@ import { requestStatusEnum } from '@typings/requestStatus';
 
 import {
   FetchTokenPriceActionType,
+  FetchTokenPriceForDegenActionType,
   FetchTokenPriceSuccessActionType,
   TokenPriceReducerType,
 } from './tokenPrice.types';
@@ -11,6 +12,7 @@ import {
 const initialState: TokenPriceReducerType = {
   status: requestStatusEnum.INITIAL,
   tokenPrice: [],
+  mentions: [],
 };
 
 const tokenPriceSlice = createSlice({
@@ -20,17 +22,27 @@ const tokenPriceSlice = createSlice({
     fetchTokenPriceAction: (state, { payload }: FetchTokenPriceActionType) => {
       state.status = requestStatusEnum.LOADING;
     },
+    fetchTokenPriceForDegenAction: (
+      state,
+      { payload }: FetchTokenPriceForDegenActionType,
+    ) => {
+      state.status = requestStatusEnum.LOADING;
+    },
     fetchTokenPriceSuccessAction: (
       state,
       { payload }: FetchTokenPriceSuccessActionType,
     ) => {
       state.status = requestStatusEnum.SUCCESS;
-      state.tokenPrice = payload;
+      state.tokenPrice = payload.tokenPrice;
+      state.mentions = payload.mentions;
     },
   },
 });
 
-export const { fetchTokenPriceAction, fetchTokenPriceSuccessAction } =
-  tokenPriceSlice.actions;
+export const {
+  fetchTokenPriceAction,
+  fetchTokenPriceForDegenAction,
+  fetchTokenPriceSuccessAction,
+} = tokenPriceSlice.actions;
 
-export default tokenPriceSlice.reducer;
+export const tokenPriceReducer = tokenPriceSlice.reducer;

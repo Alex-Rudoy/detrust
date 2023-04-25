@@ -39,4 +39,4 @@ const tokensListSlice = createHydrationSlice({
 export const { fetchTokensListAction, fetchTokensListSuccessAction } =
   tokensListSlice.actions;
 
-export default tokensListSlice.reducer;
+export const tokensListReducer = tokensListSlice.reducer;

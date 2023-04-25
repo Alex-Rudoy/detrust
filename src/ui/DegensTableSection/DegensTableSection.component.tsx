@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { DegensTable } from '@tables/DegensTable';
 
 import { ABsort } from '@utils/ABsort';
-import { DegenType } from '@store/degens/degen/degen.types';
+import { DegenType } from '@store/degens/degensList/degensList.types';
 import { useDegensListSelector } from '@store/degens/degensList/useDegensListSelector';
 
 import { requestStatusEnum } from '@typings/requestStatus';

@@ -12,10 +12,8 @@ import {
 import { CategoricalChartFunc } from 'recharts/types/chart/generateCategoricalChart';
 
 import { Button, ButtonVariantEnum } from '@components/Button';
-import { InfoHover } from '@components/InfoHover';
 import { Loader } from '@components/Loader';
 import { IconsEnum } from '@components/SvgIcon';
-import { Text, TextSizeEnum } from '@components/Text';
 
 import { primary_400 } from '@utils/colors';
 import { ONE_DAY, TEN_DAYS } from '@utils/constants';
@@ -106,14 +104,6 @@ export const TokenPriceChartComponent = () => {
 
   return (
     <div className={styles.tokenPriceChart}>
-      <div className={styles.heading}>
-        <Text size={TextSizeEnum.S24}>Mentions</Text>
-        <InfoHover id="price_chart_help" className={styles.infoIcon}>
-          <Text size={TextSizeEnum.S12} className={styles.info}>
-            Draw a rectangle with mouse to zoom in
-          </Text>
-        </InfoHover>
-      </div>
       {status !== requestStatusEnum.SUCCESS ? (
         <div className={styles.loadingContainer}>
           <Loader />

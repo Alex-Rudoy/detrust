@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 
+import { Scrolling } from '@components/Scrolling';
 import { Skeleton } from '@components/Skeleton';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
 import { Text, TextSizeEnum } from '@components/Text';
@@ -10,7 +11,6 @@ import { hasValue } from '@utils/hasValue';
 import { TableProps } from './Table.types';
 
 import styles from './Table.module.scss';
-import { Scrolling } from '@components/Scrolling';
 
 export const TableComponent = <T extends { id: number | string }>({
   className,

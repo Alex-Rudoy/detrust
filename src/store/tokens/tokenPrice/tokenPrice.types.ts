@@ -7,13 +7,19 @@ import { requestStatusEnum } from '@typings/requestStatus';
 export type TokenPriceReducerType = {
   status: requestStatusEnum;
   tokenPrice: TokenPriceChartItemType[];
+  mentions: TokenMentionType[];
 };
 
 // actions
 export type FetchTokenPriceActionType = PayloadAction<{ symbol: string }>;
-export type FetchTokenPriceSuccessActionType = PayloadAction<
-  TokenPriceChartItemType[]
->;
+export type FetchTokenPriceForDegenActionType = PayloadAction<{
+  symbol: string;
+  username: string;
+}>;
+export type FetchTokenPriceSuccessActionType = PayloadAction<{
+  tokenPrice: TokenPriceChartItemType[];
+  mentions: TokenMentionType[];
+}>;
 
 // api
 export type FetchTokenPriceResponse = AxiosResponse<
@@ -39,11 +45,13 @@ export type TokenPriceChartItemType = {
 };
 
 export type TokenMentionType = {
+  id: number;
   content_creation_dt: string;
   content_creation_dt_h: string;
-  project_id: `${number}`;
+  mention: string;
   sentiment: number;
   sentiment_score: number;
   user_id: `${number}`;
   username: string;
+  text: string;
 };

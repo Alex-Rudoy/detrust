@@ -6,18 +6,18 @@
   max-height: 40px;
   padding: 0 10px;
   gap: 12px;
-  background-color: var(--white);
-  color: var(--gray-700);
-  stroke: var(--gray-700);
-  border: 1px solid var(--gray-300);
+  background-color: var(--primary-dark-900);
+  color: var(--gray-300);
+  stroke: var(--gray-300);
+  border: 1px solid var(--gray-500);
   box-shadow: var(--shadow-xs);
   border-radius: 8px;
   cursor: pointer;
 
   &:hover {
-    background: var(--gray-50);
-    color: var(--gray-800);
-    stroke: var(--gray-800);
+    background: var(--primary-dark-800);
+    color: var(--gray-200);
+    stroke: var(--gray-200);
   }
 
   &.placeholder {
@@ -40,9 +40,7 @@
   }
 
   &.disabled {
-    background-color: var(--gray-100);
-    color: var(--gray-500);
-    stroke: var(--gray-500);
+    opacity: 0.5;
     cursor: initial;
   }
 }

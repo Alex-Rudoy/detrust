@@ -3,9 +3,13 @@ import { END } from 'redux-saga';
 import { DegenPage } from '@views/DegenPage';
 
 import { DegensService } from '@api/DegensService';
-import { fetchDegenAction } from '@store/degens/degen/degen.reducer';
-import { DegenType } from '@store/degens/degen/degen.types';
+import { fetchDegenInfoAction } from '@store/degens/degenInfo/degenInfo.reducer';
+import { DegenType } from '@store/degens/degensList/degensList.types';
+import { fetchDegenTagsAction } from '@store/degens/degenTags/degenTags.reducer';
+import { fetchDegenTokensAction } from '@store/degens/degenTokens/degenTokens.reducer';
 import { SagaStore, wrapper } from '@store/index';
+
+import { requestStatusEnum } from '@typings/requestStatus';
 
 export default function Degen() {
   return <DegenPage />;
@@ -18,12 +22,24 @@ export const getStaticProps = wrapper.getStaticProps((store) => async (ctx) => {
     };
   }
 
-  store.dispatch(fetchDegenAction({ username: ctx.params.username as string }));
+  store.dispatch(
+    fetchDegenInfoAction({ username: ctx.params.username as string }),
+  );
+  store.dispatch(
+    fetchDegenTagsAction({ username: ctx.params.username as string }),
+  );
+  store.dispatch(
+    fetchDegenTokensAction({ username: ctx.params.username as string }),
+  );
 
   store.dispatch(END);
   await (store as SagaStore).sagaTask.toPromise();
 
-  if (!store.getState().degen.degen.username) {
+  if (
+    store.getState().degenInfo.status !== requestStatusEnum.SUCCESS ||
+    store.getState().degenTags.status !== requestStatusEnum.SUCCESS ||
+    store.getState().degenTokens.status !== requestStatusEnum.SUCCESS
+  ) {
     return {
       notFound: true,
     };
