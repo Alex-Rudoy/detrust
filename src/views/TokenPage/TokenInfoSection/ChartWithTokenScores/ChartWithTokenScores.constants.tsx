@@ -5,37 +5,31 @@ export const generateChartWithTokenScoresData = (token: TokenType) => [
     quality: 'project_count_followers_10k_scaled',
     percent: token.project_count_followers_10k_scaled,
     fullMark: 1,
-    domain: [0, 1]
   },
   {
     quality: 'buying_power',
     percent: token.buying_power,
     fullMark: 1,
-    domain: [0, 1]
   },
   {
     quality: 'holders_count_scaled',
     percent: token.holders_count_scaled,
     fullMark: 1,
-    domain: [0, 1]
   },
   {
     quality: 'project_token_ranked_followers_10k_scaled',
     percent: token.project_token_ranked_followers_10k_scaled,
     fullMark: 1,
-    domain: [0, 1]
   },
   {
     quality: 'holders_value_scaled',
     percent: token.holders_value_scaled,
     fullMark: 1,
-    domain: [0, 1]
   },
   {
     quality: 'volume_to_mc',
     percent: token.volume_to_mc,
     fullMark: 1,
-    domain: [0, 1]
   },
 ];
 

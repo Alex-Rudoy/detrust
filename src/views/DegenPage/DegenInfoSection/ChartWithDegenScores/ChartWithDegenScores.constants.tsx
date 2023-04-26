@@ -5,37 +5,31 @@ export const generateChartWithDegenScoresData = (degenInfo: DegenInfoType) => [
     quality: 'popularity_scaled',
     percent: degenInfo.popularity_scaled,
     fullMark: 1,
-    domain: [0, 1],
   },
   {
     quality: 'big_followers_scaled',
     percent: degenInfo.big_followers_scaled,
     fullMark: 1,
-    domain: [0, 1],
   },
   {
     quality: 'followers_count_scaled',
     percent: degenInfo.followers_count_scaled,
     fullMark: 1,
-    domain: [0, 1],
   },
   {
     quality: 'influence_scaled',
     percent: degenInfo.influence_scaled,
     fullMark: 1,
-    domain: [0, 1],
   },
   {
     quality: 'price_change_scaled',
     percent: degenInfo.price_change_scaled,
     fullMark: 1,
-    domain: [0, 1],
   },
   {
     quality: 'assets_scaled',
     percent: degenInfo.assets_scaled,
     fullMark: 1,
-    domain: [0, 1],
   },
 ];
 

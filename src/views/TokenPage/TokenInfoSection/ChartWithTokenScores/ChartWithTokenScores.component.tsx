@@ -80,8 +80,8 @@ export const ChartWithTokenScoresComponent = () => {
         data={generateChartWithTokenScoresData(token)}
       >
         <PolarGrid />
-        <PolarAngleAxis dataKey="quality" tickLine={false} tick={CustomTick} domain={[0, 1]} />
-        <PolarRadiusAxis domain={[0, 1]} tick={false} axisLine={false}/>
+        <PolarAngleAxis dataKey="quality" tickLine={false} tick={CustomTick} />
+        <PolarRadiusAxis domain={[-0.05, 1]} tick={false} axisLine={false} />
         <Radar
           dataKey="percent"
           stroke={primary_400}
