@@ -1,7 +1,11 @@
+import { RootState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
+import { NoInfer } from 'react-redux';
 
 import {
+  ActionReducerMapBuilder,
   CreateSliceOptions,
+  PayloadAction,
   Slice,
   SliceCaseReducers,
   createSlice,
@@ -16,11 +20,21 @@ export const createHydrationSlice = <
 ): Slice<State, CaseReducers, Name> =>
   createSlice({
     ...options,
-    extraReducers: {
-      ...options.extraReducers,
-      [HYDRATE]: (state, action) => ({
+    extraReducers: (builder) => {
+      builder.addCase(HYDRATE, (state, action) => ({
         ...state,
-        ...action.payload[options.name],
-      }),
+        ...(action as PayloadAction<RootState>).payload[
+          options.name as keyof RootState
+        ],
+      }));
+
+      if (typeof options.extraReducers?.call !== 'function')
+        throw new Error('extraReducers is not a function');
+
+      (
+        options.extraReducers as (
+          builder: ActionReducerMapBuilder<NoInfer<State>>,
+        ) => void
+      )?.(builder);
     },
   });
