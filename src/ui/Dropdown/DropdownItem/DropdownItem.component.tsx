@@ -13,11 +13,12 @@ export const DropdownItemComponent = ({
   onClick,
   className,
   selected,
+  ...props
 }: DropdownItemProps) => {
   const dropdownItemClass = classNames(styles.dropdownItem, className);
 
   return (
-    <div className={dropdownItemClass} onClick={onClick}>
+    <div className={dropdownItemClass} onClick={onClick} {...props}>
       {icon && <SvgIcon src={icon} size={16} />}
       <Text size={TextSizeEnum.S14}>{text}</Text>
       {selected && (

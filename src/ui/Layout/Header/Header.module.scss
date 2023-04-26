@@ -15,3 +15,24 @@
   width: 150px;
   margin-right: auto;
 }
+
+.headerLink {
+  margin-left: auto;
+}
+
+.divider {
+  margin: 0 20px;
+  width: 1px;
+  height: 30px;
+  background-color: var(--primary-200);
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdownItem {
+  cursor: not-allowed;
+}
