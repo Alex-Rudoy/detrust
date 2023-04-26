@@ -5,7 +5,7 @@ import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPageComponent = () => {
   return (
-    <Layout>
+    <Layout title={'404'} description={'Page not found'}>
       <div className={styles.notFoundPage}>
         <Text size={TextSizeEnum.S48} fontWeight={FontWeightEnum.FW700}>
           404

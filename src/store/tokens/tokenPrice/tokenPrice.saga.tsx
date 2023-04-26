@@ -145,6 +145,8 @@ function mapMentionsOnPriceChart(
         price: mentionPrice,
         color,
         stroke,
+        text: mention.text,
+        author: mention.username,
       });
 
       break;

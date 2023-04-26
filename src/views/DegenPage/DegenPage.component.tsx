@@ -43,7 +43,11 @@ export const DegenPageComponent = () => {
   };
 
   return (
-    <Layout breadcrumbs={['Degens', username]}>
+    <Layout
+      breadcrumbs={['Degens', username]}
+      title={`Degens | ${username}`}
+      description={`Comprehensive info about ${username}`}
+    >
       <DegenInfoSection />
       {degenTokens.length > 0 && (
         <>

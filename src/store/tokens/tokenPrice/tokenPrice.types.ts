@@ -40,6 +40,8 @@ export type TokenPriceChartItemRawType = {
 export type TokenPriceChartItemType = {
   timestamp: number;
   price: number;
+  text?: string;
+  username?: string;
   color?: string;
   stroke?: string;
 };

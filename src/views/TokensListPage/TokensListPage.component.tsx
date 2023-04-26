@@ -25,7 +25,14 @@ export const TokensListPageComponent = () => {
   const TabComponent = TokensListPageTabComponents[selectedTab];
 
   return (
-    <Layout activeMenuLink="Tokens" breadcrumbs={['Tokens']}>
+    <Layout
+      activeMenuLink="Tokens"
+      breadcrumbs={['Tokens']}
+      title={'Tokens'}
+      description={
+        'Visualization, connections and comprehensive list of tokens.'
+      }
+    >
       <TabBar
         options={TokensListPageTabs}
         selectedTab={selectedTab}

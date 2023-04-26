@@ -17,6 +17,8 @@ export const DegenGroupPageComponent = () => {
     <Layout
       activeMenuLink={groupName}
       breadcrumbs={['Groups', groupName || '...']}
+      title={`Groups | ${groupName}`}
+      description={`Comprehensive info about ${groupName}`}
     >
       <GroupTokensSection />
       <DegensTableSection />

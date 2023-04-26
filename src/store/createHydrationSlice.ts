@@ -28,6 +28,7 @@ export const createHydrationSlice = <
         ],
       }));
 
+      if (!options.extraReducers) return;
       if (typeof options.extraReducers?.call !== 'function')
         throw new Error('extraReducers is not a function');
 

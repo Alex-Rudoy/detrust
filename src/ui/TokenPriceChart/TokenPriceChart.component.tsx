@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useState } from 'react';
+import { useState } from 'react';
 import {
   Area,
   CartesianGrid,
@@ -14,11 +14,12 @@ import { CategoricalChartFunc } from 'recharts/types/chart/generateCategoricalCh
 import { Button, ButtonVariantEnum } from '@components/Button';
 import { Loader } from '@components/Loader';
 import { IconsEnum } from '@components/SvgIcon';
+import { PriceChartCustomDot } from './PriceChartCustomDot';
+import { PriceChartTooltip } from './PriceChartTooltip';
 
 import { primary_400 } from '@utils/colors';
 import { ONE_DAY, TEN_DAYS } from '@utils/constants';
 import { hasValue } from '@utils/hasValue';
-import { TokenPriceChartItemType } from '@store/tokens/tokenPrice/tokenPrice.types';
 import { useTokenPriceSelector } from '@store/tokens/tokenPrice/useTokenPriceSelector';
 
 import { requestStatusEnum } from '@typings/requestStatus';
@@ -65,42 +66,6 @@ export const TokenPriceChartComponent = () => {
   const resetChart = () => {
     setDomainX(['dataMin', 'dataMax']);
   };
-
-  const CustomDot = useCallback(
-    ({
-      cx,
-      cy,
-      payload,
-      key,
-      width,
-      height,
-    }: {
-      cx: number;
-      cy: number;
-      stroke: string;
-      key: string;
-      width: number;
-      height: number;
-      payload: TokenPriceChartItemType;
-    }): ReactElement<SVGElement> => {
-      if (!payload.color) return <svg key={key} />;
-
-      return (
-        <circle
-          fill={payload.color}
-          stroke={payload.stroke}
-          strokeWidth="2"
-          width={width}
-          height={height}
-          cx={cx}
-          cy={cy}
-          r="8"
-          className="recharts-dot recharts-line-dot"
-        />
-      );
-    },
-    [],
-  );
 
   return (
     <div className={styles.tokenPriceChart}>
@@ -160,11 +125,11 @@ export const TokenPriceChartComponent = () => {
                 dataKey="price"
                 stroke={primary_400}
                 activeDot={false}
-                dot={CustomDot}
+                dot={PriceChartCustomDot}
                 fillOpacity={1}
                 fill="url(#colorUv)"
               />
-              <Tooltip content={() => null} />
+              <Tooltip content={PriceChartTooltip} />
               {selectionStart.x && selectionEnd.x ? (
                 <ReferenceArea
                   x1={selectionStart.x}

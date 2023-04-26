@@ -29,6 +29,8 @@ export const TokenPageComponent = () => {
     <Layout
       activeMenuLink="Tokens"
       breadcrumbs={['Tokens', token.project_name || '...']}
+      title={`Tokens | ${token.project_name}`}
+      description={token.description}
     >
       <TokenInfoSection />
       <div className={styles.heading}>
