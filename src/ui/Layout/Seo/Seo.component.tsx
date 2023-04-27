@@ -10,7 +10,7 @@ export const SeoComponent = ({
   image,
 }: PropsWithChildren<SeoProps>) => {
   const fallbackUrl = typeof window === 'undefined' ? '' : window.location.href;
-  const fallbackImg = '/images/logo-black.png';
+  const fallbackImg = typeof window === 'undefined' ? '' : `${window.location.origin}/images/logo-black.png`;
 
   return (
     <Head>
@@ -20,6 +20,7 @@ export const SeoComponent = ({
       <link rel="canonical" href={url || fallbackUrl} />
 
       <meta property="og:type" content="website" />
+      <meta property="og:title" content={title} />
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image || fallbackImg} />
