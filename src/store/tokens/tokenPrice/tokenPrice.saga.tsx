@@ -114,6 +114,7 @@ function mapMentionsOnPriceChart(
 
     for (let i = 0; i < tokenPrice.length; i++) {
       if (timestamp > tokenPrice[i].timestamp) continue;
+      if (i === 0) break;
 
       const normalizedTimestamp = norm(
         timestamp,
