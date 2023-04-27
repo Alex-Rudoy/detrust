@@ -19,7 +19,7 @@ export const LayoutComponent = ({
 }: PropsWithChildren<LayoutProps>) => {
   return (
     <Scrolling horizontal>
-      <Seo title={title} description={description} />
+      <Seo title={`Detrust | ${title}`} description={description} />
       <Header />
       <main className={styles.main}>
         <SideMenu activeMenuLink={activeMenuLink} />

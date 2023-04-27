@@ -1,9 +1,8 @@
-
 export default function Home() {
   return;
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   return {
     redirect: {
       destination: '/tokens',

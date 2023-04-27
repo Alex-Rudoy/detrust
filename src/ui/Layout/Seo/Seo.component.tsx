@@ -10,11 +10,11 @@ export const SeoComponent = ({
   image,
 }: PropsWithChildren<SeoProps>) => {
   const fallbackUrl = typeof window === 'undefined' ? '' : window.location.href;
-  const fallbackImg = typeof window === 'undefined' ? '' : `${window.location.origin}/images/logo-black.png`;
+  const fallbackImg = 'https://de-trust-front.vercel.app/images/logo-black.png';
 
   return (
     <Head>
-      <title>{`Detrust | ${title}`}</title>
+      <title>{title}</title>
 
       <meta name="description" content={description} />
       <link rel="canonical" href={url || fallbackUrl} />
@@ -24,8 +24,8 @@ export const SeoComponent = ({
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image || fallbackImg} />
-      <meta property="og:image:width" content={"2357"} />
-      <meta property="og:image:height" content={"2358"} />
+      <meta property="og:image:width" content={'2357'} />
+      <meta property="og:image:height" content={'2358'} />
       <meta property="og:url" content={url || fallbackUrl} />
       <meta property="og:locale" content="en_US" />
 

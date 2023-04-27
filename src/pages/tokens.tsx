@@ -9,17 +9,15 @@ export default function Tokens() {
   return <TokensListPage />;
 }
 
-export const getStaticProps = wrapper.getServerSideProps(
-  (store) => async () => {
-    store.dispatch(fetchTokensListAction());
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+  store.dispatch(fetchTokensListAction());
 
-    store.dispatch(END);
+  store.dispatch(END);
 
-    await (store as SagaStore).sagaTask.toPromise();
+  await (store as SagaStore).sagaTask.toPromise();
 
-    return {
-      props: {},
-      revalidate: 10,
-    };
-  },
-);
+  return {
+    props: {},
+    revalidate: 10,
+  };
+});
