@@ -10,7 +10,7 @@ export const SeoComponent = ({
   image,
 }: PropsWithChildren<SeoProps>) => {
   const fallbackUrl = typeof window === 'undefined' ? '' : window.location.href;
-  const fallbackImg = '/images/logo-black';
+  const fallbackImg = '/images/logo-black.png';
 
   return (
     <Head>
