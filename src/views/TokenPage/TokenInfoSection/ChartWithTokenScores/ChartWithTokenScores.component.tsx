@@ -39,33 +39,29 @@ export const ChartWithTokenScoresComponent = () => {
     }) => {
       const label = payload.value as keyof typeof tickLabels;
       return (
-        <g className="recharts-layer recharts-polar-angle-axis-tick">
-          <text
-            radius={radius}
-            stroke={stroke}
-            x={x}
-            y={y}
-            className="recharts-text recharts-polar-angle-axis-tick-value"
-            textAnchor={textAnchor}
-            fontSize={14}
-          >
-            <tspan x={x} dy={tickLabels[label].dy} fill={primary_100}>
-              {tickLabels[label].title}
-            </tspan>
-            <tspan x={x} dy="1.5em" fontSize={10} fill={gray_100}>
-              {tickLabels[label].description}
-            </tspan>
-            <tspan x={x} dy="1.5em" fill={primary_400}>
-              {tickLabels[label].isPercent
-                ? `${Math.round(
-                    +token[tickLabels[label].key as keyof TokenType] * 100,
-                  )}%`
-                : postfixNumber(
-                    +token[tickLabels[label].key as keyof TokenType],
-                  )}
-            </tspan>
-          </text>
-        </g>
+        <text
+          radius={radius}
+          stroke={stroke}
+          x={x}
+          y={y}
+          className="recharts-text recharts-polar-angle-axis-tick-value"
+          textAnchor={textAnchor}
+          fontSize={14}
+        >
+          <tspan x={x} dy={tickLabels[label].dy} fill={primary_100}>
+            {tickLabels[label].title}
+          </tspan>
+          <tspan x={x} dy="1.5em" fontSize={10} fill={gray_100}>
+            {tickLabels[label].description}
+          </tspan>
+          <tspan x={x} dy="1.5em" fill={primary_400}>
+            {tickLabels[label].isPercent
+              ? `${Math.round(
+                  +token[tickLabels[label].key as keyof TokenType] * 100,
+                )}%`
+              : postfixNumber(+token[tickLabels[label].key as keyof TokenType])}
+          </tspan>
+        </text>
       );
     },
     [token],

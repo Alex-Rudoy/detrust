@@ -82,6 +82,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .headingName {
+    letter-spacing: 1px;
+  }
 }
 
 .linkRow {

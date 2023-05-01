@@ -6,9 +6,26 @@
   gap: 16px;
 }
 
+.flexStart {
+  justify-content: flex-start;
+
+  .description {
+    flex-grow: 0;
+  }
+}
+
 .description {
   flex: 1 1;
+
+  .descriptionText {
+    display: -webkit-box;
+    -webkit-line-clamp: 25;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: pre-wrap;
+  }
 }
+
 .titleBlock {
   display: flex;
   align-items: center;

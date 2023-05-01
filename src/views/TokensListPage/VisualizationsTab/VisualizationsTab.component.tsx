@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   CartesianGrid,
@@ -45,6 +45,12 @@ export const VisualizationsTabComponent = () => {
   }>({});
   const [domainX, setDomainX] = useState<number[]>([minX, maxX]);
   const [domainY, setDomainY] = useState<number[]>([minY, maxY]);
+  const [canvasHeight, setCanvasHeight] = useState<number>(800);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setCanvasHeight(window.innerHeight - 329);
+  });
 
   const symbols = useMemo(
     () =>
@@ -109,7 +115,7 @@ export const VisualizationsTabComponent = () => {
   return (
     <div className={styles.visualizationTab}>
       <div className={styles.heading}>
-        <Text size={TextSizeEnum.S12}>
+        <Text size={TextSizeEnum.S14}>
           This graph shows how similar projects are based on their communities.
           The closer two projects are, the more similar their community is.
         </Text>
@@ -121,14 +127,14 @@ export const VisualizationsTabComponent = () => {
         </InfoHover>
       </div>
 
-      <ResponsiveContainer height={600}>
+      <ResponsiveContainer height={canvasHeight}>
         <ScatterChart
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           margin={{ left: -59 }}
         >
-          <CartesianGrid stroke="white" />
+          {/* <CartesianGrid stroke="white" /> */}
           <XAxis
             dataKey="x"
             type="number"
@@ -167,17 +173,12 @@ export const VisualizationsTabComponent = () => {
         </ScatterChart>
       </ResponsiveContainer>
 
-      {domainX[0] !== minX ||
-      domainX[1] !== maxX ||
-      domainY[0] !== minY ||
-      domainY[1] !== maxY ? (
-        <Button
-          onClick={resetChart}
-          variant={ButtonVariantEnum.primary}
-          text="Reset chart"
-          icon={IconsEnum.refresh}
-        />
-      ) : null}
+      <Button
+        onClick={resetChart}
+        variant={ButtonVariantEnum.primary}
+        text="Reset chart"
+        icon={IconsEnum.refresh}
+      />
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { CustomTooltip } from '@components/CustomTooltip';
 import { ScorePie } from '@components/ScorePie';
 import { IconsEnum, SvgIcon } from '@components/SvgIcon';
@@ -12,7 +14,11 @@ export const TokenInfoSectionComponent = () => {
   const { token } = useTokenSelector();
 
   return (
-    <div className={styles.infoSection}>
+    <div
+      className={classNames(styles.infoSection, {
+        [styles.flexStart]: !token.description,
+      })}
+    >
       <div className={styles.description}>
         <div className={styles.titleBlock}>
           <Text size={TextSizeEnum.S24}>General Score</Text>
@@ -29,7 +35,9 @@ export const TokenInfoSectionComponent = () => {
           />
           <CustomTooltip data-tooltip-id={'customize_button'} />
         </div>
-        <Text size={TextSizeEnum.S14}>{token.description}</Text>
+        <Text size={TextSizeEnum.S14} className={styles.descriptionText}>
+          {token.description}
+        </Text>
       </div>
       <div className={styles.chartContainer}>
         <ChartWithTokenScores />

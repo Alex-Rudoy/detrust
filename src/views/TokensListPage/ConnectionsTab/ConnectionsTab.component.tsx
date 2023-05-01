@@ -34,6 +34,7 @@ export const ConnectionsTabComponent = () => {
     new Set(),
   );
   const [iterationStopped, setIterationStopped] = useState<boolean>(false);
+  const [canvasHeight, setCanvasHeight] = useState<number>(800);
 
   useEffect(() => {
     if (!fgRef.current) return;
@@ -56,6 +57,11 @@ export const ConnectionsTabComponent = () => {
 
     fgRef.current?.d3Force('link')?.distance(() => 800);
   }, [status]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setCanvasHeight(window.innerHeight - 285);
+  });
 
   const handleNodeHover = (node: GraphNode) => {
     if (node === hoverNode) return;
@@ -91,7 +97,7 @@ export const ConnectionsTabComponent = () => {
 
   return (
     <div>
-      <Text size={TextSizeEnum.S12} className={styles.heading}>
+      <Text size={TextSizeEnum.S14} className={styles.heading}>
         The graph shows the top related projects based on their community.
       </Text>
       <div className={styles.graphContainer}>
@@ -100,7 +106,7 @@ export const ConnectionsTabComponent = () => {
           graphData={{ nodes: localNodes.current, links: localLinks.current }}
           enableNodeDrag={false}
           backgroundColor={primary_dark_900}
-          height={600}
+          height={canvasHeight}
           nodeColor={'color'}
           nodeOpacity={1}
           onNodeHover={(node) => handleNodeHover(node as GraphNode)}

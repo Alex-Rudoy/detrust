@@ -30,7 +30,7 @@ export const PriceChartCustomDot = ({
         height={height}
         cx={cx}
         cy={cy}
-        r="8"
+        r="4"
         className="recharts-dot recharts-line-dot"
       />
     </>
