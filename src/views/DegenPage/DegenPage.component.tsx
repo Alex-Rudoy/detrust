@@ -10,10 +10,7 @@ import { DegenInfoSection } from './DegenInfoSection';
 import { MentionsTableSection } from './MentionsTableSection';
 
 import { useDegenTokensSelector } from '@store/degens/degenTokens/useDegenTokensSelector';
-import { useTokenPriceSelector } from '@store/tokens/tokenPrice/useTokenPriceSelector';
 import { useTokensActions } from '@store/tokens/useTokensActions';
-
-import { requestStatusEnum } from '@typings/requestStatus';
 
 import styles from './DegenPage.module.scss';
 
@@ -21,17 +18,14 @@ export const DegenPageComponent = () => {
   const router = useRouter();
   const username = router.query.username as string;
   const { degenTokens } = useDegenTokensSelector();
-  const { status } = useTokenPriceSelector();
   const { fetchTokenPriceForDegenAction } = useTokensActions();
   const [selectedToken, setSelectedToken] = useState(degenTokens[0]?.mention);
 
   useEffect(() => {
-    if (status === requestStatusEnum.INITIAL && degenTokens.length > 0) {
-      fetchTokenPriceForDegenAction({
-        username,
-        symbol: degenTokens[0].mention,
-      });
-    }
+    fetchTokenPriceForDegenAction({
+      username,
+      symbol: degenTokens[0].mention,
+    });
   }, []);
 
   const handleTokenChange = (value: string) => {

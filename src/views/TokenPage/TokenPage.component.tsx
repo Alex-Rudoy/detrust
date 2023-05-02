@@ -20,7 +20,6 @@ export const TokenPageComponent = () => {
   const { fetchDegensListForTokenAction } = useDegensActions();
 
   useEffect(() => {
-    if (!token.symbol) return;
     fetchTokenPriceAction({ symbol: token.symbol });
     fetchDegensListForTokenAction({ symbol: token.symbol });
   }, [token.symbol]);

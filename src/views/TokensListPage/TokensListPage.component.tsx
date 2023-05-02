@@ -7,18 +7,13 @@ import {
   TokensListPageTabs,
 } from './TokensListPage.constants';
 
-import { useTokenConnectionsSelector } from '@store/tokens/tokenConnections/useTokenConnectionsSelector';
 import { useTokensActions } from '@store/tokens/useTokensActions';
-
-import { requestStatusEnum } from '@typings/requestStatus';
 
 export const TokensListPageComponent = () => {
   const [selectedTab, setSelectedTab] = useState('Visualizations');
   const { fetchTokenConnectionsAction } = useTokensActions();
-  const { status } = useTokenConnectionsSelector();
 
   useEffect(() => {
-    if (status !== requestStatusEnum.INITIAL) return;
     fetchTokenConnectionsAction();
   }, []);
 

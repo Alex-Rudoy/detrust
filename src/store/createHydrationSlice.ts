@@ -11,6 +11,8 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 
+import { requestStatusEnum } from '@typings/requestStatus';
+
 export const createHydrationSlice = <
   State,
   CaseReducers extends SliceCaseReducers<State>,
@@ -21,12 +23,18 @@ export const createHydrationSlice = <
   createSlice({
     ...options,
     extraReducers: (builder) => {
-      builder.addCase(HYDRATE, (state, action) => ({
-        ...state,
-        ...(action as PayloadAction<RootState>).payload[
-          options.name as keyof RootState
-        ],
-      }));
+      builder.addCase(HYDRATE, (state, action) => {
+        const { payload } = action as PayloadAction<RootState>;
+        const reducerName = options.name as keyof RootState;
+
+        if (payload[reducerName]?.status !== requestStatusEnum.SUCCESS)
+          return state;
+
+        return {
+          ...state,
+          ...payload[reducerName],
+        };
+      });
 
       if (!options.extraReducers) return;
       if (typeof options.extraReducers?.call !== 'function')
