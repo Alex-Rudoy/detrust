@@ -3,4 +3,6 @@ export type LayoutProps = {
   breadcrumbs?: string[];
   title: string;
   description: string;
+  url?: string;
+  img?: string;
 };
